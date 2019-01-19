@@ -85,7 +85,7 @@ class _RPN(nn.Module):
 
         self.rpn_loss_cls = 0
         self.rpn_loss_box = 0
-
+        rpn_label = []
         # generating training labels and build the rpn loss
         if self.training:
             assert gt_boxes is not None
