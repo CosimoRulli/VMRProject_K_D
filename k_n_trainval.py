@@ -398,23 +398,24 @@ if __name__ == '__main__':
       loss_rcn_reg = compute_loss_regression(RCNN_loss_bbox_s,bbox_pred_s, bbox_pred_t, rois_target_s, m=0.001, l=1, bbox_inside_weights=rois_inside_ws_s, bbox_outside_weights=rois_outside_ws_s, ni=0.5 )
       print(loss_rcn_reg)
 
-      '''
-      loss = rpn_loss_cls.mean() + rpn_loss_box.mean() \
-           + RCNN_loss_cls.mean() + RCNN_loss_bbox.mean()
+
+      loss = loss_rpn_cls+ loss_rpn_reg+ \
+          loss_rcn_cls+ loss_rcn_reg
+
       loss_temp += loss.item()
 
       # backward
       optimizer.zero_grad()
       loss.backward()
-      if args.net == "vgg16":
-          clip_gradient(fasterRCNN, 10.)
+      #if args.net == "vgg16":
+      #    clip_gradient(fasterRCNN, 10.)
       optimizer.step()
 
       if step % args.disp_interval == 0:
         end = time.time()
         if step > 0:
           loss_temp /= (args.disp_interval + 1)
-
+        '''
         if args.mGPUs:
           loss_rpn_cls = rpn_loss_cls.mean().item()
           loss_rpn_box = rpn_loss_box.mean().item()
@@ -423,25 +424,26 @@ if __name__ == '__main__':
           fg_cnt = torch.sum(rois_label.data.ne(0))
           bg_cnt = rois_label.data.numel() - fg_cnt
         else:
-          loss_rpn_cls = rpn_loss_cls.item()
-          loss_rpn_box = rpn_loss_box.item()
-          loss_rcnn_cls = RCNN_loss_cls.item()
-          loss_rcnn_box = RCNN_loss_bbox.item()
-          fg_cnt = torch.sum(rois_label.data.ne(0))
-          bg_cnt = rois_label.data.numel() - fg_cnt
+        '''
+        loss_rpn_reg = loss_rpn_reg.item()
+        loss_rpn_cls = loss_rpn_cls.item()
+        loss_rcn_cls = loss_rcn_cls.item()
+        loss_rpn_reg = loss_rpn_reg.item()
+        fg_cnt = torch.sum(rois_label_s.data.ne(0))
+        bg_cnt = rois_label_s.data.numel() - fg_cnt
 
         print("[session %d][epoch %2d][iter %4d/%4d] loss: %.4f, lr: %.2e" \
                                 % (args.session, epoch, step, iters_per_epoch, loss_temp, lr))
         print("\t\t\tfg/bg=(%d/%d), time cost: %f" % (fg_cnt, bg_cnt, end-start))
-        print("\t\t\trpn_cls: %.4f, rpn_box: %.4f, rcnn_cls: %.4f, rcnn_box %.4f" \
-                      % (loss_rpn_cls, loss_rpn_box, loss_rcnn_cls, loss_rcnn_box))
+        print("\t\t\trpn_cls: %.4f, rpn_reg: %.4f, rcn_cls: %.4f, rcn_reg %.4f" \
+                      % (loss_rpn_cls, loss_rpn_reg, loss_rcn_cls, loss_rcn_reg))
         if args.use_tfboard:
           info = {
             'loss': loss_temp,
             'loss_rpn_cls': loss_rpn_cls,
-            'loss_rpn_box': loss_rpn_box,
-            'loss_rcnn_cls': loss_rcnn_cls,
-            'loss_rcnn_box': loss_rcnn_box
+            'loss_rpn_box': loss_rpn_reg,
+            'loss_rcnn_cls': loss_rcn_cls,
+            'loss_rcnn_box': loss_rcn_reg
           }
           logger.add_scalars("logs_s_{}/losses".format(args.session), info, (epoch - 1) * iters_per_epoch + step)
 
@@ -449,11 +451,11 @@ if __name__ == '__main__':
         start = time.time()
 
     
-    save_name = os.path.join(output_dir, 'faster_rcnn_{}_{}_{}.pth'.format(args.session, epoch, step))
+    save_name = os.path.join(output_dir, 'student_net_{}_{}_{}.pth'.format(args.session, epoch, step))
     save_checkpoint({
       'session': args.session,
       'epoch': epoch + 1,
-      'model': fasterRCNN.module.state_dict() if args.mGPUs else fasterRCNN.state_dict(),
+      'model': student_net.module.state_dict() if args.mGPUs else student_net.state_dict(),
       'optimizer': optimizer.state_dict(),
       'pooling_mode': cfg.POOLING_MODE,
       'class_agnostic': args.class_agnostic,
@@ -462,4 +464,3 @@ if __name__ == '__main__':
 
   if args.use_tfboard:
     logger.close()
-  '''
