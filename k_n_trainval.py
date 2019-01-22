@@ -393,12 +393,12 @@ if __name__ == '__main__':
       #loss_rpn_cls = compute_loss_rpn_cls(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
       loss_rpn_cls = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label)
       loss_rpn_reg = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, m=0.001, l=1, bbox_inside_weights= iw_s,bbox_outside_weights=ow_s, ni=0.5)
-      print(loss_rpn_cls)
-      print(loss_rpn_reg)
+      #print(loss_rpn_cls)
+      #print(loss_rpn_reg)
       #loss_rcn_cls = compute_loss_rcn_cls(rcn_cls_score_s, rcn_cls_score_t, mu,RCNN_loss_cls_s, rois_label_t, T=1)
       loss_rcn_cls = compute_loss_classification(rcn_cls_score_s, rcn_cls_score_t, mu,RCNN_loss_cls_s, rois_label_t, T=1)
       loss_rcn_reg = compute_loss_regression(RCNN_loss_bbox_s,bbox_pred_s, bbox_pred_t, rois_target_s, m=0.001, l=1, bbox_inside_weights=rois_inside_ws_s, bbox_outside_weights=rois_outside_ws_s, ni=0.5 )
-      print(loss_rcn_reg)
+      #print(loss_rcn_reg)
 
 
       loss = loss_rpn_cls+ loss_rpn_reg+ \
@@ -426,11 +426,12 @@ if __name__ == '__main__':
           fg_cnt = torch.sum(rois_label.data.ne(0))
           bg_cnt = rois_label.data.numel() - fg_cnt
         else:
-        '''
+        
         loss_rpn_reg = loss_rpn_reg.item()
         loss_rpn_cls = loss_rpn_cls.item()
         loss_rcn_cls = loss_rcn_cls.item()
         loss_rpn_reg = loss_rpn_reg.item()
+        '''
         fg_cnt = torch.sum(rois_label_s.data.ne(0))
         bg_cnt = rois_label_s.data.numel() - fg_cnt
 
