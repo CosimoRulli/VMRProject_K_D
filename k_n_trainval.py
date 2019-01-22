@@ -32,7 +32,7 @@ from model.utils.net_utils import weights_normal_init, save_net, load_net, \
 
 from model.faster_rcnn.vgg16 import vgg16
 from model.faster_rcnn.alexnet import alexnet
-from model.utils.loss import compute_loss_rpn_cls, compute_loss_regression, compute_loss_rcn_cls, compute_loss_classification
+from model.utils.loss import  compute_loss_regression, compute_loss_classification
 
 
 from model.faster_rcnn.resnet import resnet
