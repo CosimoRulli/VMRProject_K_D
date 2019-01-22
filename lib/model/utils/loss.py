@@ -21,13 +21,24 @@ def compute_loss_rpn_cls(Z_t, Z_s, mu, L_hard,fg_bg_label, T = 1):
     # L_soft = F.cross
 
 
-def compute_loss_rcn_cls(Z_t, Z_s, mu, L_hard, T = 1):
+def compute_loss_rcn_cls(Z_t, Z_s, mu, L_hard,rois_label, T = 1):
     wc = torch.ones(Z_t.shape[1])
     wc[0] = 1.5
     P_t = F.softmax(Z_t /T, dim=1)
     P_s = F.softmax(Z_s /T, dim=1)
     P = torch.sum(P_t * torch.log(P_s), dim=1)
     L_soft = - torch.sum(P * wc) / P_t.shape[0]
+    L_cls = mu * L_hard + (1 - mu) * L_soft
+    return L_cls
+
+def compute_loss_classification(Z_t, Z_s, mu, L_hard, y, T=1):
+    #Date le y, devo costruire un vettore della stessa dimensione di Z_t (Z_s), dove gli elementi valgono 1.5 se gli elementi valgono 0 e 1 altrimenti
+    wc = torch.where((y==0), 1.5*torch.ones(Z_t.shape[0]).cuda(), torch.ones(Z_s.shape[0]).cuda())
+    #wc = torch.ones(Z_t.shape).cuda()
+    P_t = F.softmax(Z_t /T, dim=1)
+    P_s = F.softmax(Z_s /T, dim=1)
+    P = torch.sum(P_t * torch.log(P_s), dim=1)
+    L_soft = -torch.mean(P*wc)
     L_cls = mu * L_hard + (1 - mu) * L_soft
     return L_cls
 
