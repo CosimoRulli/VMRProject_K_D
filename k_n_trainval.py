@@ -32,7 +32,7 @@ from model.utils.net_utils import weights_normal_init, save_net, load_net, \
 
 from model.faster_rcnn.vgg16 import vgg16
 from model.faster_rcnn.alexnet import alexnet
-from model.utils.loss import compute_loss_rpn_cls
+from model.utils.loss import compute_loss_rpn_cls, compute_loss_regression, compute_loss_rcn_cls
 
 
 from model.faster_rcnn.resnet import resnet
@@ -375,19 +375,28 @@ if __name__ == '__main__':
       rois_t, cls_prob_t, bbox_pred_t, \
       rpn_loss_cls_t, rpn_loss_box_t, \
       RCNN_loss_cls_t, RCNN_loss_bbox_t, \
-      rois_label_t, Z_t, R_t, fg_bg_label = teacher_net(im_data, im_info, gt_boxes, num_boxes)
+      rois_label_t, Z_t, R_t, fg_bg_label, \
+      y_reg_t, iw_t, ow_t, rois_target_t, rois_inside_ws_t,\
+      rois_outside_ws_t, rcn_cls_score_t  = teacher_net(im_data, im_info, gt_boxes, num_boxes)
 
       #todo per ora non assegnamo le fb_bg_label della student; la nostra ipotesi è che siano uguali a quelle della teacher, essendo una componente derviata
       #todo dal ground truth, nel caso in cui fossero diverse è necessario utilizzare quelle della teacher che saranno più accurate
       rois_s, cls_prob_s, bbox_pred_s, \
       rpn_loss_cls_s, rpn_loss_box_s, \
       RCNN_loss_cls_s, RCNN_loss_bbox_s, \
-      rois_label_s, Z_s, R_s, _ = student_net(im_data, im_info, gt_boxes, num_boxes)
-      mu =0.9
+      rois_label_s, Z_s, R_s, _ , y_reg_s, iw_s, ow_s,  rois_target_s, rois_inside_ws_s, \
+      rois_outside_ws_s, rcn_cls_score_s= student_net(im_data, im_info, gt_boxes, num_boxes)
+
+      mu =0.5
+
       L_hard = rpn_loss_cls_s
-      my_loss = compute_loss_rpn_cls(Z_t, Z_s, mu, L_hard, fg_bg_label, T=10)
-      print(my_loss)
-      #fixme per batch_size = 1
+      loss_rpn_cls = compute_loss_rpn_cls(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
+      loss_rpn_reg = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, m=0.001, l=1, bbox_inside_weights= iw_s,bbox_outside_weights=ow_s, ni=0.5)
+      print(loss_rpn_cls)
+      print(loss_rpn_reg)
+      loss_rcn_cls = compute_loss_rcn_cls(rcn_cls_score_s, rcn_cls_score_t, mu,RCNN_loss_cls_s, T=1)
+      loss_rcn_reg = compute_loss_regression(RCNN_loss_bbox_s,bbox_pred_s, bbox_pred_t, rois_target_s, m=0.001, l=1, bbox_inside_weights=rois_inside_ws_s, bbox_outside_weights=rois_outside_ws_s, ni=0.5 )
+      print(loss_rcn_reg)
 
       '''
       loss = rpn_loss_cls.mean() + rpn_loss_box.mean() \
