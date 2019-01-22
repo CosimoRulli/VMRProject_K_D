@@ -1,13 +1,14 @@
 import torch.nn.functional as F
 import torch
+
+'''
 def compute_loss_rpn_cls(Z_t, Z_s, mu, L_hard,fg_bg_label, T = 1):
     #todo reimplementare le due loss come una unica funzione scrivendo wc come matrice ( mask)
     wc = fg_bg_label.float()*0.5 + 1
-    '''
+    
     for i in range (fg_bg_label.shape[0]):
         if(fg_bg_label[i]==1):
             wc[i] = 1.5
-    '''
     P_t = F.softmax(Z_t / T, dim=1)
     P_s = F.softmax(Z_s / T, dim=1)
     P = torch.sum(P_t * torch.log(P_s), dim = 1)
@@ -30,7 +31,7 @@ def compute_loss_rcn_cls(Z_t, Z_s, mu, L_hard,rois_label, T = 1):
     L_soft = - torch.sum(P * wc) / P_t.shape[0]
     L_cls = mu * L_hard + (1 - mu) * L_soft
     return L_cls
-
+'''
 def compute_loss_classification(Z_t, Z_s, mu, L_hard, y, T=1):
     #Date le y, devo costruire un vettore della stessa dimensione di Z_t (Z_s), dove gli elementi valgono 1.5 se gli elementi valgono 0 e 1 altrimenti
     wc = torch.where((y==0), 1.5*torch.ones(Z_t.shape[0]).cuda(), torch.ones(Z_s.shape[0]).cuda())
@@ -58,8 +59,7 @@ def compute_loss_regression(smooth_l1_loss, Rs, Rt, y_reg, m, l, bbox_inside_wei
   for i in sorted(dim, reverse = True):
       norm_s = norm_s.sum(i)
       norm_t = norm_t.sum(i)
-  cuda0 = torch.device('cuda:0')
-  zeros = torch.zeros(norm_s.shape,device = cuda0)
+  zeros = torch.zeros(norm_s.shape).cuda()
   l_b = torch.where((norm_s + m <= norm_t), zeros, norm_s)
   l_reg =  smooth_l1_loss + ni * l_b.mean()
   return l_reg

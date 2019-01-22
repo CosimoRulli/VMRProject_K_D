@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/casa_simo._det_det.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/index._det_det.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/nena._det_det.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/k_n_trainval.py" beforeDir="false" afterPath="$PROJECT_DIR$/k_n_trainval.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/utils/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/utils/loss.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,14 +42,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="4331" />
-          <entry key="txt" value="238" />
+          <entry key="py" value="4373" />
+          <entry key="txt" value="305" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="238" />
-          <entry key="Python" value="4331" />
+          <entry key="PLAIN_TEXT" value="305" />
+          <entry key="Python" value="4373" />
         </counts>
       </usages-collector>
     </session>
@@ -67,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="574">
+              <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -79,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="393" selection-start-line="393" selection-end-line="393" />
+            <state relative-caret-position="241">
+              <caret line="398" selection-start-line="398" selection-end-line="398" />
               <folding>
                 <element signature="e#281#319#0" expanded="true" />
               </folding>
@@ -186,8 +184,8 @@
         <option value="$PROJECT_DIR$/lib/model/faster_rcnn/modified_alexnet.py" />
         <option value="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" />
         <option value="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" />
-        <option value="$PROJECT_DIR$/lib/model/utils/loss.py" />
         <option value="$PROJECT_DIR$/k_n_trainval.py" />
+        <option value="$PROJECT_DIR$/lib/model/utils/loss.py" />
       </list>
     </option>
   </component>
@@ -229,7 +227,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/output" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -327,21 +325,35 @@
       <option name="project" value="LOCAL" />
       <updated>1548145665690</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="unificate le loss per la classification in un'unica funzione">
+      <created>1548170734747</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1548170734747</updated>
+    </task>
+    <task id="LOCAL-00004" summary="unificate le loss per la classification in un'unica funzione 2">
+      <created>1548170757803</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1548170757803</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26065302" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26065302" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" weight="0.32972974" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32972974" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.28648648" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.28648648" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -390,7 +402,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;impelementate rpn losses, aggiustato dimensionamento alexnet per ottenere 16x riduzione tra immagine input e feature map. &quot;" />
     <MESSAGE value="loss implementate. Va migliorata la maschera per la classificazione." />
-    <option name="LAST_COMMIT_MESSAGE" value="loss implementate. Va migliorata la maschera per la classificazione." />
+    <MESSAGE value="unificate le loss per la classification in un'unica funzione" />
+    <MESSAGE value="unificate le loss per la classification in un'unica funzione 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="unificate le loss per la classification in un'unica funzione 2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -402,12 +416,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/lib/model/utils/loss.py</url>
-          <line>4</line>
+          <line>6</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/lib/model/utils/loss.py</url>
-          <line>39</line>
+          <line>41</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -420,6 +434,12 @@
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>print(wc)
+print(y)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>dim = [1,2,3]
 norm_s=in_t_box_diff
@@ -481,6 +501,26 @@ print(norm_s)</expression-string>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>print(wc)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>wc</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Z_t.shape</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>Z_t</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>y.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -507,21 +547,6 @@ print(norm_s)</expression-string>
       </expression>
       <expression>
         <expression-string>P = torch.sum(P_t * torch.log(P_s), dim=1)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>y.nonzero()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>wc</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>wc = torch.where((y == 0), 1.5 * torch.ones(Z_t.shape[0]).cuda(), torch.ones(Z_s.shape[0]).cuda())</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -645,16 +670,6 @@ print(norm_s)</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/rpn/rpn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="485">
@@ -664,10 +679,20 @@ print(norm_s)</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="393" selection-start-line="393" selection-end-line="393" />
+        <state relative-caret-position="241">
+          <caret line="398" selection-start-line="398" selection-end-line="398" />
           <folding>
             <element signature="e#281#319#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="34" column="3" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
