@@ -10,6 +10,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="007b6c83-02e3-48dd-a290-a11c06092586" name="micc.ultron" url="http://150.217.35.236">
+        <fileTransfer host="150.217.35.236" port="22" rootFolder="/home/rullimagistri" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

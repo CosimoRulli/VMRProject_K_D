@@ -382,7 +382,7 @@ if __name__ == '__main__':
       im_info.data.resize_(data[1].size()).copy_(data[1])
       gt_boxes.data.resize_(data[2].size()).copy_(data[2])
       num_boxes.data.resize_(data[3].size()).copy_(data[3])
-      im_data = resize_images(im_data, [600,600])
+      im_data = resize_images(im_data, [800,800])
       #fasterRCNN.zero_grad()
       student_net.zero_grad()
 
@@ -403,8 +403,8 @@ if __name__ == '__main__':
       RCNN_loss_cls_s, RCNN_loss_bbox_s, \
       rois_label_s, Z_s, R_s, _ , y_reg_s, iw_s, ow_s,  rois_target_s, rois_inside_ws_s, \
       rois_outside_ws_s, rcn_cls_score_s= student_net(im_data, im_info, gt_boxes, num_boxes)
-      print(im_data.shape[2]/ R_s.shape[2])
-      print(im_data.shape[3]/ R_s.shape[3])
+      #print(im_data.shape[2]/ R_s.shape[2])
+      #print(im_data.shape[3]/ R_s.shape[3])
       # print()
 
       mu =0.5

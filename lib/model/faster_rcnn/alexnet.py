@@ -61,10 +61,10 @@ class alexnet(_fasterRCNN):
         # not using the last maxpool layer
         #self.RCNN_base = nn.Sequential(*list(alexnet.features._modules.values())[:-1])
         self.RCNN_base = nn.Sequential(
-            nn.Conv2d(3, 64, kernel_size=11, stride=4, padding=9),  #changed the padding to match dimensions with vgg16, 10 dava un errore
+            nn.Conv2d(3, 64, kernel_size=11, stride=4, padding=10),  #changed the padding to match dimensions with vgg16, 10 dava un errore
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2),
-            nn.Conv2d(64, 192, kernel_size=5, padding=1),
+            nn.Conv2d(64, 192, kernel_size=5, padding=2),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2),
             nn.Conv2d(192, 384, kernel_size=3, padding=1),
