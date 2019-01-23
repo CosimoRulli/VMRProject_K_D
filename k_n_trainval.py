@@ -382,7 +382,7 @@ if __name__ == '__main__':
       im_info.data.resize_(data[1].size()).copy_(data[1])
       gt_boxes.data.resize_(data[2].size()).copy_(data[2])
       num_boxes.data.resize_(data[3].size()).copy_(data[3])
-      #im_data = resize_images(im_data, [600,600])
+      im_data = resize_images(im_data, [600,600])
       #fasterRCNN.zero_grad()
       student_net.zero_grad()
       '''
