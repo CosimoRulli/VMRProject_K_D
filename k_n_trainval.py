@@ -382,10 +382,10 @@ if __name__ == '__main__':
       im_info.data.resize_(data[1].size()).copy_(data[1])
       gt_boxes.data.resize_(data[2].size()).copy_(data[2])
       num_boxes.data.resize_(data[3].size()).copy_(data[3])
-      im_data = resize_images(im_data, [600,600])
+      #im_data = resize_images(im_data, [600,600])
       #fasterRCNN.zero_grad()
       student_net.zero_grad()
-
+      '''
       rois_t, cls_prob_t, bbox_pred_t, \
       rpn_loss_cls_t, rpn_loss_box_t, \
       RCNN_loss_cls_t, RCNN_loss_bbox_t, \
@@ -395,7 +395,7 @@ if __name__ == '__main__':
       #print(im_data.shape[2]/ R_t.shape[2])
       #print(im_data.shape[3]/ R_t.shape[3])
       #print()
-
+      '''
       #todo per ora non assegnamo le fb_bg_label della student; la nostra ipotesi è che siano uguali a quelle della teacher, essendo una componente derviata
       #todo dal ground truth, nel caso in cui fossero diverse è necessario utilizzare quelle della teacher che saranno più accurate
       rois_s, cls_prob_s, bbox_pred_s, \
@@ -403,9 +403,12 @@ if __name__ == '__main__':
       RCNN_loss_cls_s, RCNN_loss_bbox_s, \
       rois_label_s, Z_s, R_s, _ , y_reg_s, iw_s, ow_s,  rois_target_s, rois_inside_ws_s, \
       rois_outside_ws_s, rcn_cls_score_s= student_net(im_data, im_info, gt_boxes, num_boxes)
-
+      print(im_data.shape[2]/ R_s.shape[2])
+      print(im_data.shape[3]/ R_s.shape[3])
+      # print()
+      '''
       mu =0.5
-
+      
       L_hard = rpn_loss_cls_s
       #loss_rpn_cls = compute_loss_rpn_cls(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
       loss_rpn_cls = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label)
@@ -434,20 +437,8 @@ if __name__ == '__main__':
         end = time.time()
         if step > 0:
           loss_temp /= (args.disp_interval + 1)
-        '''
-        if args.mGPUs:
-          loss_rpn_cls = rpn_loss_cls.mean().item()
-          loss_rpn_box = rpn_loss_box.mean().item()
-          loss_rcnn_cls = RCNN_loss_cls.mean().item()
-          loss_rcnn_box = RCNN_loss_bbox.mean().item()
-          fg_cnt = torch.sum(rois_label.data.ne(0))
-          bg_cnt = rois_label.data.numel() - fg_cnt
-        else:
-        '''
-        loss_rpn_reg = loss_rpn_reg.item()
-        loss_rpn_cls = loss_rpn_cls.item()
-        loss_rcn_cls = loss_rcn_cls.item()
-        loss_rpn_reg = loss_rpn_reg.item()
+        
+       
         
         fg_cnt = torch.sum(rois_label_s.data.ne(0))
         bg_cnt = rois_label_s.data.numel() - fg_cnt
@@ -484,3 +475,25 @@ if __name__ == '__main__':
 
   if args.use_tfboard:
     logger.close()
+'''
+
+
+'''
+#todo riaggiungere
+
+
+ if args.mGPUs:
+           loss_rpn_cls = rpn_loss_cls.mean().item()
+           loss_rpn_box = rpn_loss_box.mean().item()
+           loss_rcnn_cls = RCNN_loss_cls.mean().item()
+           loss_rcnn_box = RCNN_loss_bbox.mean().item()
+           fg_cnt = torch.sum(rois_label.data.ne(0))
+           bg_cnt = rois_label.data.numel() - fg_cnt
+        else:
+        
+          loss_rpn_reg = loss_rpn_reg.item()
+          loss_rpn_cls = loss_rpn_cls.item()
+          loss_rcn_cls = loss_rcn_cls.item()
+          loss_rpn_reg = loss_rpn_reg.item()
+
+'''

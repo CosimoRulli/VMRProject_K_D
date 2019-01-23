@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="rimossi i loss .item, sono già float">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cfgs/vgg16.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cfgs/vgg16.yml" afterDir="false" />
+    <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/k_n_trainval.py" beforeDir="false" afterPath="$PROJECT_DIR$/k_n_trainval.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/VMRProject_K_D$k_n_trainval.coverage" NAME="k_n_trainval Coverage Results" MODIFIED="1548254003920" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$k_n_trainval.coverage" NAME="k_n_trainval Coverage Results" MODIFIED="1548255527806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VMRProject_K_D$demo.coverage" NAME="demo Coverage Results" MODIFIED="1547891494521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
@@ -33,7 +30,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="52" />
+          <entry key="py" value="53" />
           <entry key="pyx" value="1" />
           <entry key="sh" value="1" />
           <entry key="yml" value="1" />
@@ -43,13 +40,13 @@
         <counts>
           <entry key="Cython" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="52" />
+          <entry key="Python" value="53" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="6177" />
+          <entry key="py" value="6298" />
           <entry key="txt" value="420" />
           <entry key="yml" value="18" />
         </counts>
@@ -57,7 +54,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="420" />
-          <entry key="Python" value="6177" />
+          <entry key="Python" value="6298" />
           <entry key="YAML" value="18" />
         </counts>
       </usages-collector>
@@ -65,6 +62,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="384" column="7" selection-start-line="384" selection-start-column="7" selection-end-line="384" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -72,19 +78,6 @@
               <caret line="40" column="22" selection-start-line="40" selection-start-column="22" selection-end-line="40" selection-end-column="22" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1833">
-              <caret line="482" column="9" selection-start-line="482" selection-start-column="4" selection-end-line="482" selection-end-column="9" />
-              <folding>
-                <element signature="e#281#319#0" expanded="true" />
-                <marker date="1548253926427" expanded="true" signature="1563:1774" ph="..." />
               </folding>
             </state>
           </provider>
@@ -99,10 +92,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
+            <state relative-caret-position="799">
               <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -144,8 +137,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="63" column="138" selection-start-line="63" selection-start-column="138" selection-end-line="63" selection-end-column="138" />
+            <state relative-caret-position="227">
+              <caret line="66" column="55" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
               <folding>
                 <element signature="e#228#266#0" expanded="true" />
               </folding>
@@ -191,11 +184,11 @@
         <option value="$PROJECT_DIR$/lib/model/rpn/rpn.py" />
         <option value="$PROJECT_DIR$/lib/model/faster_rcnn/modified_alexnet.py" />
         <option value="$PROJECT_DIR$/lib/model/utils/loss.py" />
-        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" />
         <option value="$PROJECT_DIR$/cfgs/vgg16.yml" />
         <option value="$PROJECT_DIR$/lib/model/utils/config.py" />
-        <option value="$PROJECT_DIR$/k_n_trainval.py" />
         <option value="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" />
+        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" />
+        <option value="$PROJECT_DIR$/k_n_trainval.py" />
       </list>
     </option>
   </component>
@@ -239,6 +232,21 @@
               <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="nms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="nms" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
@@ -393,21 +401,27 @@
       <option name="project" value="LOCAL" />
       <updated>1548175879076</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="rimossi i loss .item, sono già float">
+      <created>1548254352608</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1548254352608</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26950747" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26950747" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32972974" />
       <window_info anchor="bottom" id="File Transfer" order="1" weight="0.13297297" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.32972974" />
+      <window_info anchor="bottom" id="Run" order="4" visible="true" weight="0.32972974" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.28648648" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -787,16 +801,6 @@ res_im.show()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="63" column="138" selection-start-line="63" selection-start-column="138" selection-end-line="63" selection-end-column="138" />
-          <folding>
-            <element signature="e#228#266#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -852,17 +856,6 @@ res_im.show()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1833">
-          <caret line="482" column="9" selection-start-line="482" selection-start-column="4" selection-end-line="482" selection-end-column="9" />
-          <folding>
-            <element signature="e#281#319#0" expanded="true" />
-            <marker date="1548253926427" expanded="true" signature="1563:1774" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trainval_net.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1033">
@@ -872,11 +865,28 @@ res_im.show()</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
+        <state relative-caret-position="799">
           <caret line="47" column="9" selection-start-line="47" selection-start-column="9" selection-end-line="47" selection-end-column="9" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="66" column="55" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
+          <folding>
+            <element signature="e#228#266#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="384" column="7" selection-start-line="384" selection-start-column="7" selection-end-line="384" selection-end-column="7" />
         </state>
       </provider>
     </entry>
