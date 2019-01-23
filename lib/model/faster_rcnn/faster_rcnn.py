@@ -45,7 +45,7 @@ class _fasterRCNN(nn.Module):
 
         # feed image data to base model to obtain base feature map
         base_feat = self.RCNN_base(im_data)
-
+        #print(im_data.shape)
         # feed base feature map tp RPN to obtain rois
         #todo modificato, adesso restituisce anche Ps e Rs (rpn_cls_score e rpn_bbox_pred)
         rois, rpn_loss_cls, rpn_loss_bbox, rpn_cls_score, rpn_bbox_pred, fg_bg_label, rpn_bbox_targets, rpn_bbox_inside_weights, rpn_bbox_outside_weights = self.RCNN_rpn(base_feat, im_info, gt_boxes, num_boxes)

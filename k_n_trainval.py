@@ -2,6 +2,9 @@
 # Pytorch multi-GPU Faster R-CNN
 # Licensed under The MIT License [see LICENSE for details]
 # Written by Jiasen Lu, Jianwei Yang, based on code from Ross Girshick
+
+#  CUDA_VISIBLE_DEVICES=1 python k_n_trainval.py --dataset pascal_voc --net vgg16 --checksession 1 --checkepoch 6 --checkpoint 10021 --cuda
+
 # --------------------------------------------------------
 from __future__ import absolute_import
 from __future__ import division
@@ -34,9 +37,17 @@ from model.faster_rcnn.vgg16 import vgg16
 from model.faster_rcnn.alexnet import alexnet
 from model.utils.loss import  compute_loss_regression, compute_loss_classification
 
-
+from torchvision.transforms import ToTensor, ToPILImage, Resize
 from model.faster_rcnn.resnet import resnet
-#TODO alexnet
+
+def resize_images(im_batch, size):
+    new_im_batch = torch.zeros([im_batch.shape[0], im_batch.shape[1], size[0], size[1]])
+    for i in range(im_batch.shape[0]):
+        im_pil = ToPILImage()(im_batch[0].cpu())
+        im_pil = Resize(size)(im_pil)
+        new_im_batch[0,:,:,:] = ToTensor()(im_pil)
+    return new_im_batch.cuda()
+
 
 def parse_args():
   """
@@ -282,8 +293,10 @@ if __name__ == '__main__':
   else:
       checkpoint = torch.load(load_name, map_location=(lambda storage, loc: storage))
   teacher_net.load_state_dict(checkpoint['model'])
+
+
   if 'pooling_mode' in checkpoint.keys():
-      cfg.POOLING_MODE = checkpoint['pooling_mode']
+     cfg.POOLING_MODE = checkpoint['pooling_mode']
 
 
 
@@ -362,13 +375,14 @@ if __name__ == '__main__':
         lr *= args.lr_decay_gamma
 
     data_iter = iter(dataloader)
+    #for step in range(iters_per_epoch):
     for step in range(iters_per_epoch):
       data = next(data_iter)
       im_data.data.resize_(data[0].size()).copy_(data[0])
       im_info.data.resize_(data[1].size()).copy_(data[1])
       gt_boxes.data.resize_(data[2].size()).copy_(data[2])
       num_boxes.data.resize_(data[3].size()).copy_(data[3])
-
+      im_data = resize_images(im_data, [600,600])
       #fasterRCNN.zero_grad()
       student_net.zero_grad()
 
@@ -378,6 +392,9 @@ if __name__ == '__main__':
       rois_label_t, Z_t, R_t, fg_bg_label, \
       y_reg_t, iw_t, ow_t, rois_target_t, rois_inside_ws_t,\
       rois_outside_ws_t, rcn_cls_score_t  = teacher_net(im_data, im_info, gt_boxes, num_boxes)
+      #print(im_data.shape[2]/ R_t.shape[2])
+      #print(im_data.shape[3]/ R_t.shape[3])
+      #print()
 
       #todo per ora non assegnamo le fb_bg_label della student; la nostra ipotesi è che siano uguali a quelle della teacher, essendo una componente derviata
       #todo dal ground truth, nel caso in cui fossero diverse è necessario utilizzare quelle della teacher che saranno più accurate
@@ -400,7 +417,7 @@ if __name__ == '__main__':
       loss_rcn_reg = compute_loss_regression(RCNN_loss_bbox_s,bbox_pred_s, bbox_pred_t, rois_target_s, m=0.001, l=1, bbox_inside_weights=rois_inside_ws_s, bbox_outside_weights=rois_outside_ws_s, ni=0.5 )
       #print(loss_rcn_reg)
 
-
+        
       loss = loss_rpn_cls+ loss_rpn_reg+ \
           loss_rcn_cls+ loss_rcn_reg
 
@@ -426,12 +443,12 @@ if __name__ == '__main__':
           fg_cnt = torch.sum(rois_label.data.ne(0))
           bg_cnt = rois_label.data.numel() - fg_cnt
         else:
-        
+        '''
         loss_rpn_reg = loss_rpn_reg.item()
         loss_rpn_cls = loss_rpn_cls.item()
         loss_rcn_cls = loss_rcn_cls.item()
         loss_rpn_reg = loss_rpn_reg.item()
-        '''
+        
         fg_cnt = torch.sum(rois_label_s.data.ne(0))
         bg_cnt = rois_label_s.data.numel() - fg_cnt
 
