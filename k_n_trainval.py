@@ -411,6 +411,10 @@ if __name__ == '__main__':
       
       L_hard = rpn_loss_cls_s
       #loss_rpn_cls = compute_loss_rpn_cls(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
+
+      #print("im_data " +str(im_data.shape))
+      #print("R_s " + str(R_s.shape))
+      #print()
       loss_rpn_cls = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label)
       loss_rpn_reg = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, m=0.001, l=1, bbox_inside_weights= iw_s,bbox_outside_weights=ow_s, ni=0.5)
       #print(loss_rpn_cls)
