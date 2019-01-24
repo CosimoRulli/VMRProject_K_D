@@ -43,7 +43,7 @@ def compute_loss_classification(Z_t, Z_s, mu, L_hard, y, T=1):
     L_cls = mu * L_hard + (1 - mu) * L_soft
     return L_cls
 
-def compute_loss_regression(smooth_l1_loss, Rs, Rt, y_reg, m, l, bbox_inside_weights, bbox_outside_weights ,ni=0.5):
+def compute_loss_regression(smooth_l1_loss, Rs, Rt, y_reg   ,  m, l, bbox_inside_weights, bbox_outside_weights ,ni=0.5):
   #batch_size = Rs.shape[0]
   s_box_diff = Rs - y_reg
   t_box_diff = Rt - y_reg

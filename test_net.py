@@ -30,6 +30,7 @@ from model.rpn.bbox_transform import bbox_transform_inv
 from model.utils.net_utils import save_net, load_net, vis_detections
 from model.faster_rcnn.vgg16 import vgg16
 from model.faster_rcnn.resnet import resnet
+from model.faster_rcnn.alexnet import alexnet
 
 import pdb
 
@@ -145,9 +146,10 @@ if __name__ == '__main__':
   if not os.path.exists(input_dir):
     raise Exception('There is no input directory for loading network from ' + input_dir)
   load_name = os.path.join(input_dir,
-    'faster_rcnn_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
+    'student_net_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
 
   # initilize the network here.
+  '''
   if args.net == 'vgg16':
     fasterRCNN = vgg16(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic)
   elif args.net == 'res101':
@@ -159,6 +161,8 @@ if __name__ == '__main__':
   else:
     print("network is not defined")
     pdb.set_trace()
+  '''
+  fasterRCNN = alexnet(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic)
 
   fasterRCNN.create_architecture()
 
@@ -233,11 +237,18 @@ if __name__ == '__main__':
       num_boxes.data.resize_(data[3].size()).copy_(data[3])
 
       det_tic = time.time()
+      '''
       rois, cls_prob, bbox_pred, \
       rpn_loss_cls, rpn_loss_box, \
       RCNN_loss_cls, RCNN_loss_bbox, \
       rois_label = fasterRCNN(im_data, im_info, gt_boxes, num_boxes)
-
+      '''
+      rois, cls_prob, bbox_pred, \
+      rpn_loss_cls, rpn_loss_box, \
+      RCNN_loss_cls, RCNN_loss_bbox, \
+      rois_label, Z_t, R_t, fg_bg_label, \
+      y_reg, iw, ow, rois_target, rois_inside_ws, \
+      rois_outside_ws, rcn_cls_score = fasterRCNN(im_data, im_info, gt_boxes, num_boxes)
       scores = cls_prob.data
       boxes = rois.data[:, :, 1:5]
 
