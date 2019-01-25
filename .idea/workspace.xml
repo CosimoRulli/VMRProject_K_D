@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="">
+    <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="aggiunto old test">
+      <change afterPath="$PROJECT_DIR$/old_test_net.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/rpn/rpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/rpn/rpn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/utils/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/utils/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/k_n_trainval.py" beforeDir="false" afterPath="$PROJECT_DIR$/k_n_trainval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_net.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,27 +16,30 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/VMRProject_K_D$Nosetests_in_test_net_py.coverage" NAME="Nosetests in test_net.py Coverage Results" MODIFIED="1548321885447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VMRProject_K_D$test_net.coverage" NAME="test_net Coverage Results" MODIFIED="1548322288504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VMRProject_K_D$k_n_trainval.coverage" NAME="k_n_trainval Coverage Results" MODIFIED="1548261671127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VMRProject_K_D$demo.coverage" NAME="demo Coverage Results" MODIFIED="1547891494521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$test_net.coverage" NAME="test_net Coverage Results" MODIFIED="1548405228370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$k_n_trainval.coverage" NAME="k_n_trainval Coverage Results" MODIFIED="1548328855434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$demo.coverage" NAME="demo Coverage Results" MODIFIED="1548327725229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$old_test_net.coverage" NAME="old_test_net Coverage Results" MODIFIED="1548406006364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1423782026">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="12" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.4" value="2" />
-          <entry key="project.open.time.7" value="5" />
+          <entry key="project.open.time.7" value="7" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="10" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
-          <entry key="py" value="57" />
+          <entry key="h" value="1" />
+          <entry key="py" value="78" />
           <entry key="pyx" value="1" />
           <entry key="sh" value="1" />
           <entry key="yml" value="1" />
@@ -43,9 +47,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="C++" value="1" />
           <entry key="Cython" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="57" />
+          <entry key="Python" value="78" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
@@ -53,15 +58,15 @@
         <counts>
           <entry key="Python Console" value="43" />
           <entry key="gitignore" value="4" />
-          <entry key="py" value="6642" />
-          <entry key="txt" value="642" />
+          <entry key="py" value="7752" />
+          <entry key="txt" value="694" />
           <entry key="yml" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="646" />
-          <entry key="Python" value="6685" />
+          <entry key="PLAIN_TEXT" value="698" />
+          <entry key="Python" value="7795" />
           <entry key="YAML" value="18" />
         </counts>
       </usages-collector>
@@ -70,19 +75,52 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
+        <entry file="file://$PROJECT_DIR$/test_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6137">
-              <caret line="393" column="94" selection-start-line="388" selection-start-column="6" selection-end-line="393" selection-end-column="94" />
+            <state relative-caret-position="6">
+              <caret line="271" column="49" selection-start-line="271" selection-start-column="49" selection-end-line="271" selection-end-column="49" />
+              <folding>
+                <element signature="e#274#312#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/old_test_net.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1001">
+              <caret line="177" column="53" lean-forward="true" selection-start-line="177" selection-start-column="53" selection-end-line="177" selection-end-column="53" />
+              <folding>
+                <element signature="e#274#312#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test_net.py">
+        <entry file="file://$PROJECT_DIR$/demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+            <state relative-caret-position="2904">
+              <caret line="298" column="32" selection-start-line="298" selection-start-column="23" selection-end-line="298" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/datasets/pascal_voc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4930">
+              <caret line="319" column="51" selection-start-line="319" selection-start-column="48" selection-end-line="319" selection-end-column="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trainval_net.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5219">
+              <caret line="337" column="16" selection-start-line="337" selection-start-column="16" selection-end-line="337" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -90,8 +128,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/model/rpn/rpn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-126">
-              <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
+            <state relative-caret-position="1377">
+              <caret line="95" selection-start-line="95" selection-end-line="95" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1343">
+              <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+              <folding>
+                <element signature="e#228#266#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,8 +149,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="45" column="60" selection-start-line="45" selection-start-column="60" selection-end-line="45" selection-end-column="60" />
+            <state relative-caret-position="850">
+              <caret line="51" column="54" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -108,11 +158,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="260">
+              <caret line="98" column="42" lean-forward="true" selection-start-line="98" selection-start-column="42" selection-end-line="98" selection-end-column="42" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -121,24 +171,11 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/model/utils/config.py">
+        <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/resnet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4658">
-              <caret line="282" selection-start-line="282" selection-end-line="282" />
+            <state>
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="66" column="55" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
-              <folding>
-                <element signature="e#228#266#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -162,7 +199,6 @@
       <find>F</find>
       <find>device</find>
       <find>cuda</find>
-      <find>student_net</find>
       <find>data_iter</find>
       <find>im_info</find>
       <find>dataloader</find>
@@ -172,6 +208,13 @@
       <find>shape[2]</find>
       <find>pooling</find>
       <find>print</find>
+      <find>rois_target</find>
+      <find>rpn_bbox_targets</find>
+      <find>student_net</find>
+      <find>fasterRCNN.cu</find>
+      <find>fasterRCNN</find>
+      <find>load_name</find>
+      <find>teac</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -185,13 +228,14 @@
         <option value="$PROJECT_DIR$/lib/model/faster_rcnn/modified_alexnet.py" />
         <option value="$PROJECT_DIR$/cfgs/vgg16.yml" />
         <option value="$PROJECT_DIR$/lib/model/utils/config.py" />
-        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" />
         <option value="$PROJECT_DIR$/lib/model/nms/.gitignore" />
+        <option value="$PROJECT_DIR$/lib/model/rpn/rpn.py" />
+        <option value="$PROJECT_DIR$/lib/model/utils/loss.py" />
         <option value="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" />
         <option value="$PROJECT_DIR$/k_n_trainval.py" />
-        <option value="$PROJECT_DIR$/lib/model/utils/loss.py" />
+        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" />
+        <option value="$PROJECT_DIR$/old_test_net.py" />
         <option value="$PROJECT_DIR$/test_net.py" />
-        <option value="$PROJECT_DIR$/lib/model/rpn/rpn.py" />
       </list>
     </option>
   </component>
@@ -224,6 +268,19 @@
               <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="faster_rcnn" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -233,7 +290,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/output" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -250,7 +307,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_net">
+  <component name="RunManager" selected="Python.old_test_net">
     <configuration name="demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VMRProject_K_D" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -295,7 +352,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_net" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="old_test_net" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="VMRProject_K_D" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/old_test_net.py" />
+      <option name="PARAMETERS" value="--net vgg16 --checksession 1 --checkepoch 5 --checkpoint 10021 --cuda" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_net" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VMRProject_K_D" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -309,8 +388,8 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_net.py" />
-      <option name="PARAMETERS" value="--net vgg16 --checksession 1 --checkepoch 5 --checkpoint 10021 --cuda" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -321,9 +400,12 @@
       <item itemvalue="Python.test_net" />
       <item itemvalue="Python.demo" />
       <item itemvalue="Python.k_n_trainval" />
+      <item itemvalue="Python.old_test_net" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.old_test_net" />
+        <item itemvalue="Python.test_net" />
         <item itemvalue="Python.k_n_trainval" />
         <item itemvalue="Python.demo" />
       </list>
@@ -431,7 +513,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548262098686</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="test pronto per student_net">
+      <created>1548322348984</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1548322348984</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -450,17 +539,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27614832" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28610957" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32972974" />
-      <window_info anchor="bottom" id="File Transfer" order="1" weight="0.13297297" />
+      <window_info anchor="bottom" id="File Transfer" order="1" visible="true" weight="0.13297297" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.32972974" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.28648648" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.32972974" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.35135135" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="8" weight="0.32901832" />
@@ -469,7 +557,7 @@
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="13" weight="0.32972974" />
-      <window_info anchor="bottom" id="Python Console" order="14" weight="0.32972974" />
+      <window_info anchor="bottom" id="Python Console" order="14" weight="0.060409926" />
       <window_info anchor="bottom" id="Messages" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -523,7 +611,8 @@
     <MESSAGE value="ora pronto per lancio" />
     <MESSAGE value="size [800,800], cambiato il padding di alexnet (messo su due livelli)" />
     <MESSAGE value="size [800,800], cambiato il padding di alexnet (messo su due livelli)--&gt; adesso il training parte" />
-    <option name="LAST_COMMIT_MESSAGE" value="size [800,800], cambiato il padding di alexnet (messo su due livelli)--&gt; adesso il training parte" />
+    <MESSAGE value="test pronto per student_net" />
+    <option name="LAST_COMMIT_MESSAGE" value="test pronto per student_net" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -540,8 +629,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
-          <line>417</line>
+          <line>422</line>
           <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lib/model/utils/loss.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lib/model/utils/loss.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
+          <line>282</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
+          <line>414</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lib/datasets/pascal_voc.py</url>
+          <line>319</line>
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -549,161 +663,118 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>from torchvision.transforms import Resize
-from torchvision.transforms import ToTensor
-
-temp = im_data[0,0,:,:]
-im_data[0,0,:,:] = im_data[0,2,:,:]
-im_data[0,2,:,:] = temp
-im = (im_data +127)/255
-pilim = ToPILImage('RGB')(im[0,:,:,:].cpu())
-
-pilim.show()
-
-res_im= Resize([800,800])(pilim)
-res_im.show()
-
-im_data_res = ToTensor()(res_im)
-print(im_data_res.shape)</expression-string>
+        <expression-string>for i in range(300):
+    print(cls_prob_t[0][i][0].item())
+    if(cls_prob_t[0][i][0] &lt;0.8):
+        print(i)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>from torchvision.transforms import Resize
-from torchvision.transforms import ToTensor
-
-temp = im_data[0,0,:,:]
-im_data[0,0,:,:] = im_data[0,2,:,:]
-im_data[0,2,:,:] = temp
-im = (im_data +127)/255
-temp = im[0, ,:,]
-pilim = ToPILImage('RGB')(im[0,:,:,:].cpu())
-
-pilim.show()
-
-res_im= Resize([800,800])(pilim)
-res_im.show()
-
-im_data_res = ToTensor()(res_im)
-print(im_data_res.shape)</expression-string>
+        <expression-string>for i in range(300):
+    print(cls_prob_t[0][i][0].item())
+    if(cls_prob[0][i][0] &lt;0.8):
+        
+        print(i)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>im = (im_data +127)/255
-temp = im_data[0,0,:,:]
-im_data[0,0,:,:] = im_data[0,2,:,:]
-im_data[0,2,:,:] = temp
-print(temp.shape)</expression-string>
+        <expression-string>for i in range(300):
+    print(cls_prob[0][i][0].item())
+    if(cls_prob[0][i][0] &lt;0.8):
+        
+        print(i)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>im = (im_data +127)/255
-temp = im_data[0,0,:,:]
-print(temp.shape)</expression-string>
+        <expression-string>for i in range(300):
+    print(cls_prob[0][i][0])
+    if(cls_prob[0][i][0] &lt;0.8):
+        
+        print(i)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>im = (im_data +127)/255
-temp = im_data[0,:,:,0]
-print(temp.shape)</expression-string>
+        <expression-string>for i in range(300):
+    if(cls_prob[0][i][0] &lt;0.8):
+        print(i)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>im = (im_data +127)/255
-temp = im_data[0,,:,]
-print(temp.shape)</expression-string>
+        <expression-string>for i in range(300):
+    if(cls_prob_t[0][i][0] &lt;0.8):
+        print(i)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>from torchvision.transforms import Resize
-from torchvision.transforms import ToTensor
-im = (im_data +127)/255
-pilim = ToPILImage('RGB')(im[0,:,:,:].cpu())
-pilim.show()
-
-res_im= Resize([800,800])(pilim)
-res_im.show()
-
-im_data_res = ToTensor()(res_im)
-print(im_data_res.shape)</expression-string>
+        <expression-string>for i in range(301):
+    if(cls_prob_t[0][i][0] &lt;0.8):
+        print(i)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>from torchvision.transforms import Resize
-from torchvision.transforms import ToTensor
-im = (im_data +127)/255
-pilim = ToPILImage('RGB')(im[0,:,:,:].cpu())
-pilim.show()
-
-res_im= Resize([600,600])(pilim)
-res_im.show()
-
-im_data_res = ToTensor()(res_im)
-print(im_data_res.shape)</expression-string>
+        <expression-string>print(cls_prob[0][0])
+print(cls_prob_t[0][0])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>from torchvision.transforms import Resize
-im = (im_data +127)/255
-pilim = ToPILImage('RGB')(im[0,:,:,:].cpu())
-pilim.show()
-
-res_im= Resize([600,600])(pilim)
-res_im.show()</expression-string>
+        <expression-string>for i in range(301):
+    if(cls_prob_t[0][i][0] &lt; 0,8):
+        print(i)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>R_t.shape</expression-string>
+        <expression-string>fasterRCNN</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>R_s.shape</expression-string>
+        <expression-string>output_dir</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Z_t.shape</expression-string>
+        <expression-string>input_dir</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>Z_t</expression-string>
+        <expression-string>cls_prob_t[0][7][0] &lt; 0.8</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>y_reg_t.shape</expression-string>
+        <expression-string>cls_prob_t[0][6][0] &lt; 0.8</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>y_reg_s.shape</expression-string>
+        <expression-string>cls_prob_t[0][5][0] &lt; 0.8</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>y_reg_s</expression-string>
+        <expression-string>cls_prob_t[0][4][0] &lt; 0.8</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>im_data.shape</expression-string>
+        <expression-string>cls_prob_t[0][3][0] &lt; 0.8</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>im_data</expression-string>
+        <expression-string>cls_prob_t[0][2][0] &lt; 0.8</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -721,13 +792,6 @@ res_im.show()</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-11">
           <caret line="123" column="8" lean-forward="true" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/nn/modules/module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="518" selection-start-line="518" selection-end-line="518" />
         </state>
       </provider>
     </entry>
@@ -781,25 +845,8 @@ res_im.show()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/nn/modules/conv.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="300" selection-start-line="300" selection-end-line="300" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/datasets/imagenet.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/datasets/pascal_voc.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/datasets/imdb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/tensor.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -831,13 +878,6 @@ res_im.show()</expression-string>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/utils/bbox.pyx">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/utils/net_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3621">
-          <caret line="223" selection-start-line="223" selection-end-line="223" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/roi_data_layer/roibatchLoader.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -881,44 +921,6 @@ res_im.show()</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trainval_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-143">
-          <caret line="312" column="25" selection-start-line="312" selection-start-column="19" selection-end-line="312" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="298" column="32" selection-start-line="298" selection-start-column="23" selection-end-line="298" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6137">
-          <caret line="393" column="94" selection-start-line="388" selection-start-column="6" selection-end-line="393" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="45" column="60" selection-start-line="45" selection-start-column="60" selection-end-line="45" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/utils/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4658">
@@ -929,36 +931,168 @@ res_im.show()</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/rpn/proposal_target_layer_cascade.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torchvision/models/vgg.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="141" column="4" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/roi_pooling/build.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/roi_pooling/src/roi_pooling.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_comm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="381" selection-start-line="381" selection-end-line="381" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/nn/modules/module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="529" selection-start-line="529" selection-end-line="529" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/datasets/imdb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1479">
+          <caret line="98" column="6" selection-start-line="98" selection-start-column="6" selection-end-line="98" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/utils/net_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/nn/modules/conv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1936">
+          <caret line="300" selection-start-line="300" selection-end-line="300" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/rpn/bbox_transform.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1180">
+          <caret line="183" selection-start-line="183" selection-end-line="183" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6749">
+          <caret line="428" column="32" selection-start-line="428" selection-start-column="32" selection-end-line="428" selection-end-column="32" />
+          <folding>
+            <element signature="e#423#461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/datasets/pascal_voc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4930">
+          <caret line="319" column="51" selection-start-line="319" selection-start-column="48" selection-end-line="319" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trainval_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5219">
+          <caret line="337" column="16" selection-start-line="337" selection-start-column="16" selection-end-line="337" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/rpn/rpn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="66" column="55" selection-start-line="66" selection-start-column="55" selection-end-line="66" selection-end-column="55" />
+        <state relative-caret-position="1343">
+          <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
           <folding>
             <element signature="e#228#266#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_net.py">
+    <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
+        <state relative-caret-position="850">
+          <caret line="51" column="54" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/rpn/rpn.py">
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/resnet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-126">
-          <caret line="90" column="8" selection-start-line="90" selection-start-column="8" selection-end-line="90" selection-end-column="8" />
+        <state>
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2904">
+          <caret line="298" column="32" selection-start-line="298" selection-start-column="23" selection-end-line="298" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="271" column="49" selection-start-line="271" selection-start-column="49" selection-end-line="271" selection-end-column="49" />
+          <folding>
+            <element signature="e#274#312#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="260">
+          <caret line="98" column="42" lean-forward="true" selection-start-line="98" selection-start-column="42" selection-end-line="98" selection-end-column="42" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/old_test_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1001">
+          <caret line="177" column="53" lean-forward="true" selection-start-line="177" selection-start-column="53" selection-end-line="177" selection-end-column="53" />
+          <folding>
+            <element signature="e#274#312#0" expanded="true" />
           </folding>
         </state>
       </provider>

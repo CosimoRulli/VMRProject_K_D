@@ -31,6 +31,7 @@ from model.utils.net_utils import save_net, load_net, vis_detections
 from model.faster_rcnn.vgg16 import vgg16
 from model.faster_rcnn.resnet import resnet
 from model.faster_rcnn.alexnet import alexnet
+from torchvision.transforms import ToTensor, ToPILImage, Resize
 
 import pdb
 
@@ -38,6 +39,15 @@ try:
     xrange          # Python 2
 except NameError:
     xrange = range  # Python 3
+
+def resize_images(im_batch, size):
+    new_im_batch = torch.zeros([im_batch.shape[0], im_batch.shape[1], size[0], size[1]])
+    for i in range(im_batch.shape[0]):
+        im_pil = ToPILImage()(im_batch[0].cpu())
+        im_pil = Resize(size)(im_pil)
+        new_im_batch[0,:,:,:] = ToTensor()(im_pil)
+    return new_im_batch.cuda()
+
 
 
 def parse_args():
@@ -225,6 +235,16 @@ if __name__ == '__main__':
 
   _t = {'im_detect': time.time(), 'misc': time.time()}
   det_file = os.path.join(output_dir, 'detections.pkl')
+  teacher_net = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic)
+  teacher_net.create_architecture()
+  checkpoint = torch.load("models/vgg16/pascal_voc/faster_rcnn_1_6_10021.pth")
+  teacher_net.load_state_dict(checkpoint['model'])
+  if 'pooling_mode' in checkpoint.keys():
+      cfg.POOLING_MODE = checkpoint['pooling_mode']
+
+  teacher_net.cuda()
+  teacher_net.eval()
+
 
   fasterRCNN.eval()
   empty_array = np.transpose(np.array([[],[],[],[],[]]), (1,0))
@@ -232,6 +252,7 @@ if __name__ == '__main__':
 
       data = next(data_iter)
       im_data.data.resize_(data[0].size()).copy_(data[0])
+      im_data = resize_images(im_data, [600,600])
       im_info.data.resize_(data[1].size()).copy_(data[1])
       gt_boxes.data.resize_(data[2].size()).copy_(data[2])
       num_boxes.data.resize_(data[3].size()).copy_(data[3])
@@ -249,6 +270,15 @@ if __name__ == '__main__':
       rois_label, Z_t, R_t, fg_bg_label, \
       y_reg, iw, ow, rois_target, rois_inside_ws, \
       rois_outside_ws, rcn_cls_score = fasterRCNN(im_data, im_info, gt_boxes, num_boxes)
+      '''
+      rois_t, cls_prob_t, bbox_pred_t, \
+      rpn_loss_cls_t, rpn_loss_box_t, \
+      RCNN_loss_cls_t, RCNN_loss_bbox_t, \
+      rois_label_t, Z_t, R_t, fg_bg_label, \
+      y_reg_t, iw_t, ow_t, rois_target_t, rois_inside_ws_t, \
+      rois_outside_ws_t, rcn_cls_score_t = teacher_net(im_data, im_info, gt_boxes, num_boxes)
+      '''
+
       scores = cls_prob.data
       boxes = rois.data[:, :, 1:5]
 

@@ -38,15 +38,20 @@ from model.faster_rcnn.alexnet import alexnet
 from model.utils.loss import  compute_loss_regression, compute_loss_classification
 
 from torchvision.transforms import ToTensor, ToPILImage, Resize
-from model.faster_rcnn.resnet import resnet
+
 
 def resize_images(im_batch, size):
     new_im_batch = torch.zeros([im_batch.shape[0], im_batch.shape[1], size[0], size[1]])
     for i in range(im_batch.shape[0]):
         im_pil = ToPILImage()(im_batch[0].cpu())
         im_pil = Resize(size)(im_pil)
-        new_im_batch[0,:,:,:] = ToTensor()(im_pil)
+        new_im_batch[0, :, :, :] = ToTensor()(im_pil)
     return new_im_batch.cuda()
+
+
+from model.faster_rcnn.resnet import resnet
+
+
 
 
 def parse_args():

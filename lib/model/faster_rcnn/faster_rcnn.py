@@ -110,7 +110,7 @@ class _fasterRCNN(nn.Module):
 
 
         cls_prob = cls_prob.view(batch_size, rois.size(1), -1)
-        #bbox_pred = bbox_pred.view(batch_size, rois.size(1), -1) reshape commentato per il calcolo della loss esterno
+        bbox_pred = bbox_pred.view(batch_size, rois.size(1), -1) #reshape commentato per il calcolo della loss esterno
         #todo modificato, restisce i Ps e gli Rs calcolati da rpn
         return rois, cls_prob, bbox_pred, rpn_loss_cls, rpn_loss_bbox, RCNN_loss_cls, RCNN_loss_bbox, rois_label,rpn_cls_score, rpn_bbox_pred, fg_bg_label, rpn_bbox_targets, \
                rpn_bbox_inside_weights, rpn_bbox_outside_weights, rois_target, rois_inside_ws, rois_outside_ws, cls_score
