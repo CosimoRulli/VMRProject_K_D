@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="aggiunto old test">
-      <change afterPath="$PROJECT_DIR$/old_test_net.py" afterDir="false" />
+    <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/demo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/casa_simo._det.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/index._det.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/index.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/nena._det.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/nena.jpeg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/k_n_trainval.py" beforeDir="false" afterPath="$PROJECT_DIR$/k_n_trainval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/rpn/rpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/rpn/rpn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/utils/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/utils/loss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/roi_data_layer/minibatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/roi_data_layer/minibatch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_net.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,33 +26,33 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/VMRProject_K_D$Nosetests_in_test_net_py.coverage" NAME="Nosetests in test_net.py Coverage Results" MODIFIED="1548321885447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VMRProject_K_D$test_net.coverage" NAME="test_net Coverage Results" MODIFIED="1548405228370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VMRProject_K_D$k_n_trainval.coverage" NAME="k_n_trainval Coverage Results" MODIFIED="1548328855434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VMRProject_K_D$demo.coverage" NAME="demo Coverage Results" MODIFIED="1548327725229" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VMRProject_K_D$old_test_net.coverage" NAME="old_test_net Coverage Results" MODIFIED="1548406006364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$test_net.coverage" NAME="test_net Coverage Results" MODIFIED="1548608401206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$k_n_trainval.coverage" NAME="k_n_trainval Coverage Results" MODIFIED="1548609838066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$demo.coverage" NAME="demo Coverage Results" MODIFIED="1548600976597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$old_test_net.coverage" NAME="old_test_net Coverage Results" MODIFIED="1548424972439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1423782026">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.4" value="2" />
-          <entry key="project.open.time.7" value="7" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.open.time.7" value="8" />
+          <entry key="project.open.time.8" value="4" />
+          <entry key="project.opened" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
           <entry key="h" value="1" />
-          <entry key="py" value="78" />
+          <entry key="py" value="105" />
           <entry key="pyx" value="1" />
           <entry key="sh" value="1" />
-          <entry key="yml" value="1" />
+          <entry key="yml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -50,15 +60,15 @@
           <entry key="C++" value="1" />
           <entry key="Cython" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="78" />
-          <entry key="YAML" value="1" />
+          <entry key="Python" value="105" />
+          <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="43" />
           <entry key="gitignore" value="4" />
-          <entry key="py" value="7752" />
+          <entry key="py" value="12052" />
           <entry key="txt" value="694" />
           <entry key="yml" value="18" />
         </counts>
@@ -66,7 +76,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="698" />
-          <entry key="Python" value="7795" />
+          <entry key="Python" value="12095" />
           <entry key="YAML" value="18" />
         </counts>
       </usages-collector>
@@ -77,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_net.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6">
-              <caret line="271" column="49" selection-start-line="271" selection-start-column="49" selection-end-line="271" selection-end-column="49" />
+            <state relative-caret-position="4046">
+              <caret line="268" selection-start-line="268" selection-end-line="268" />
               <folding>
                 <element signature="e#274#312#0" expanded="true" />
               </folding>
@@ -86,14 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/old_test_net.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/model/rpn/anchor_target_layer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1001">
-              <caret line="177" column="53" lean-forward="true" selection-start-line="177" selection-start-column="53" selection-end-line="177" selection-end-column="53" />
-              <folding>
-                <element signature="e#274#312#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1326">
+              <caret line="98" selection-start-line="98" selection-end-line="98" />
             </state>
           </provider>
         </entry>
@@ -101,26 +108,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2904">
-              <caret line="298" column="32" selection-start-line="298" selection-start-column="23" selection-end-line="298" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/datasets/pascal_voc.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4930">
-              <caret line="319" column="51" selection-start-line="319" selection-start-column="48" selection-end-line="319" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trainval_net.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5219">
-              <caret line="337" column="16" selection-start-line="337" selection-start-column="16" selection-end-line="337" selection-end-column="16" />
+            <state relative-caret-position="4641">
+              <caret line="305" selection-start-line="305" selection-end-line="305" />
+              <folding>
+                <element signature="e#274#312#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -134,13 +126,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+            <state relative-caret-position="2312">
+              <caret line="440" selection-start-line="440" selection-end-line="440" />
               <folding>
-                <element signature="e#228#266#0" expanded="true" />
+                <element signature="e#661#699#0" expanded="true" />
+                <marker date="1548609608761" expanded="true" signature="2055:2264" ph="..." />
               </folding>
             </state>
           </provider>
@@ -149,8 +142,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="51" column="54" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
+            <state relative-caret-position="1156">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -161,8 +154,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="98" column="42" lean-forward="true" selection-start-line="98" selection-start-column="42" selection-end-line="98" selection-end-column="42" />
+            <state relative-caret-position="1972">
+              <caret line="132" selection-start-line="132" selection-end-line="132" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -171,12 +164,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/resnet.py">
+        <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="629">
+              <caret line="48" column="57" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -192,10 +183,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>rpn_label</find>
-      <find>cross</find>
-      <find>rois_inside_ws</find>
-      <find>bbox_pred</find>
       <find>F</find>
       <find>device</find>
       <find>cuda</find>
@@ -212,10 +199,24 @@
       <find>rpn_bbox_targets</find>
       <find>student_net</find>
       <find>fasterRCNN.cu</find>
-      <find>fasterRCNN</find>
       <find>load_name</find>
       <find>teac</find>
+      <find>fasterR</find>
+      <find>vis</find>
+      <find>fasterRCNN</find>
+      <find>p</find>
+      <find>weights</find>
+      <find>modules</find>
+      <find>training</find>
+      <find>self.training</find>
+      <find>rois_inside_ws</find>
+      <find>eval</find>
+      <find>pprint</find>
+      <find>rpn_cls_score</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -223,19 +224,21 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/demo.py" />
         <option value="$PROJECT_DIR$/lib/model/utils/net_utils.py" />
         <option value="$PROJECT_DIR$/lib/model/faster_rcnn/modified_alexnet.py" />
         <option value="$PROJECT_DIR$/cfgs/vgg16.yml" />
         <option value="$PROJECT_DIR$/lib/model/utils/config.py" />
         <option value="$PROJECT_DIR$/lib/model/nms/.gitignore" />
-        <option value="$PROJECT_DIR$/lib/model/rpn/rpn.py" />
-        <option value="$PROJECT_DIR$/lib/model/utils/loss.py" />
-        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" />
-        <option value="$PROJECT_DIR$/k_n_trainval.py" />
-        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" />
         <option value="$PROJECT_DIR$/old_test_net.py" />
+        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py" />
+        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" />
+        <option value="$PROJECT_DIR$/demo.py" />
+        <option value="$PROJECT_DIR$/lib/roi_data_layer/minibatch.py" />
+        <option value="$PROJECT_DIR$/lib/model/rpn/rpn.py" />
+        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" />
         <option value="$PROJECT_DIR$/test_net.py" />
+        <option value="$PROJECT_DIR$/lib/model/utils/loss.py" />
+        <option value="$PROJECT_DIR$/k_n_trainval.py" />
       </list>
     </option>
   </component>
@@ -246,9 +249,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="993" />
+    <option name="x" value="67" />
     <option name="y" value="25" />
-    <option name="width" value="927" />
+    <option name="width" value="1853" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectView">
@@ -256,6 +259,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -266,31 +270,30 @@
             <path>
               <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
               <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
               <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="vgg16" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
               <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="faster_rcnn" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="vgg16" type="462c0819:PsiDirectoryNode" />
+              <item name="pascal_voc" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../vecchi file progetto/Knowledge_Distillation/faster-rcnn.pytorch" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -307,7 +310,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.old_test_net">
+  <component name="RunManager" selected="Python.k_n_trainval">
     <configuration name="demo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VMRProject_K_D" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -322,7 +325,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo.py" />
-      <option name="PARAMETERS" value="--net vgg16 --checksession 1 --checkepoch 6 --checkpoint 10021 --cuda --load_dir models" />
+      <option name="PARAMETERS" value="--net vgg16 --checksession 1 --checkepoch 9 --checkpoint 10021 --cuda --load_dir models" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -388,7 +391,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_net.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="--net vgg16 --checksession 1 --checkepoch 9 --checkpoint 10021 --cuda" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -404,10 +407,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.old_test_net" />
-        <item itemvalue="Python.test_net" />
         <item itemvalue="Python.k_n_trainval" />
+        <item itemvalue="Python.test_net" />
         <item itemvalue="Python.demo" />
+        <item itemvalue="Python.old_test_net" />
       </list>
     </recent_temporary>
   </component>
@@ -520,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548322348984</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="aggiunto old test">
+      <created>1548411258978</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1548411258978</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -539,16 +549,17 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28610957" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1793027" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32972974" />
-      <window_info anchor="bottom" id="File Transfer" order="1" visible="true" weight="0.13297297" />
+      <window_info anchor="bottom" id="File Transfer" order="1" weight="0.13297297" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.32972974" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.35135135" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.3416216" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="8" weight="0.32901832" />
@@ -557,7 +568,7 @@
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="13" weight="0.32972974" />
-      <window_info anchor="bottom" id="Python Console" order="14" weight="0.060409926" />
+      <window_info anchor="bottom" id="Python Console" order="14" weight="0.113513514" />
       <window_info anchor="bottom" id="Messages" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -612,7 +623,8 @@
     <MESSAGE value="size [800,800], cambiato il padding di alexnet (messo su due livelli)" />
     <MESSAGE value="size [800,800], cambiato il padding di alexnet (messo su due livelli)--&gt; adesso il training parte" />
     <MESSAGE value="test pronto per student_net" />
-    <option name="LAST_COMMIT_MESSAGE" value="test pronto per student_net" />
+    <MESSAGE value="aggiunto old test" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunto old test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -628,34 +640,54 @@
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
-          <line>422</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/lib/model/utils/loss.py</url>
-          <line>48</line>
-          <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/lib/model/utils/loss.py</url>
-          <line>38</line>
-          <option name="timeStamp" value="81" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
-          <line>282</line>
-          <option name="timeStamp" value="84" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
-          <line>414</line>
-          <option name="timeStamp" value="87" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/lib/datasets/pascal_voc.py</url>
           <line>319</line>
           <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lib/model/utils/net_utils.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo.py</url>
+          <line>305</line>
+          <option name="timeStamp" value="114" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo.py</url>
+          <line>337</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/demo.py</url>
+          <line>358</line>
+          <option name="timeStamp" value="117" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lib/model/utils/loss.py</url>
+          <line>69</line>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
+          <line>454</line>
+          <option name="timeStamp" value="126" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test_net.py</url>
+          <line>268</line>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py</url>
+          <line>132</line>
+          <option name="timeStamp" value="130" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
+          <line>440</line>
+          <option name="timeStamp" value="135" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -663,166 +695,119 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>for i in range(300):
-    print(cls_prob_t[0][i][0].item())
-    if(cls_prob_t[0][i][0] &lt;0.8):
+        <expression-string>rpn_data = self.RPN_anchor_target((rpn_cls_score.data, gt_boxes, im_info, num_boxes))</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>rpn_data = self.RPN_anchor_target((rpn_cls_score.data, gt_boxes, im_info, num_boxes))
+rpn_cls_score = rpn_cls_score_reshape.permute(0, 2, 3, 1).contiguous().view(batch_size, -1, 2)
+rpn_label = rpn_data[0].view(batch_size, -1)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>rpn_data = self.RPN_anchor_target((rpn_cls_score.data, gt_boxes, im_info, num_boxes))
+rpn_cls_score = rpn_cls_score_reshape.permute(0, 2, 3, 1).contiguous().view(batch_size, -1, 2)
+rpn_label = rpn_data[0].view(batch_size, -1)
+
+rpn_keep = Variable(rpn_label.view(-1).ne(-1).nonzero().view(-1))
+rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>for i in range(256):
+    if(len(rois_target_s[i].nonzero())!=0):
         print(i)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>for i in range(256):
+    if(len(rois_target_t[i].nonzero())!=0):
+        print(i)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>for i in range(256):
+    if(len(rois_target_t[i].nonzero())!=0)
+        print (i)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>m_scores =scores[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
         <expression-string>for i in range(300):
-    print(cls_prob_t[0][i][0].item())
-    if(cls_prob[0][i][0] &lt;0.8):
-        
-        print(i)</expression-string>
+    print(scores[i][0].item())</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
         <expression-string>for i in range(300):
-    print(cls_prob[0][i][0].item())
-    if(cls_prob[0][i][0] &lt;0.8):
-        
-        print(i)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>for i in range(300):
-    print(cls_prob[0][i][0])
-    if(cls_prob[0][i][0] &lt;0.8):
-        
-        print(i)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>for i in range(300):
-    if(cls_prob[0][i][0] &lt;0.8):
-        print(i)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>for i in range(300):
-    if(cls_prob_t[0][i][0] &lt;0.8):
-        print(i)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>for i in range(301):
-    if(cls_prob_t[0][i][0] &lt;0.8):
-        print(i)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>print(cls_prob[0][0])
-print(cls_prob_t[0][0])</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>for i in range(301):
-    if(cls_prob_t[0][i][0] &lt; 0,8):
-        print(i)</expression-string>
+    print(scores[i][0])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>fasterRCNN</expression-string>
+        <expression-string>rpn_cls_score.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>output_dir</expression-string>
+        <expression-string>rois.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>input_dir</expression-string>
+        <expression-string>rpn_bbox_inside_weights.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cls_prob_t[0][7][0] &lt; 0.8</expression-string>
+        <expression-string>rpn_bbox_inside_weights</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cls_prob_t[0][6][0] &lt; 0.8</expression-string>
+        <expression-string>rpn_bbox_targets.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cls_prob_t[0][5][0] &lt; 0.8</expression-string>
+        <expression-string>fg_bg_label.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cls_prob_t[0][4][0] &lt; 0.8</expression-string>
+        <expression-string>rpn_bbox_pred.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cls_prob_t[0][3][0] &lt; 0.8</expression-string>
+        <expression-string>rpn_loss_bbox.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>cls_prob_t[0][2][0] &lt; 0.8</expression-string>
+        <expression-string>rpn_loss_cls.shape</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/serialization.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="300" selection-start-line="300" selection-end-line="300" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/rpn/anchor_target_layer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="123" column="8" lean-forward="true" selection-start-line="123" selection-start-column="8" selection-end-line="123" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/nn/functional.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="859" selection-start-line="859" selection-end-line="859" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="1663" selection-start-line="1663" selection-end-line="1663" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/modified_alexnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/autograd/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="104" column="14" lean-forward="true" selection-start-line="104" selection-start-column="14" selection-end-line="104" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -879,13 +864,6 @@ print(cls_prob_t[0][0])</expression-string>
     <entry file="file://$PROJECT_DIR$/lib/model/utils/bbox.pyx">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/roi_data_layer/roibatchLoader.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2533">
-          <caret line="164" column="18" selection-start-line="164" selection-start-column="18" selection-end-line="164" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torchvision/transforms/functional.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1768">
@@ -914,13 +892,6 @@ print(cls_prob_t[0][0])</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cfgs/vgg16.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/utils/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4658">
@@ -935,13 +906,6 @@ print(cls_prob_t[0][0])</expression-string>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -965,24 +929,10 @@ print(cls_prob_t[0][0])</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/nn/modules/module.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="529" selection-start-line="529" selection-end-line="529" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/datasets/imdb.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1479">
           <caret line="98" column="6" selection-start-line="98" selection-start-column="6" selection-end-line="98" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/utils/net_utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
         </state>
       </provider>
     </entry>
@@ -993,20 +943,10 @@ print(cls_prob_t[0][0])</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/rpn/bbox_transform.py">
+    <entry file="file://$PROJECT_DIR$/old_test_net.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1180">
-          <caret line="183" selection-start-line="183" selection-end-line="183" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6749">
-          <caret line="428" column="32" selection-start-line="428" selection-start-column="32" selection-end-line="428" selection-end-column="32" />
-          <folding>
-            <element signature="e#423#461#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="4012">
+          <caret line="265" column="71" selection-start-line="265" selection-start-column="71" selection-end-line="265" selection-end-column="71" />
         </state>
       </provider>
     </entry>
@@ -1024,6 +964,128 @@ print(cls_prob_t[0][0])</expression-string>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/resnet.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cfgs/vgg16.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/serialization.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="686">
+          <caret line="300" selection-start-line="300" selection-end-line="300" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/nn/functional.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="859" selection-start-line="859" selection-end-line="859" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../vecchi file progetto/Knowledge_Distillation/faster-rcnn.pytorch/trainval_net.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/roi_align/modules/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/roi_align/modules/roi_align.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/modified_alexnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="35" column="25" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/utils/net_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="56" column="67" lean-forward="true" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/roi_data_layer/roibatchLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/roi_data_layer/minibatch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" column="3" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="106" column="27" lean-forward="true" selection-start-line="106" selection-start-column="27" selection-end-line="106" selection-end-column="27" />
+          <folding>
+            <element signature="e#228#266#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/nn/modules/module.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="490" selection-start-line="490" selection-end-line="490" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/rpn/bbox_transform.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="183" selection-start-line="183" selection-end-line="183" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/autograd/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_net.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4046">
+          <caret line="268" selection-start-line="268" selection-end-line="268" />
+          <folding>
+            <element signature="e#274#312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/rpn/anchor_target_layer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4641">
+          <caret line="305" selection-start-line="305" selection-end-line="305" />
+          <folding>
+            <element signature="e#274#312#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/rpn/rpn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1377">
@@ -1031,68 +1093,40 @@ print(cls_prob_t[0][0])</expression-string>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
-          <folding>
-            <element signature="e#228#266#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="51" column="54" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
+        <state relative-caret-position="1156">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/resnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2904">
-          <caret line="298" column="32" selection-start-line="298" selection-start-column="23" selection-end-line="298" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_net.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6">
-          <caret line="271" column="49" selection-start-line="271" selection-start-column="49" selection-end-line="271" selection-end-column="49" />
-          <folding>
-            <element signature="e#274#312#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="98" column="42" lean-forward="true" selection-start-line="98" selection-start-column="42" selection-end-line="98" selection-end-column="42" />
+        <state relative-caret-position="1972">
+          <caret line="132" selection-start-line="132" selection-end-line="132" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/old_test_net.py">
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1001">
-          <caret line="177" column="53" lean-forward="true" selection-start-line="177" selection-start-column="53" selection-end-line="177" selection-end-column="53" />
+        <state relative-caret-position="629">
+          <caret line="48" column="57" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2312">
+          <caret line="440" selection-start-line="440" selection-end-line="440" />
           <folding>
-            <element signature="e#274#312#0" expanded="true" />
+            <element signature="e#661#699#0" expanded="true" />
+            <marker date="1548609608761" expanded="true" signature="2055:2264" ph="..." />
           </folding>
         </state>
       </provider>

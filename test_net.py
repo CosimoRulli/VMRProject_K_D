@@ -172,8 +172,8 @@ if __name__ == '__main__':
     print("network is not defined")
     pdb.set_trace()
   '''
-  fasterRCNN = alexnet(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic)
-
+  fasterRCNN = alexnet(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic)
+  #fasterRCNN = vgg16(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic)
   fasterRCNN.create_architecture()
 
   print("load checkpoint %s" % (load_name))
@@ -235,20 +235,15 @@ if __name__ == '__main__':
 
   _t = {'im_detect': time.time(), 'misc': time.time()}
   det_file = os.path.join(output_dir, 'detections.pkl')
-  teacher_net = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic)
-  teacher_net.create_architecture()
-  checkpoint = torch.load("models/vgg16/pascal_voc/faster_rcnn_1_6_10021.pth")
-  teacher_net.load_state_dict(checkpoint['model'])
-  if 'pooling_mode' in checkpoint.keys():
-      cfg.POOLING_MODE = checkpoint['pooling_mode']
 
-  teacher_net.cuda()
-  teacher_net.eval()
+
+
+
 
 
   fasterRCNN.eval()
   empty_array = np.transpose(np.array([[],[],[],[],[]]), (1,0))
-  for i in range(num_images):
+  for i in range(500):
 
       data = next(data_iter)
       im_data.data.resize_(data[0].size()).copy_(data[0])
@@ -270,18 +265,11 @@ if __name__ == '__main__':
       rois_label, Z_t, R_t, fg_bg_label, \
       y_reg, iw, ow, rois_target, rois_inside_ws, \
       rois_outside_ws, rcn_cls_score = fasterRCNN(im_data, im_info, gt_boxes, num_boxes)
-      '''
-      rois_t, cls_prob_t, bbox_pred_t, \
-      rpn_loss_cls_t, rpn_loss_box_t, \
-      RCNN_loss_cls_t, RCNN_loss_bbox_t, \
-      rois_label_t, Z_t, R_t, fg_bg_label, \
-      y_reg_t, iw_t, ow_t, rois_target_t, rois_inside_ws_t, \
-      rois_outside_ws_t, rcn_cls_score_t = teacher_net(im_data, im_info, gt_boxes, num_boxes)
-      '''
 
       scores = cls_prob.data
       boxes = rois.data[:, :, 1:5]
-
+      if (len(torch.argmax(scores, dim=2).nonzero())!=0):
+          print("Una prediction diversa da background")
       if cfg.TEST.BBOX_REG:
           # Apply bounding-box regression deltas
           box_deltas = bbox_pred.data

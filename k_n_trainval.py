@@ -3,7 +3,9 @@
 # Licensed under The MIT License [see LICENSE for details]
 # Written by Jiasen Lu, Jianwei Yang, based on code from Ross Girshick
 
-#  CUDA_VISIBLE_DEVICES=1 python k_n_trainval.py --dataset pascal_voc --net vgg16 --checksession 1 --checkepoch 6 --checkpoint 10021 --cuda
+#  CUDA_VISIBLE_DEVICES=3 python k_n_trainval.py --dataset pascal_voc --net vgg16 --checksession 1 --checkepoch 6 --checkpoint 10021 --cuda --epochs 10
+#  CUDA_VISIBLE_DEVICES=1 python trainval_net.py --dataset pascal_voc --net vgg16 --cuda
+#  CUDA_VISIBLE_DEVICES=1 python test_net.py --dataset pascal_voc --net vgg16 --cuda  --checksession 1 --checkepoch 8 --checkpoint 10021
 
 # --------------------------------------------------------
 from __future__ import absolute_import
@@ -18,7 +20,7 @@ import argparse
 import pprint
 import pdb
 import time
-
+import sys
 import torch
 from torch.autograd import Variable
 import torch.nn as nn
@@ -50,6 +52,13 @@ def resize_images(im_batch, size):
 
 
 from model.faster_rcnn.resnet import resnet
+
+def print_tensor(tensor_2d):
+    for i in range(tensor_2d.shape[0]):
+        for j in range(tensor_2d.shape[1]):
+            sys.stdout.write(str(round(tensor_2d[i][j].item() ,2))+ " ")
+            sys.stdout.flush()
+        print()
 
 
 
@@ -277,7 +286,7 @@ if __name__ == '__main__':
     pdb.set_trace()
   '''
 
-  teacher_net = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic)
+  teacher_net = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic, teaching=True)
   student_net = alexnet(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic)
   teacher_net.create_architecture()
   student_net.create_architecture()
@@ -372,6 +381,7 @@ if __name__ == '__main__':
     # setting to train mode
     #fasterRCNN.train()
     student_net.train()
+    teacher_net.eval()
     loss_temp = 0
     start = time.time()
 
@@ -387,20 +397,28 @@ if __name__ == '__main__':
       im_info.data.resize_(data[1].size()).copy_(data[1])
       gt_boxes.data.resize_(data[2].size()).copy_(data[2])
       num_boxes.data.resize_(data[3].size()).copy_(data[3])
-      im_data = resize_images(im_data, [800,800])
+
+      #im_data = resize_images(im_data, [800,800])
       #fasterRCNN.zero_grad()
       student_net.zero_grad()
-
       rois_t, cls_prob_t, bbox_pred_t, \
       rpn_loss_cls_t, rpn_loss_box_t, \
       RCNN_loss_cls_t, RCNN_loss_bbox_t, \
       rois_label_t, Z_t, R_t, fg_bg_label, \
       y_reg_t, iw_t, ow_t, rois_target_t, rois_inside_ws_t,\
       rois_outside_ws_t, rcn_cls_score_t  = teacher_net(im_data, im_info, gt_boxes, num_boxes)
+
+      cls_prob_t = cls_prob_t.detach()
+
+      bbox_pred_t = bbox_pred_t.detach()
+      Z_t = Z_t.detach()
+      R_t = R_t.detach()
+      rcn_cls_score_t= rcn_cls_score_t.detach()
+
+
       #print(im_data.shape[2]/ R_t.shape[2])
       #print(im_data.shape[3]/ R_t.shape[3])
       #print()
-
       #todo per ora non assegnamo le fb_bg_label della student; la nostra ipotesi è che siano uguali a quelle della teacher, essendo una componente derviata
       #todo dal ground truth, nel caso in cui fossero diverse è necessario utilizzare quelle della teacher che saranno più accurate
       rois_s, cls_prob_s, bbox_pred_s, \
@@ -412,7 +430,7 @@ if __name__ == '__main__':
       #print(im_data.shape[3]/ R_s.shape[3])
       # print()
 
-      mu =0.5
+      mu =0.8
       
       L_hard = rpn_loss_cls_s
       #loss_rpn_cls = compute_loss_rpn_cls(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
@@ -420,14 +438,24 @@ if __name__ == '__main__':
       #print("im_data " +str(im_data.shape))
       #print("R_s " + str(R_s.shape))
       #print()
-      loss_rpn_cls = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label)
-      loss_rpn_reg = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, m=0.001, l=1, bbox_inside_weights= iw_s,bbox_outside_weights=ow_s, ni=0.5)
+      loss_rpn_cls, loss_rpn_cls_soft = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
+      loss_rpn_reg, loss_rpn_reg_soft = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, y_reg_t, m=0,bbox_inside_weights_s=iw_s ,bbox_inside_weights_t= iw_t,bbox_outside_weights_s=ow_s,bbox_outside_weights_t=ow_t, ni=0.5)
+      torch.set_printoptions(threshold=10000)
+      if (step%500 ==0):
+          print("Zs")
+          print(Z_s[fg_bg_label==1])
+          #print("Zt")
+          #print(Z_t)
+          #print("Gt")
+          #print(fg_bg_label)
       #print(loss_rpn_cls)
       #print(loss_rpn_reg)
       #loss_rcn_cls = compute_loss_rcn_cls(rcn_cls_score_s, rcn_cls_score_t, mu,RCNN_loss_cls_s, rois_label_t, T=1)
-      loss_rcn_cls = compute_loss_classification(rcn_cls_score_s, rcn_cls_score_t, mu,RCNN_loss_cls_s, rois_label_t, T=1)
-      loss_rcn_reg = compute_loss_regression(RCNN_loss_bbox_s,bbox_pred_s, bbox_pred_t, rois_target_s, m=0.001, l=1, bbox_inside_weights=rois_inside_ws_s, bbox_outside_weights=rois_outside_ws_s, ni=0.5 )
+      loss_rcn_cls, loss_rcn_cls_soft = compute_loss_classification(rcn_cls_score_t, rcn_cls_score_s,  mu ,RCNN_loss_cls_s, rois_label_t, T=1)
+      loss_rcn_reg, loss_rcn_reg_soft = compute_loss_regression(RCNN_loss_bbox_s,bbox_pred_s, bbox_pred_t, rois_target_s,rois_target_t, m=0,  bbox_inside_weights_s=rois_inside_ws_s ,bbox_inside_weights_t= rois_inside_ws_t,bbox_outside_weights_s=rois_outside_ws_s,bbox_outside_weights_t=rois_outside_ws_t, ni=0.5 )
       #print(loss_rcn_reg)
+
+      #if(step%1000==0):
 
         
       loss = loss_rpn_cls+ loss_rpn_reg+ \
@@ -459,28 +487,40 @@ if __name__ == '__main__':
                       % (loss_rpn_cls, loss_rpn_reg, loss_rcn_cls, loss_rcn_reg))
         if args.use_tfboard:
           info = {
-            'loss': loss_temp,
+            'loss_rpn_cls_hard': L_hard,
+            'loss_rpn_cls_soft': loss_rpn_cls_soft,
             'loss_rpn_cls': loss_rpn_cls,
-            'loss_rpn_box': loss_rpn_reg,
-            'loss_rcnn_cls': loss_rcn_cls,
-            'loss_rcnn_box': loss_rcn_reg
+
+            'loss_rpn_reg_hard': rpn_loss_box_s,
+            'loss_rpn_reg_soft': loss_rpn_reg_soft,
+            'loss_rpn_reg': loss_rpn_reg,
+
+            'loss_rcn_cls_hard': RCNN_loss_cls_s,
+            'loss_rcn_cls_soft': loss_rcn_cls_soft,
+            'loss_rcn_cls':loss_rcn_cls,
+
+            'loss_rcn_reg_hard':RCNN_loss_bbox_s,
+            'loss_rcn_reg_soft':loss_rcn_reg_soft,
+            'loss_rcn_reg': loss_rcn_reg,
+            'loss': loss_temp,
+
           }
           logger.add_scalars("logs_s_{}/losses".format(args.session), info, (epoch - 1) * iters_per_epoch + step)
 
         loss_temp = 0
         start = time.time()
 
-    
-    save_name = os.path.join(output_dir, 'student_net_{}_{}_{}.pth'.format(args.session, epoch, step))
-    save_checkpoint({
-      'session': args.session,
-      'epoch': epoch + 1,
-      'model': student_net.module.state_dict() if args.mGPUs else student_net.state_dict(),
-      'optimizer': optimizer.state_dict(),
-      'pooling_mode': cfg.POOLING_MODE,
-      'class_agnostic': args.class_agnostic,
-    }, save_name)
-    print('save model: {}'.format(save_name))
+    if(epoch !=0 and epoch %3==0):
+        save_name = os.path.join(output_dir, 'student_net_{}_{}_{}.pth'.format(args.session, epoch, step))
+        save_checkpoint({
+          'session': args.session,
+          'epoch': epoch + 1,
+          'model': student_net.module.state_dict() if args.mGPUs else student_net.state_dict(),
+          'optimizer': optimizer.state_dict(),
+          'pooling_mode': cfg.POOLING_MODE,
+          'class_agnostic': args.class_agnostic,
+        }, save_name)
+        print('save model: {}'.format(save_name))
 
   if args.use_tfboard:
     logger.close()

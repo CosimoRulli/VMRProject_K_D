@@ -37,16 +37,17 @@ model_urls = {
 
 
 class alexnet(_fasterRCNN):
-    def __init__(self, classes, pretrained=False, class_agnostic=False):
+    def __init__(self, classes, pretrained=False, class_agnostic=False, teaching= False):
         self.dout_base_model = 256
         self.model_path = 'data/pretrained_model/alexnet-owt-4df8aa71.pth'
 
         self.pretrained = pretrained
         self.class_agnostic = class_agnostic
+        self.teaching = teaching
         #todo parametrizzare
         self.n_frozen_layers = 5
 
-        _fasterRCNN.__init__(self, classes, class_agnostic)
+        _fasterRCNN.__init__(self, classes, class_agnostic, teaching)
 
     def _init_modules(self):
         #vgg = models.vgg16()
@@ -61,10 +62,10 @@ class alexnet(_fasterRCNN):
         # not using the last maxpool layer
         #self.RCNN_base = nn.Sequential(*list(alexnet.features._modules.values())[:-1])
         self.RCNN_base = nn.Sequential(
-            nn.Conv2d(3, 64, kernel_size=11, stride=4, padding=11),  #changed the padding to match dimensions with vgg16, 10 dava un errore
+            nn.Conv2d(3, 64, kernel_size=11, stride=4, padding=7),  #changed the padding to match dimensions with vgg16, 10 dava un errore
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2),
-            nn.Conv2d(64, 192, kernel_size=5, padding=2),
+            nn.Conv2d(64, 192, kernel_size=5, padding=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=3, stride=2),
             nn.Conv2d(192, 384, kernel_size=3, padding=1),
@@ -92,7 +93,7 @@ class alexnet(_fasterRCNN):
             nn.ReLU(inplace=True),
             #nn.Linear(4096, self.n_classes), -> non presente in alexnet.classifier, infatti messo dopo
         )
-        self.RCNN_cls_score = nn.Linear(4096, self.n_classes)
+        self.RCNN_cls_score = nn.Linear(4096, self.n_classes) #todo rimuovere
 
         if self.class_agnostic:
           self.RCNN_bbox_pred = nn.Linear(4096, 4)

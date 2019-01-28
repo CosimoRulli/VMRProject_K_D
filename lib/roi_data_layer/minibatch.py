@@ -20,8 +20,10 @@ def get_minibatch(roidb, num_classes):
   """Given a roidb, construct a minibatch sampled from it."""
   num_images = len(roidb)
   # Sample random scales to use for each image in this batch
+
   random_scale_inds = npr.randint(0, high=len(cfg.TRAIN.SCALES),
                   size=num_images)
+  #print("Index: ", random_scale_inds)
   assert(cfg.TRAIN.BATCH_SIZE % num_images == 0), \
     'num_images ({}) must divide BATCH_SIZE ({})'. \
     format(num_images, cfg.TRAIN.BATCH_SIZE)

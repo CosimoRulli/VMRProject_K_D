@@ -16,7 +16,7 @@ import time
 
 class _RPN(nn.Module):
     """ region proposal network """
-    def __init__(self, din):
+    def __init__(self, din, teaching = False):
         super(_RPN, self).__init__()
         
         self.din = din  # get depth of input feature map, e.g., 512
@@ -43,7 +43,7 @@ class _RPN(nn.Module):
 
         self.rpn_loss_cls = 0
         self.rpn_loss_box = 0
-
+        self.teaching = teaching
     @staticmethod
     def reshape(x, d):
         input_shape = x.size()
@@ -90,7 +90,7 @@ class _RPN(nn.Module):
         rpn_bbox_inside_weights = []
         rpn_bbox_outside_weights=[]
         # generating training labels and build the rpn loss
-        if self.training:
+        if self.training or self.teaching:
             assert gt_boxes is not None
             #todo arrivati qui
             rpn_data = self.RPN_anchor_target((rpn_cls_score.data, gt_boxes, im_info, num_boxes))
@@ -106,7 +106,7 @@ class _RPN(nn.Module):
             rpn_label = Variable(rpn_label.long())
 
             #TODO L_hard = rpn_loss_cls non c'è bisogno di ricalcolarla
-            self.rpn_loss_cls = F.cross_entropy(rpn_cls_score, rpn_label)
+
             fg_cnt = torch.sum(rpn_label.data.ne(0))
 
             rpn_bbox_targets, rpn_bbox_inside_weights, rpn_bbox_outside_weights = rpn_data[1:]
@@ -117,8 +117,9 @@ class _RPN(nn.Module):
             rpn_bbox_targets = Variable(rpn_bbox_targets)
             #TODO rpn_bbox_inside e outside sono i pesi delle classi sulla loss
             #TODO rpn_bbox_pred è quello da restituire
-
-            self.rpn_loss_box = _smooth_l1_loss(rpn_bbox_pred, rpn_bbox_targets, rpn_bbox_inside_weights,
+            if self.training:
+                self.rpn_loss_cls = F.cross_entropy(rpn_cls_score, rpn_label)
+                self.rpn_loss_box = _smooth_l1_loss(rpn_bbox_pred, rpn_bbox_targets, rpn_bbox_inside_weights,
                                                             rpn_bbox_outside_weights, sigma=3, dim=[1,2,3])
 
         return rois, self.rpn_loss_cls, self.rpn_loss_box, rpn_cls_score, rpn_bbox_pred, rpn_label, rpn_bbox_targets, rpn_bbox_inside_weights, rpn_bbox_outside_weights
