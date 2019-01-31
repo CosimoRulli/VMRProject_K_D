@@ -32,7 +32,7 @@ from model.faster_rcnn.vgg16 import vgg16
 from model.faster_rcnn.resnet import resnet
 from model.faster_rcnn.alexnet import alexnet
 from torchvision.transforms import ToTensor, ToPILImage, Resize
-
+import torchvision.transforms as transforms
 import pdb
 
 try:
@@ -40,6 +40,7 @@ try:
 except NameError:
     xrange = range  # Python 3
 
+''''
 def resize_images(im_batch, size):
     new_im_batch = torch.zeros([im_batch.shape[0], im_batch.shape[1], size[0], size[1]])
     for i in range(im_batch.shape[0]):
@@ -47,7 +48,7 @@ def resize_images(im_batch, size):
         im_pil = Resize(size)(im_pil)
         new_im_batch[0,:,:,:] = ToTensor()(im_pil)
     return new_im_batch.cuda()
-
+'''
 
 
 def parse_args():
@@ -60,10 +61,10 @@ def parse_args():
                       default='pascal_voc', type=str)
   parser.add_argument('--cfg', dest='cfg_file',
                       help='optional config file',
-                      default='cfgs/vgg16.yml', type=str)
+                      default='student_cfgs/alex_net.yml', type=str)
   parser.add_argument('--net', dest='net',
-                      help='vgg16, res50, res101, res152',
-                      default='res101', type=str)
+                      help='vgg16, alexnet',
+                      default='alexnet', type=str)
   parser.add_argument('--set', dest='set_cfgs',
                       help='set config keys', default=None,
                       nargs=argparse.REMAINDER)
@@ -97,6 +98,12 @@ def parse_args():
   parser.add_argument('--vis', dest='vis',
                       help='visualization mode',
                       action='store_true')
+  parser.add_argument('--m',dest='m',
+                      help='m for regression losses  bound', default=0, type=float)
+  parser.add_argument('--mu', dest='mu',
+                      help='mu for Lcls loss', default=0.8, type=float)
+
+
   args = parser.parse_args()
   return args
 
@@ -136,7 +143,15 @@ if __name__ == '__main__':
       args.imdbval_name = "vg_150-50-50_minival"
       args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]']
 
-  args.cfg_file = "cfgs/{}_ls.yml".format(args.net) if args.large_scale else "cfgs/{}.yml".format(args.net)
+
+  if  args.net=='alexnet':
+      args.cfg_file = "student_cfgs/{}_ls.yml".format(args.net) if args.large_scale else "student_cfgs/{}.yml".format(args.net)
+  elif args.net=='vgg16':
+      args.cfg_file = "teacher_cfgs/{}.yml".format(args.net)
+  else:
+      print("network is not defined")
+      pdb.set_trace()
+
 
   if args.cfg_file is not None:
     cfg_from_file(args.cfg_file)
@@ -155,25 +170,22 @@ if __name__ == '__main__':
   input_dir = args.load_dir + "/" + args.net + "/" + args.dataset
   if not os.path.exists(input_dir):
     raise Exception('There is no input directory for loading network from ' + input_dir)
-  load_name = os.path.join(input_dir,
-    'student_net_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
 
-  # initilize the network here.
-  '''
   if args.net == 'vgg16':
-    fasterRCNN = vgg16(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic)
-  elif args.net == 'res101':
-    fasterRCNN = resnet(imdb.classes, 101, pretrained=False, class_agnostic=args.class_agnostic)
-  elif args.net == 'res50':
-    fasterRCNN = resnet(imdb.classes, 50, pretrained=False, class_agnostic=args.class_agnostic)
-  elif args.net == 'res152':
-    fasterRCNN = resnet(imdb.classes, 152, pretrained=False, class_agnostic=args.class_agnostic)
+     model_pth = args.net+'_teacher_fast_rcnn_{}_{}_{}.pth'
+     fasterRCNN = vgg16(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic)
+     load_name = os.path.join(input_dir,
+                              model_pth.format(args.checksession, args.checkepoch, args.checkpoint))
+  elif args.net == 'alexnet':
+     model_pth = '{}_{}_student_net_{}_{}_{}.pth'
+     fasterRCNN = alexnet(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic)
+     load_name = os.path.join(input_dir,
+                              model_pth.format(args.m, args.mu, args.checksession, args.checkepoch, args.checkpoint))
   else:
     print("network is not defined")
     pdb.set_trace()
-  '''
-  fasterRCNN = alexnet(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic)
-  #fasterRCNN = vgg16(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic)
+
+
   fasterRCNN.create_architecture()
 
   print("load checkpoint %s" % (load_name))
@@ -219,14 +231,23 @@ if __name__ == '__main__':
   else:
     thresh = 0.0
 
-  save_name = 'faster_rcnn_10'
+  save_name = 'faster_rcnn_10_'+args.net
+  if args.net == 'alexnet':
+      save_name = str(args.m)+"_"+str(args.mu)+"_"+save_name
+
   num_images = len(imdb.image_index)
   all_boxes = [[[] for _ in xrange(num_images)]
                for _ in xrange(imdb.num_classes)]
 
   output_dir = get_output_dir(imdb, save_name)
+  ##TODO MODIFICATO NORMALIZE
+ ## normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                             ##      std=[0.229, 0.224, 0.225])
+
   dataset = roibatchLoader(roidb, ratio_list, ratio_index, 1, \
-                        imdb.num_classes, training=False, normalize = False)
+                        imdb.num_classes, training=False, normalize = False) ##era a False
+
+
   dataloader = torch.utils.data.DataLoader(dataset, batch_size=1,
                             shuffle=False, num_workers=0,
                             pin_memory=True)
@@ -237,28 +258,19 @@ if __name__ == '__main__':
   det_file = os.path.join(output_dir, 'detections.pkl')
 
 
-
-
-
-
   fasterRCNN.eval()
   empty_array = np.transpose(np.array([[],[],[],[],[]]), (1,0))
-  for i in range(500):
-
+  for i in range(num_images):
       data = next(data_iter)
+      #print(data)
+      #print(data[0])
       im_data.data.resize_(data[0].size()).copy_(data[0])
-      im_data = resize_images(im_data, [600,600])
       im_info.data.resize_(data[1].size()).copy_(data[1])
       gt_boxes.data.resize_(data[2].size()).copy_(data[2])
       num_boxes.data.resize_(data[3].size()).copy_(data[3])
 
       det_tic = time.time()
-      '''
-      rois, cls_prob, bbox_pred, \
-      rpn_loss_cls, rpn_loss_box, \
-      RCNN_loss_cls, RCNN_loss_bbox, \
-      rois_label = fasterRCNN(im_data, im_info, gt_boxes, num_boxes)
-      '''
+
       rois, cls_prob, bbox_pred, \
       rpn_loss_cls, rpn_loss_box, \
       RCNN_loss_cls, RCNN_loss_bbox, \
@@ -268,8 +280,7 @@ if __name__ == '__main__':
 
       scores = cls_prob.data
       boxes = rois.data[:, :, 1:5]
-      if (len(torch.argmax(scores, dim=2).nonzero())!=0):
-          print("Una prediction diversa da background")
+
       if cfg.TEST.BBOX_REG:
           # Apply bounding-box regression deltas
           box_deltas = bbox_pred.data

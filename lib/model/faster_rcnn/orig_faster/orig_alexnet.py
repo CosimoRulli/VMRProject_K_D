@@ -13,7 +13,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import math
 import torchvision.models as models
-from model.faster_rcnn.faster_rcnn import _fasterRCNN
+from model.faster_rcnn.orig_faster.orig_faster_rcnn import _orig_fasterRCNN
 import pdb
 
 
@@ -24,18 +24,18 @@ model_urls = {
 }
 
 
-class alexnet(_fasterRCNN):
-    def __init__(self, classes, pretrained=False, class_agnostic=False, teaching= False):
+class alexnet(_orig_fasterRCNN):
+    def __init__(self, classes, pretrained=False, class_agnostic=False):
         self.dout_base_model = 256
         self.model_path = 'data/pretrained_model/alexnet-owt-4df8aa71.pth'
 
         self.pretrained = pretrained
         self.class_agnostic = class_agnostic
-        self.teaching = teaching
         #todo parametrizzare
-        self.n_frozen_layers = 5
+        self.n_frozen_layers = 8
+        print("N_Frozen_layers: "+str(self.n_frozen_layers))
 
-        _fasterRCNN.__init__(self, classes, class_agnostic, teaching)
+        _orig_fasterRCNN.__init__(self, classes, class_agnostic)
 
     def _init_modules(self):
         #vgg = models.vgg16()
@@ -48,7 +48,8 @@ class alexnet(_fasterRCNN):
         alexnet.classifier = nn.Sequential(*list(alexnet.classifier._modules.values())[:-1])
 
         # not using the last maxpool layer
-        #self.RCNN_base = nn.Sequential(*list(alexnet.features._modules.values())[:-1])
+        self.RCNN_base = nn.Sequential(*list(alexnet.features._modules.values())[:-1])
+        '''
         self.RCNN_base = nn.Sequential(
             nn.Conv2d(3, 64, kernel_size=11, stride=4, padding=7),  #changed the padding to match dimensions with vgg16, 10 dava un errore
             nn.ReLU(inplace=True),
@@ -64,10 +65,11 @@ class alexnet(_fasterRCNN):
             nn.ReLU(inplace=True),
             #nn.MaxPool2d(kernel_size=3, stride=2),
         )
+        '''
         # Fix the layers before conv3:
         for layer in range(self.n_frozen_layers):
           for p in self.RCNN_base[layer].parameters(): p.requires_grad = False
-
+        ''''
         self.RCNN_top = nn.Sequential(
             #nn.Dropout(),
             nn.Linear(256 * 7 * 7, 4096),
@@ -77,6 +79,9 @@ class alexnet(_fasterRCNN):
             nn.ReLU(inplace=True),
             #nn.Linear(4096, self.n_classes), -> non presente in alexnet.classifier, infatti messo dopo
         )
+        '''
+        self.RCNN_top = alexnet.classifier
+
         self.RCNN_cls_score = nn.Linear(4096, self.n_classes)
 
         if self.class_agnostic:

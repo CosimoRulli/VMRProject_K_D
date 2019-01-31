@@ -71,9 +71,13 @@ def parse_args():
   parser.add_argument('--dataset', dest='dataset',
                       help='training dataset',
                       default='pascal_voc', type=str)
-  parser.add_argument('--net', dest='net',
-                    help='vgg16, res101',
+  parser.add_argument('--t_net', dest='t_net',
+                    help='vgg16',
                     default='vgg16', type=str)
+  parser.add_argument('--s_net', dest='s_net',
+                    help='alexnet',
+                    default='alexnet', type=str)
+
   parser.add_argument('--load_dir', dest='load_dir',
                       help='directory to load models', default="models",
                       type=str)
@@ -126,6 +130,15 @@ def parse_args():
                       help='learning rate decay ratio',
                       default=0.1, type=float)
 
+#config_loss_parameters
+  parser.add_argument('--mu', dest='mu',
+                      help='mu for Lcls loss', default=0.8, type=float)
+  parser.add_argument('--lambda', dest='l',
+                       help='lambda for both final rpn and rcn losses',default=1, type=float)
+  parser.add_argument('--ni', dest='ni',
+                       help='ni for regression losses', default=0.5, type=float)
+  parser.add_argument('--m',dest='m',
+                      help='m for regression losses  bound', default=0, type=float)
 # set training session
   parser.add_argument('--s', dest='session',
                       help='training session',
@@ -135,14 +148,24 @@ def parse_args():
   parser.add_argument('--r', dest='resume',
                       help='resume checkpoint or not',
                       default=False, type=bool)
-  parser.add_argument('--checksession', dest='checksession',
-                      help='checksession to load model',
+  parser.add_argument('--t_checksession', dest='t_checksession',
+                      help='teacher checksession to load model',
                       default=1, type=int)
-  parser.add_argument('--checkepoch', dest='checkepoch',
-                      help='checkepoch to load model',
+  parser.add_argument('--t_checkepoch', dest='t_checkepoch',
+                      help='teacher checkepoch to load model',
                       default=1, type=int)
-  parser.add_argument('--checkpoint', dest='checkpoint',
-                      help='checkpoint to load model',
+  parser.add_argument('--t_checkpoint', dest='t_checkpoint',
+                      help='teacher_checkpoint to load model',
+                      default=0, type=int)
+
+  parser.add_argument('--s_checksession', dest='s_checksession',
+                      help='student checksession to load model',
+                      default=1, type=int)
+  parser.add_argument('--s_checkepoch', dest='s_checkepoch',
+                      help='student checkepoch to load model',
+                      default=1, type=int)
+  parser.add_argument('--s_checkpoint', dest='s_checkpoint',
+                      help='student_checkpoint to load model',
                       default=0, type=int)
 # log and diaplay
   parser.add_argument('--use_tfb', dest='use_tfboard',
@@ -189,6 +212,7 @@ if __name__ == '__main__':
       args.imdb_name = "voc_2007_trainval"
       args.imdbval_name = "voc_2007_test"
       args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
+  '''
   elif args.dataset == "pascal_voc_0712":
       args.imdb_name = "voc_2007_trainval+voc_2012_trainval"
       args.imdbval_name = "voc_2007_test"
@@ -207,8 +231,12 @@ if __name__ == '__main__':
       args.imdb_name = "vg_150-50-50_minitrain"
       args.imdbval_name = "vg_150-50-50_minival"
       args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '50']
+  '''
+ # args.cfg_file = "student_cfgs/{}_ls.yml".format(args.net) if args.large_scale else "student_cfgs/{}.yml".format(args.net)
 
-  args.cfg_file = "cfgs/{}_ls.yml".format(args.net) if args.large_scale else "cfgs/{}.yml".format(args.net)
+  args.cfg_file = "student_cfgs/{}.yml".format(args.s_net)
+  print("File di configurazione della student")
+  print(args.cfg_file)
 
   if args.cfg_file is not None:
     cfg_from_file(args.cfg_file)
@@ -216,7 +244,6 @@ if __name__ == '__main__':
     cfg_from_list(args.set_cfgs)
 
   print('Using config:')
-  pprint.pprint(cfg)
   np.random.seed(cfg.RNG_SEED)
 
   #torch.backends.cudnn.benchmark = True
@@ -232,7 +259,9 @@ if __name__ == '__main__':
 
   print('{:d} roidb entries'.format(len(roidb)))
 
-  output_dir = args.save_dir + "/" + args.net + "/" + args.dataset
+  output_dir = args.save_dir + "/" + args.s_net + "/" + args.dataset
+  print(" ")
+  print("Output dir: "+str(output_dir))
   if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
@@ -269,43 +298,41 @@ if __name__ == '__main__':
 
   # initilize the network here.
 
-  '''
-  if args.net == 'vgg16':
-    fasterRCNN = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic)
-  elif args.net == 'res101':
-    fasterRCNN = resnet(imdb.classes, 101, pretrained=True, class_agnostic=args.class_agnostic)
-  elif args.net == 'res50':
-    fasterRCNN = resnet(imdb.classes, 50, pretrained=True, class_agnostic=args.class_agnostic)
-  elif args.net == 'res152':
-    fasterRCNN = resnet(imdb.classes, 152, pretrained=True, class_agnostic=args.class_agnostic)
-  elif args.net == 'res152':
-    fasterRCNN = resnet(imdb.classes, 152, pretrained=True, class_agnostic=args.class_agnostic)
-
+  if args.s_net == 'alexnet':
+      student_net = alexnet(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic)
   else:
-    print("network is not defined")
-    pdb.set_trace()
-  '''
+      print("student network is not defined")
+      pdb.set_trace()
 
-  teacher_net = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic, teaching=True)
-  student_net = alexnet(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic)
+  if args.t_net =='vgg16':
+      teacher_net = vgg16(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic, teaching=True)
+  else:
+      print("teacher network is not defined")
+      pdb.set_trace()
+
+
+  ##CREATE ARCHITECTURES
   teacher_net.create_architecture()
   student_net.create_architecture()
 
   #LOAD TEACHER NET
 
-  input_dir = args.load_dir + "/" + args.net + "/" + args.dataset
-
+  input_dir = args.load_dir + "/" + args.t_net + "/" + args.dataset
+  print(input_dir)
   if not os.path.exists(input_dir):
     raise Exception('There is no input directory for loading network from ' + input_dir)
   load_name = os.path.join(input_dir,
-    'faster_rcnn_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
+    args.t_net+'_teacher_fast_rcnn_{}_{}_{}.pth'.format(args.t_checksession, args.t_checkepoch, args.t_checkpoint))
 
 
   print("load checkpoint %s" % (load_name))
   if args.cuda > 0:
+      print(" ")
+      print("Load name checkpoint: "+str(load_name))
       checkpoint = torch.load(load_name)
   else:
       checkpoint = torch.load(load_name, map_location=(lambda storage, loc: storage))
+
   teacher_net.load_state_dict(checkpoint['model'])
 
 
@@ -313,9 +340,6 @@ if __name__ == '__main__':
      cfg.POOLING_MODE = checkpoint['pooling_mode']
 
 
-
-  #fasterRCNN = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic)
-  #fasterRCNN.create_architecture()
 
   lr = cfg.TRAIN.LEARNING_RATE
   lr = args.lr
@@ -333,10 +357,6 @@ if __name__ == '__main__':
         params += [{'params':[value],'lr':lr, 'weight_decay': cfg.TRAIN.WEIGHT_DECAY}]
 
 
-  #todo un optimizer è costruito passandogli i parametri da ottimizzare; https://pytorch.org/docs/stable/optim.html
-  #todo in questo caso l'addestramento dei bias è fatto in modo diverso da quello degli altri pesi
-
-  #todo noi dovremo quindi costruire un'istanza di optimizer, solo per la rete student.
   if args.optimizer == "adam":
     lr = lr * 0.1
     optimizer = torch.optim.Adam(params)
@@ -348,38 +368,46 @@ if __name__ == '__main__':
     teacher_net.cuda()
     student_net.cuda()
 
-  #todo per ora non serve, prima del training definitivo si
-  '''
+
   if args.resume:
     load_name = os.path.join(output_dir,
-      'faster_rcnn_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
+      '{}_{}_student_net_{}_{}_{}.pth'.format(args.m, args.mu, args.s_checksession, args.s_checkepoch, args.s_checkpoint))
     print("loading checkpoint %s" % (load_name))
     checkpoint = torch.load(load_name)
     args.session = checkpoint['session']
     args.start_epoch = checkpoint['epoch']
-    fasterRCNN.load_state_dict(checkpoint['model'])
+    student_net.load_state_dict(checkpoint['model'])
     optimizer.load_state_dict(checkpoint['optimizer'])
     lr = optimizer.param_groups[0]['lr']
     if 'pooling_mode' in checkpoint.keys():
       cfg.POOLING_MODE = checkpoint['pooling_mode']
     print("loaded checkpoint %s" % (load_name))
-'''
+
   #todo DataParallel è un modulo di pytorch https://pytorch.org/tutorials/beginner/former_torchies/parallelism_tutorial.html
   #todo 'Divide i batch in sotto batch per eseguirli in parallelo su più GPUs che non è proprio quello che serve a noi'
   '''
   if args.mGPUs:
     fasterRCNN = nn.DataParallel(fasterRCNN)
-'''
+  '''
 
   iters_per_epoch = int(train_size / args.batch_size)
 
   if args.use_tfboard:
     from tensorboardX import SummaryWriter
     logger = SummaryWriter("logs")
+  #ASSIGN custom values to loss parameters
+  mu = args.mu
+  l = args.l
+  ni = args.ni
+  m = args.m
+  print("LOSS PARAMETERS:")
+  print("Mu: "+str(mu))
+  print("l: " + str(l))
+  print("ni: " + str(ni))
+  print("m:" +str(m))
 
   for epoch in range(args.start_epoch, args.max_epochs + 1):
-    # setting to train mode
-    #fasterRCNN.train()
+
     student_net.train()
     teacher_net.eval()
     loss_temp = 0
@@ -390,7 +418,7 @@ if __name__ == '__main__':
         lr *= args.lr_decay_gamma
 
     data_iter = iter(dataloader)
-    #for step in range(iters_per_epoch):
+
     for step in range(iters_per_epoch):
       data = next(data_iter)
       im_data.data.resize_(data[0].size()).copy_(data[0])
@@ -399,14 +427,14 @@ if __name__ == '__main__':
       num_boxes.data.resize_(data[3].size()).copy_(data[3])
 
       #im_data = resize_images(im_data, [800,800])
-      #fasterRCNN.zero_grad()
       student_net.zero_grad()
+
       rois_t, cls_prob_t, bbox_pred_t, \
       rpn_loss_cls_t, rpn_loss_box_t, \
       RCNN_loss_cls_t, RCNN_loss_bbox_t, \
       rois_label_t, Z_t, R_t, fg_bg_label, \
       y_reg_t, iw_t, ow_t, rois_target_t, rois_inside_ws_t,\
-      rois_outside_ws_t, rcn_cls_score_t  = teacher_net(im_data, im_info, gt_boxes, num_boxes)
+      rois_outside_ws_t, rcn_cls_score_t = teacher_net(im_data, im_info, gt_boxes, num_boxes)
 
       cls_prob_t = cls_prob_t.detach()
 
@@ -416,65 +444,53 @@ if __name__ == '__main__':
       rcn_cls_score_t= rcn_cls_score_t.detach()
 
 
-      #print(im_data.shape[2]/ R_t.shape[2])
-      #print(im_data.shape[3]/ R_t.shape[3])
-      #print()
-      #todo per ora non assegnamo le fb_bg_label della student; la nostra ipotesi è che siano uguali a quelle della teacher, essendo una componente derviata
-      #todo dal ground truth, nel caso in cui fossero diverse è necessario utilizzare quelle della teacher che saranno più accurate
       rois_s, cls_prob_s, bbox_pred_s, \
       rpn_loss_cls_s, rpn_loss_box_s, \
       RCNN_loss_cls_s, RCNN_loss_bbox_s, \
-      rois_label_s, Z_s, R_s, _ , y_reg_s, iw_s, ow_s,  rois_target_s, rois_inside_ws_s, \
-      rois_outside_ws_s, rcn_cls_score_s= student_net(im_data, im_info, gt_boxes, num_boxes)
-      #print(im_data.shape[2]/ R_s.shape[2])
-      #print(im_data.shape[3]/ R_s.shape[3])
-      # print()
+      rois_label_s, Z_s, R_s, _, y_reg_s, iw_s, ow_s,  rois_target_s, rois_inside_ws_s, \
+      rois_outside_ws_s, rcn_cls_score_s = student_net(im_data, im_info, gt_boxes, num_boxes)
 
-      mu =0.8
+
       
       L_hard = rpn_loss_cls_s
-      #loss_rpn_cls = compute_loss_rpn_cls(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
-
-      #print("im_data " +str(im_data.shape))
-      #print("R_s " + str(R_s.shape))
-      #print()
       loss_rpn_cls, loss_rpn_cls_soft = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
-      loss_rpn_reg, loss_rpn_reg_soft = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, y_reg_t, m=0,bbox_inside_weights_s=iw_s ,bbox_inside_weights_t= iw_t,bbox_outside_weights_s=ow_s,bbox_outside_weights_t=ow_t, ni=0.5)
+      loss_rpn_reg, loss_rpn_reg_soft = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, y_reg_t, m=m, bbox_inside_weights_s=iw_s ,bbox_inside_weights_t= iw_t,bbox_outside_weights_s=ow_s,bbox_outside_weights_t=ow_t, ni=ni)
       torch.set_printoptions(threshold=10000)
-      if (step%500 ==0):
-          print("Zs")
-          print(Z_s[fg_bg_label==1])
-          #print("Zt")
-          #print(Z_t)
-          #print("Gt")
-          #print(fg_bg_label)
-      #print(loss_rpn_cls)
-      #print(loss_rpn_reg)
-      #loss_rcn_cls = compute_loss_rcn_cls(rcn_cls_score_s, rcn_cls_score_t, mu,RCNN_loss_cls_s, rois_label_t, T=1)
-      loss_rcn_cls, loss_rcn_cls_soft = compute_loss_classification(rcn_cls_score_t, rcn_cls_score_s,  mu ,RCNN_loss_cls_s, rois_label_t, T=1)
-      loss_rcn_reg, loss_rcn_reg_soft = compute_loss_regression(RCNN_loss_bbox_s,bbox_pred_s, bbox_pred_t, rois_target_s,rois_target_t, m=0,  bbox_inside_weights_s=rois_inside_ws_s ,bbox_inside_weights_t= rois_inside_ws_t,bbox_outside_weights_s=rois_outside_ws_s,bbox_outside_weights_t=rois_outside_ws_t, ni=0.5 )
-      #print(loss_rcn_reg)
 
-      #if(step%1000==0):
+      loss_rcn_cls, loss_rcn_cls_soft = compute_loss_classification(rcn_cls_score_t, rcn_cls_score_s,  mu ,RCNN_loss_cls_s, rois_label_t, T=1)
+      loss_rcn_reg, loss_rcn_reg_soft = compute_loss_regression(RCNN_loss_bbox_s,bbox_pred_s, bbox_pred_t, rois_target_s,rois_target_t, m=m,  bbox_inside_weights_s=rois_inside_ws_s ,bbox_inside_weights_t= rois_inside_ws_t,bbox_outside_weights_s=rois_outside_ws_s,bbox_outside_weights_t=rois_outside_ws_t, ni=ni)
 
         
-      loss = loss_rpn_cls+ loss_rpn_reg+ \
-          loss_rcn_cls+ loss_rcn_reg
+      loss = loss_rpn_cls+ l*loss_rpn_reg+ \
+          loss_rcn_cls+ l*loss_rcn_reg
 
       loss_temp += loss.item()
 
       # backward
       optimizer.zero_grad()
       loss.backward()
-      #if args.net == "vgg16":
-      #    clip_gradient(fasterRCNN, 10.)
+      #clip gradient avoids gradient explosion
+      clip_gradient(student_net, 10.)
       optimizer.step()
 
       if step % args.disp_interval == 0:
         end = time.time()
         if step > 0:
           loss_temp /= (args.disp_interval + 1)
-        
+        '''
+        if args.mGPUs:
+            loss_rpn_cls = rpn_loss_cls.mean().item()
+            loss_rpn_box = rpn_loss_box.mean().item()
+            loss_rcnn_cls = RCNN_loss_cls.mean().item()
+            loss_rcnn_box = RCNN_loss_bbox.mean().item()
+            fg_cnt = torch.sum(rois_label.data.ne(0))
+            bg_cnt = rois_label.data.numel() - fg_cnt
+        else:
+        loss_rpn_reg = loss_rpn_reg.item()
+        loss_rpn_cls = loss_rpn_cls.item()
+        loss_rcn_cls = loss_rcn_cls.item()
+        loss_rpn_reg = loss_rpn_reg.item()
+        '''
        
         
         fg_cnt = torch.sum(rois_label_s.data.ne(0))
@@ -506,12 +522,14 @@ if __name__ == '__main__':
 
           }
           logger.add_scalars("logs_s_{}/losses".format(args.session), info, (epoch - 1) * iters_per_epoch + step)
+          #logger.add_graph(teacher_net,(im_data,im_info, gt_boxes, num_boxes))
+          #logger.add_graph(student_net,(im_data,im_info, gt_boxes, num_boxes))
 
         loss_temp = 0
         start = time.time()
 
-    if(epoch !=0 and epoch %3==0):
-        save_name = os.path.join(output_dir, 'student_net_{}_{}_{}.pth'.format(args.session, epoch, step))
+    if(epoch !=0 and epoch%3==0):
+        save_name = os.path.join(output_dir, '{}_{}_student_net_{}_{}_{}.pth'.format(args.m, args.mu, args.session, epoch, step))
         save_checkpoint({
           'session': args.session,
           'epoch': epoch + 1,
@@ -526,23 +544,3 @@ if __name__ == '__main__':
     logger.close()
 
 
-
-'''
-#todo riaggiungere
-
-
- if args.mGPUs:
-           loss_rpn_cls = rpn_loss_cls.mean().item()
-           loss_rpn_box = rpn_loss_box.mean().item()
-           loss_rcnn_cls = RCNN_loss_cls.mean().item()
-           loss_rcnn_box = RCNN_loss_bbox.mean().item()
-           fg_cnt = torch.sum(rois_label.data.ne(0))
-           bg_cnt = rois_label.data.numel() - fg_cnt
-        else:
-        
-          loss_rpn_reg = loss_rpn_reg.item()
-          loss_rpn_cls = loss_rpn_cls.item()
-          loss_rcn_cls = loss_rcn_cls.item()
-          loss_rpn_reg = loss_rpn_reg.item()
-
-'''

@@ -20,6 +20,7 @@ import torch
 from torch.autograd import Variable
 import torch.nn as nn
 import torch.optim as optim
+import torchvision.transforms as transforms
 import pickle
 from roi_data_layer.roidb import combined_roidb
 from roi_data_layer.roibatchLoader import roibatchLoader
@@ -28,9 +29,9 @@ from model.rpn.bbox_transform import clip_boxes
 from model.nms.nms_wrapper import nms
 from model.rpn.bbox_transform import bbox_transform_inv
 from model.utils.net_utils import save_net, load_net, vis_detections
-from model.faster_rcnn.vgg16 import vgg16
+from model.faster_rcnn.orig_faster.orig_vgg import vgg16
 from model.faster_rcnn.resnet import resnet
-from model.faster_rcnn.alexnet import alexnet
+from model.faster_rcnn.orig_faster.orig_alexnet import alexnet
 from torchvision.transforms import ToTensor, ToPILImage, Resize
 import pdb
 
@@ -39,6 +40,7 @@ try:
 except NameError:
     xrange = range  # Python 3
 
+'''
 def resize_images(im_batch, size):
     new_im_batch = torch.zeros([im_batch.shape[0], im_batch.shape[1], size[0], size[1]])
     for i in range(im_batch.shape[0]):
@@ -46,7 +48,7 @@ def resize_images(im_batch, size):
         im_pil = Resize(size)(im_pil)
         new_im_batch[0,:,:,:] = ToTensor()(im_pil)
     return new_im_batch.cuda()
-
+'''
 def parse_args():
     """
     Parse input arguments
@@ -57,15 +59,15 @@ def parse_args():
                         default='pascal_voc', type=str)
     parser.add_argument('--cfg', dest='cfg_file',
                         help='optional config file',
-                        default='cfgs/vgg16.yml', type=str)
+                        default='student_cfgs/vgg16.yml', type=str)
     parser.add_argument('--net', dest='net',
-                        help='vgg16, res50, res101, res152',
-                        default='res101', type=str)
+                        help='vgg16, alexnet',
+                        default='alexnet', type=str)
     parser.add_argument('--set', dest='set_cfgs',
                         help='set config keys', default=None,
                         nargs=argparse.REMAINDER)
     parser.add_argument('--load_dir', dest='load_dir',
-                        help='directory to load models', default="models",
+                        help='directory to load models', default="only_faster_models",
                         type=str)
     parser.add_argument('--cuda', dest='cuda',
                         help='whether use CUDA',
@@ -134,7 +136,14 @@ if __name__ == '__main__':
         args.imdbval_name = "vg_150-50-50_minival"
         args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]']
 
-    args.cfg_file = "cfgs/{}_ls.yml".format(args.net) if args.large_scale else "cfgs/{}.yml".format(args.net)
+    if args.net == 'alexnet':
+        args.cfg_file = "student_cfgs/{}_ls.yml".format(args.net) if args.large_scale else "student_cfgs/{}.yml".format(
+            args.net)
+    elif args.net == 'vgg16':
+        args.cfg_file = "teacher_cfgs/{}.yml".format(args.net)
+    else:
+        print("network is not defined")
+        pdb.set_trace()
 
     if args.cfg_file is not None:
         cfg_from_file(args.cfg_file)
@@ -153,18 +162,14 @@ if __name__ == '__main__':
     input_dir = args.load_dir + "/" + args.net + "/" + args.dataset
     if not os.path.exists(input_dir):
         raise Exception('There is no input directory for loading network from ' + input_dir)
-    load_name = os.path.join(input_dir,
-        'faster_rcnn_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
+    load_name = os.path.join(input_dir,str(args.net)+'_'+
+        'only_faster_rcnn_{}_{}_{}.pth'.format(args.checksession, args.checkepoch, args.checkpoint))
 
       # initilize the network here.
     if args.net == 'vgg16':
         fasterRCNN = vgg16(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic)
-    elif args.net == 'res101':
-        fasterRCNN = resnet(imdb.classes, 101, pretrained=False, class_agnostic=args.class_agnostic)
-    elif args.net == 'res50':
-        fasterRCNN = resnet(imdb.classes, 50, pretrained=False, class_agnostic=args.class_agnostic)
-    elif args.net == 'res152':
-        fasterRCNN = resnet(imdb.classes, 152, pretrained=False, class_agnostic=args.class_agnostic)
+    elif args.net == 'alexnet':
+        fasterRCNN = alexnet(imdb.classes,pretrained=False, class_agnostic=args.class_agnostic)
     else:
         print("network is not defined")
         pdb.set_trace()
@@ -213,7 +218,7 @@ if __name__ == '__main__':
     else:
         thresh = 0.0
 
-    save_name = 'faster_rcnn_10'
+    save_name = 'only_faster_rcnn_10_'+str(args.net)
     num_images = len(imdb.image_index)
     all_boxes = [[[] for _ in xrange(num_images)]
                  for _ in xrange(imdb.num_classes)]
@@ -225,6 +230,7 @@ if __name__ == '__main__':
                                              shuffle=False, num_workers=0,
                                              pin_memory=True)
 
+
     data_iter = iter(dataloader)
 
     _t = {'im_detect': time.time(), 'misc': time.time()}
@@ -233,10 +239,8 @@ if __name__ == '__main__':
     fasterRCNN.eval()
     empty_array = np.transpose(np.array([[], [], [], [], []]), (1, 0))
     for i in range(num_images):
-
         data = next(data_iter)
         im_data.data.resize_(data[0].size()).copy_(data[0])
-        im_data = resize_images(im_data, [600,600])
         im_info.data.resize_(data[1].size()).copy_(data[1])
         gt_boxes.data.resize_(data[2].size()).copy_(data[2])
         num_boxes.data.resize_(data[3].size()).copy_(data[3])
@@ -246,9 +250,7 @@ if __name__ == '__main__':
         rois, cls_prob, bbox_pred, \
         rpn_loss_cls, rpn_loss_box, \
         RCNN_loss_cls, RCNN_loss_bbox, \
-        rois_label, Z_t, R_t, fg_bg_label, \
-        y_reg, iw, ow, rois_target, rois_inside_ws, \
-        rois_outside_ws, rcn_cls_score= fasterRCNN(im_data, im_info, gt_boxes, num_boxes)
+        rois_label = fasterRCNN(im_data, im_info, gt_boxes, num_boxes)
 
         scores = cls_prob.data
         boxes = rois.data[:, :, 1:5]
