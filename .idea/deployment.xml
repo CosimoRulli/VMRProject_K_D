@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" serverName="micc.harlock">
     <serverData>
-      <paths name="micc.ultron">
+      <paths name="micc.harlock">
         <serverdata>
           <mappings>
-            <mapping deploy="/magi_code" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/knowledge_distillation" local="$PROJECT_DIR$" web="/" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/data" />
             <excludedPath local="true" path="$PROJECT_DIR$/images" />
             <excludedPath local="true" path="$PROJECT_DIR$/models" />
-            <excludedPath local="true" path="$PROJECT_DIR$/only_faster_models" />
-            <excludedPath path="/magi_code/data" />
-            <excludedPath path="/magi_code/images" />
-            <excludedPath path="/magi_code/logs" />
-            <excludedPath path="/magi_code/models" />
-            <excludedPath path="/magi_code/only_faster_logs" />
-            <excludedPath path="/magi_code/only_faster_models" />
-            <excludedPath path="/magi_code/output" />
+            <excludedPath local="true" path="$PROJECT_DIR$/output" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="micc.ultron">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/VMRProject_K_D" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/data" />
+            <excludedPath local="true" path="$PROJECT_DIR$/images" />
+            <excludedPath local="true" path="$PROJECT_DIR$/models" />
+            <excludedPath local="true" path="$PROJECT_DIR$/output" />
           </excludedPaths>
         </serverdata>
       </paths>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/orig_faster/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/orig_faster/orig_alexnet.py" afterDir="false" />
@@ -22,6 +23,16 @@
       <change beforePath="$PROJECT_DIR$/student_cfgs/vgg16.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/k_n_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/trainval_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_faster.py" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/images/casa_simo._det.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/index._det.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/index.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/nena._det.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/nena.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/k_n_trainval.py" beforeDir="false" afterPath="$PROJECT_DIR$/k_n_trainval.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/utils/loss.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/utils/loss.py" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,12 +42,18 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/VMRProject_K_D$Nosetests_in_test_net_py.coverage" NAME="Nosetests in test_net.py Coverage Results" MODIFIED="1548321885447" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+<<<<<<< Updated upstream
     <SUITE FILE_PATH="coverage/VMRProject_K_D$train_faster.coverage" NAME="train_faster Coverage Results" MODIFIED="1548927686005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+=======
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$test_net.coverage" NAME="test_net Coverage Results" MODIFIED="1548608401206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VMRProject_K_D$k_n_trainval.coverage" NAME="k_n_trainval Coverage Results" MODIFIED="1548674127831" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+>>>>>>> Stashed changes
     <SUITE FILE_PATH="coverage/VMRProject_K_D$demo.coverage" NAME="demo Coverage Results" MODIFIED="1548600976597" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VMRProject_K_D$old_test_net.coverage" NAME="old_test_net Coverage Results" MODIFIED="1548424972439" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VMRProject_K_D$k_n_trainval.coverage" NAME="k_n_trainval Coverage Results" MODIFIED="1548840278035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VMRProject_K_D$test_net.coverage" NAME="test_net Coverage Results" MODIFIED="1548608401206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
+<<<<<<< Updated upstream
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
     <option name="GROUP_DATA_SOURCES" value="true" />
@@ -50,6 +67,58 @@
     </option>
     <expand />
     <select />
+=======
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1423782026">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="17" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="1" />
+          <entry key="project.open.time.4" value="2" />
+          <entry key="project.open.time.7" value="8" />
+          <entry key="project.open.time.8" value="4" />
+          <entry key="project.opened" value="17" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="gitignore" value="1" />
+          <entry key="h" value="1" />
+          <entry key="py" value="107" />
+          <entry key="pyx" value="1" />
+          <entry key="sh" value="1" />
+          <entry key="yml" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="C++" value="1" />
+          <entry key="Cython" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="Python" value="107" />
+          <entry key="YAML" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="Python Console" value="232" />
+          <entry key="gitignore" value="4" />
+          <entry key="py" value="12118" />
+          <entry key="txt" value="702" />
+          <entry key="yml" value="18" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="PLAIN_TEXT" value="706" />
+          <entry key="Python" value="12350" />
+          <entry key="YAML" value="18" />
+        </counts>
+      </usages-collector>
+    </session>
+>>>>>>> Stashed changes
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -66,10 +135,17 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
               <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+=======
+        <entry file="file://$PROJECT_DIR$/demo.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4641">
+              <caret line="305" selection-start-line="305" selection-end-line="305" />
+>>>>>>> Stashed changes
               <folding>
                 <element signature="e#228#266#0" expanded="true" />
               </folding>
@@ -78,7 +154,57 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+<<<<<<< Updated upstream
         <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/orig_faster/orig_alexnet.py">
+=======
+        <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="590">
+              <caret line="244" column="25" lean-forward="true" selection-start-line="244" selection-start-column="25" selection-end-line="244" selection-end-column="25" />
+              <folding>
+                <element signature="e#661#699#0" expanded="true" />
+                <marker date="1548670496152" expanded="true" signature="2055:2264" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/roi_data_layer/roibatchLoader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1404">
+              <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="799">
+              <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+              <folding>
+                <element signature="e#228#266#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
+>>>>>>> Stashed changes
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="177">
               <caret line="39" column="25" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
@@ -147,6 +273,7 @@
         <option value="$PROJECT_DIR$/lib/model/nms/.gitignore" />
         <option value="$PROJECT_DIR$/old_test_net.py" />
         <option value="$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py" />
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/lib/roi_data_layer/minibatch.py" />
         <option value="$PROJECT_DIR$/lib/model/rpn/rpn.py" />
         <option value="$PROJECT_DIR$/lib/model/utils/loss.py" />
@@ -174,6 +301,16 @@
         <option value="$PROJECT_DIR$/lib/model/utils/blob.py" />
         <option value="$PROJECT_DIR$/lib/model/utils/config.py" />
         <option value="$PROJECT_DIR$/train_faster.py" />
+=======
+        <option value="$PROJECT_DIR$/demo.py" />
+        <option value="$PROJECT_DIR$/lib/roi_data_layer/minibatch.py" />
+        <option value="$PROJECT_DIR$/lib/model/rpn/rpn.py" />
+        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py" />
+        <option value="$PROJECT_DIR$/test_net.py" />
+        <option value="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" />
+        <option value="$PROJECT_DIR$/k_n_trainval.py" />
+        <option value="$PROJECT_DIR$/lib/model/utils/loss.py" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -205,6 +342,7 @@
               <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
+<<<<<<< Updated upstream
             </path>
             <path>
               <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
@@ -227,6 +365,8 @@
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
               <item name="rpn" type="462c0819:PsiDirectoryNode" />
+=======
+>>>>>>> Stashed changes
             </path>
           </expand>
           <select />
@@ -515,7 +655,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548411258978</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="commmit">
+      <created>1548669495755</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1548669495755</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -539,24 +686,35 @@
     <frame x="67" y="27" width="1299" height="741" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< Updated upstream
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8646003" visible="true" weight="0.20445505" />
       <window_info id="Structure" order="1" sideWeight="0.13539967" side_tool="true" weight="0.14558473" />
+=======
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1793027" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+>>>>>>> Stashed changes
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32972974" />
       <window_info anchor="bottom" id="File Transfer" order="1" weight="0.3115824" />
       <window_info anchor="bottom" id="Message" order="2" />
+<<<<<<< Updated upstream
       <window_info anchor="bottom" id="Find" order="3" weight="0.3360522" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.32952693" />
       <window_info anchor="bottom" id="Debug" order="5" visible="true" weight="0.11419249" />
+=======
+      <window_info anchor="bottom" id="Find" order="3" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.32972974" />
+      <window_info anchor="bottom" id="Debug" order="5" sideWeight="0.6757056" weight="0.23351352" />
+>>>>>>> Stashed changes
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="8" weight="0.32901832" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" weight="0.32972974" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.4997233" weight="0.32972974" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.32429442" side_tool="true" visible="true" weight="0.23351352" />
       <window_info anchor="bottom" id="Terminal" order="13" weight="0.32972974" />
-      <window_info anchor="bottom" id="Python Console" order="14" weight="0.113513514" />
+      <window_info anchor="bottom" id="Python Console" order="14" sideWeight="0.4997233" weight="0.38486487" />
       <window_info anchor="bottom" id="Messages" order="15" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -609,7 +767,8 @@
     <MESSAGE value="size [800,800], cambiato il padding di alexnet (messo su due livelli)--&gt; adesso il training parte" />
     <MESSAGE value="test pronto per student_net" />
     <MESSAGE value="aggiunto old test" />
-    <option name="LAST_COMMIT_MESSAGE" value="aggiunto old test" />
+    <MESSAGE value="commmit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commmit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -645,6 +804,7 @@
           <option name="timeStamp" value="160" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+<<<<<<< Updated upstream
           <url>file://$PROJECT_DIR$/lib/roi_data_layer/minibatch.py</url>
           <line>61</line>
           <option name="timeStamp" value="161" />
@@ -653,6 +813,16 @@
           <url>file://$PROJECT_DIR$/lib/roi_data_layer/minibatch.py</url>
           <line>23</line>
           <option name="timeStamp" value="162" />
+=======
+          <url>file://$PROJECT_DIR$/lib/model/utils/loss.py</url>
+          <line>70</line>
+          <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
+          <line>453</line>
+          <option name="timeStamp" value="126" />
+>>>>>>> Stashed changes
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/lib/roi_data_layer/roibatchLoader.py</url>
@@ -683,6 +853,16 @@
           <url>file://$PROJECT_DIR$/lib/roi_data_layer/minibatch.py</url>
           <line>79</line>
           <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
+          <line>394</line>
+          <option name="timeStamp" value="138" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/k_n_trainval.py</url>
+          <line>248</line>
+          <option name="timeStamp" value="139" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -759,47 +939,83 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+<<<<<<< Updated upstream
         <expression-string>plt.imshow(im[:][:][0])/  plt.show()</expression-string>
+=======
+        <expression-string>ratio_index</expression-string>
+>>>>>>> Stashed changes
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
+<<<<<<< Updated upstream
         <expression-string>plt.imshow(im[:][:][0])   plt.show()</expression-string>
+=======
+        <expression-string>ratio_index.shape</expression-string>
+>>>>>>> Stashed changes
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
+<<<<<<< Updated upstream
         <expression-string>plt.imshow(im[:][:][0]) plt.show()</expression-string>
+=======
+        <expression-string>imdb</expression-string>
+>>>>>>> Stashed changes
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
+<<<<<<< Updated upstream
         <expression-string>plt.imshow(im[:][:][0])</expression-string>
+=======
+        <expression-string>len(roidb)</expression-string>
+>>>>>>> Stashed changes
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
+<<<<<<< Updated upstream
         <expression-string>plt.show(im[:][:][0])</expression-string>
+=======
+        <expression-string>roidb</expression-string>
+>>>>>>> Stashed changes
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
+<<<<<<< Updated upstream
         <expression-string>im.shape</expression-string>
+=======
+        <expression-string>list(teacher_net.parameters())</expression-string>
+>>>>>>> Stashed changes
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
+<<<<<<< Updated upstream
         <expression-string>cfg.POOLING_SIZE</expression-string>
+=======
+        <expression-string>teacher_net.parameters()</expression-string>
+>>>>>>> Stashed changes
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
+<<<<<<< Updated upstream
         <expression-string>cfg.POOLING_MODE</expression-string>
+=======
+        <expression-string>teacher_net</expression-string>
+>>>>>>> Stashed changes
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
+<<<<<<< Updated upstream
         <expression-string>RCNN_loss_bbox</expression-string>
+=======
+        <expression-string>rpn_cls_score.shape</expression-string>
+>>>>>>> Stashed changes
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -1012,6 +1228,7 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/lib/model/roi_align/functions/roi_align.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="219">
@@ -1020,6 +1237,12 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/datasets/pascal_voc.py">
+=======
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/resnet.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/serialization.py">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
@@ -1070,6 +1293,7 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$USER_HOME$/.conda/envs/deeplearning/lib/python3.6/site-packages/torch/utils/data/sampler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1078,12 +1302,16 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.conda/envs/deeplearning/lib/python3.6/site-packages/torch/utils/data/dataloader.py">
+=======
+    <entry file="file://$PROJECT_DIR$/lib/roi_data_layer/minibatch.py">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="97">
           <caret line="190" column="43" lean-forward="true" selection-start-line="190" selection-start-column="43" selection-end-line="190" selection-end-column="43" />
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/lib/roi_data_layer/minibatch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="509">
@@ -1095,6 +1323,9 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/utils/blob.py">
+=======
+    <entry file="file://$USER_HOME$/anaconda3/envs/k_d_nn/lib/python3.6/site-packages/torch/nn/modules/module.py">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
           <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
@@ -1150,6 +1381,7 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/train_faster.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="257">
@@ -1161,6 +1393,9 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.conda/envs/deeplearning/lib/python3.6/site-packages/torchvision/models/__init__.py">
+=======
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
@@ -1180,12 +1415,56 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/orig_faster/orig_alexnet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="39" column="25" lean-forward="true" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
           <folding>
             <element signature="e#228#266#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/cfgs/vgg16.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" column="33" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
+          <folding>
+            <element signature="e#228#266#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/utils/loss.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="63" column="5" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/roi_data_layer/roibatchLoader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1404">
+          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/k_n_trainval.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="244" column="25" lean-forward="true" selection-start-line="244" selection-start-column="25" selection-end-line="244" selection-end-column="25" />
+          <folding>
+            <element signature="e#661#699#0" expanded="true" />
+            <marker date="1548670496152" expanded="true" signature="2055:2264" ph="..." />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>

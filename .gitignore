@@ -1,3 +1,4 @@
 data/*
 models/*
 output/*
+only_faster_models/*

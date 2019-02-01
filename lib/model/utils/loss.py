@@ -61,6 +61,7 @@ def compute_loss_classification(Z_t, Z_s, mu, L_hard, y, T=1):
     L_soft = -torch.mean(P*wc)
     #L_soft = -torch.mean(P)
     L_cls = mu * L_hard + (1 - mu) * L_soft
+    #L_cls = L_hard
     #print("Lsoft : ", str(L_soft))
     #print("Lhard : ", str(L_hard))
     return L_cls, L_soft

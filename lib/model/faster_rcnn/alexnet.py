@@ -33,7 +33,7 @@ class alexnet(_fasterRCNN):
         self.class_agnostic = class_agnostic
         self.teaching = teaching
         #todo parametrizzare
-        self.n_frozen_layers = 5
+        self.n_frozen_layers = 10
 
         _fasterRCNN.__init__(self, classes, class_agnostic, teaching)
 

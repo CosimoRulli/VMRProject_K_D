@@ -27,8 +27,7 @@ model_urls = {
 class alexnet(_orig_fasterRCNN):
     def __init__(self, classes, pretrained=False, class_agnostic=False):
         self.dout_base_model = 256
-        self.model_path = 'data/pretrained_model/alexnet-owt-4df8aa71.pth'
-
+        self.model_path = 'data/pretrained_model/alexnet_torch.pth'
         self.pretrained = pretrained
         self.class_agnostic = class_agnostic
         #todo parametrizzare
