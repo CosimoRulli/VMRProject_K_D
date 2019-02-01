@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet_caffe.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cfgs/res101.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cfgs/res101_ls.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cfgs/res50.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cfgs/vgg16.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/k_n_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/k_n_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/k_n_trainval.py" beforeDir="false" afterPath="$PROJECT_DIR$/k_n_trainval.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/alexnet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/faster_rcnn/orig_faster/orig_alexnet.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/faster_rcnn/orig_faster/orig_alexnet.py" afterDir="false" />
-    </list>
+    <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,8 +71,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="19" column="88" lean-forward="true" selection-start-line="19" selection-start-column="88" selection-end-line="19" selection-end-column="88" />
+            <state relative-caret-position="136">
+              <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
               <folding>
                 <element signature="e#228#266#0" expanded="true" />
               </folding>
@@ -418,7 +407,7 @@
       <workItem from="1548962019117" duration="8232000" />
       <workItem from="1548972045861" duration="3514000" />
       <workItem from="1548976484548" duration="910000" />
-      <workItem from="1549007608284" duration="5748000" />
+      <workItem from="1549007608284" duration="5992000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;impelementate rpn losses, aggiustato dimensionamento alexnet per ottenere 16x riduzione tra immagine input e feature map. &quot;">
       <created>1548086905827</created>
@@ -532,7 +521,21 @@
       <option name="project" value="LOCAL" />
       <updated>1548949407855</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Codice magi- adattata alexnet caffe">
+      <created>1549016912167</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1549016912169</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Codice magi- adattata alexnet caffe">
+      <created>1549017027082</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1549017027082</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -541,7 +544,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109314000" />
+    <option name="totallyTimeSpent" value="109558000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -555,11 +558,11 @@
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="1299" height="741" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8646003" visible="true" weight="0.19553073" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8646003" visible="true" weight="0.3200319" />
       <window_info id="Structure" order="1" sideWeight="0.13539967" side_tool="true" weight="0.14558473" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32972974" />
-      <window_info anchor="bottom" id="File Transfer" order="1" visible="true" weight="0.08099174" />
+      <window_info anchor="bottom" id="File Transfer" order="1" visible="true" weight="0.3305785" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.3360522" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.32952693" />
@@ -1169,8 +1172,8 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/vgg16.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="19" column="88" lean-forward="true" selection-start-line="19" selection-start-column="88" selection-end-line="19" selection-end-column="88" />
+        <state relative-caret-position="136">
+          <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
           <folding>
             <element signature="e#228#266#0" expanded="true" />
           </folding>
