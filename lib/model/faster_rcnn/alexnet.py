@@ -25,8 +25,8 @@ class alexnet(_fasterRCNN):
         # todo parametrizzare
         self.n_frozen_layers = 10
         print("N_Frozen_layers: " + str(self.n_frozen_layers))
-
-        _fasterRCNN.__init__(self, classes, class_agnostic, teaching)
+        pooling_size = 6
+        _fasterRCNN.__init__(self, classes, class_agnostic, pooling_size, teaching)
 
     def _init_modules(self):
         alexnet = AlexNet_caffe()

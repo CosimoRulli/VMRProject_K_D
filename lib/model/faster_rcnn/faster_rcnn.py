@@ -18,7 +18,8 @@ from model.utils.net_utils import _smooth_l1_loss, _crop_pool_layer, _affine_gri
 
 class _fasterRCNN(nn.Module):
     """ faster RCNN """
-    def __init__(self, classes, class_agnostic, teaching = False):
+
+    def __init__(self, classes, class_agnostic, pooling_size, teaching=False):
         super(_fasterRCNN, self).__init__()
         self.classes = classes
         self.n_classes = len(classes)
@@ -29,13 +30,13 @@ class _fasterRCNN(nn.Module):
 
         # define rpn
         self.teaching = teaching
-
+        self.pooling_size = pooling_size
         self.RCNN_rpn = _RPN(self.dout_base_model, teaching=self.teaching)
         self.RCNN_proposal_target = _ProposalTargetLayer(self.n_classes)
-        self.RCNN_roi_pool = _RoIPooling(cfg.POOLING_SIZE, cfg.POOLING_SIZE, 1.0/16.0)
-        self.RCNN_roi_align = RoIAlignAvg(cfg.POOLING_SIZE, cfg.POOLING_SIZE, 1.0/16.0)
+        self.RCNN_roi_pool = _RoIPooling(self.pooling_size, self.pooling_size, 1.0 / 16.0)
+        self.RCNN_roi_align = RoIAlignAvg(self.pooling_size, self.pooling_size, 1.0 / 16.0)
 
-        self.grid_size = cfg.POOLING_SIZE * 2 if cfg.CROP_RESIZE_WITH_MAX_POOL else cfg.POOLING_SIZE
+        self.grid_size = self.pooling_size * 2 if cfg.CROP_RESIZE_WITH_MAX_POOL else self.pooling_size
         self.RCNN_roi_crop = _RoICrop()
 
 
