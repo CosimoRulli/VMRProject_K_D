@@ -41,7 +41,7 @@ from model.utils.loss import  compute_loss_regression, compute_loss_classificati
 
 from torchvision.transforms import ToTensor, ToPILImage, Resize
 
-
+'''
 def resize_images(im_batch, size):
     new_im_batch = torch.zeros([im_batch.shape[0], im_batch.shape[1], size[0], size[1]])
     for i in range(im_batch.shape[0]):
@@ -59,7 +59,7 @@ def print_tensor(tensor_2d):
             sys.stdout.write(str(round(tensor_2d[i][j].item() ,2))+ " ")
             sys.stdout.flush()
         print()
-
+'''
 
 
 
@@ -232,7 +232,7 @@ if __name__ == '__main__':
       args.imdbval_name = "vg_150-50-50_minival"
       args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '50']
   '''
- # args.cfg_file = "student_cfgs/{}_ls.yml".format(args.net) if args.large_scale else "student_cfgs/{}.yml".format(args.net)
+  #  args.cfg_file = "student_cfgs/{}_ls.yml".format(args.net) if args.large_scale else "student_cfgs/{}.yml".format(args.net)
 
   args.cfg_file = "student_cfgs/{}.yml".format(args.s_net)
   print("File di configurazione della student")
@@ -246,7 +246,7 @@ if __name__ == '__main__':
   print('Using config:')
   np.random.seed(cfg.RNG_SEED)
 
-  #torch.backends.cudnn.benchmark = True
+  #  torch.backends.cudnn.benchmark = True
   if torch.cuda.is_available() and not args.cuda:
     print("WARNING: You have a CUDA device, so you should probably run with --cuda")
 
@@ -287,7 +287,7 @@ if __name__ == '__main__':
     num_boxes = num_boxes.cuda()
     gt_boxes = gt_boxes.cuda()
 
-  # make variable
+  #  make variable
   im_data = Variable(im_data)
   im_info = Variable(im_info)
   num_boxes = Variable(num_boxes)
@@ -426,7 +426,6 @@ if __name__ == '__main__':
       gt_boxes.data.resize_(data[2].size()).copy_(data[2])
       num_boxes.data.resize_(data[3].size()).copy_(data[3])
 
-      #im_data = resize_images(im_data, [800,800])
       student_net.zero_grad()
 
       rois_t, cls_prob_t, bbox_pred_t, \
@@ -522,8 +521,6 @@ if __name__ == '__main__':
 
           }
           logger.add_scalars("logs_s_{}/losses".format(args.session), info, (epoch - 1) * iters_per_epoch + step)
-          #logger.add_graph(teacher_net,(im_data,im_info, gt_boxes, num_boxes))
-          #logger.add_graph(student_net,(im_data,im_info, gt_boxes, num_boxes))
 
         loss_temp = 0
         start = time.time()

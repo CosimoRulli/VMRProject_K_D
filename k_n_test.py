@@ -240,12 +240,9 @@ if __name__ == '__main__':
                for _ in xrange(imdb.num_classes)]
 
   output_dir = get_output_dir(imdb, save_name)
-  ##TODO MODIFICATO NORMALIZE
- ## normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
-                             ##      std=[0.229, 0.224, 0.225])
 
   dataset = roibatchLoader(roidb, ratio_list, ratio_index, 1, \
-                        imdb.num_classes, training=False, normalize = False) ##era a False
+                           imdb.num_classes, training=False, normalize=False)
 
 
   dataloader = torch.utils.data.DataLoader(dataset, batch_size=1,
@@ -262,8 +259,7 @@ if __name__ == '__main__':
   empty_array = np.transpose(np.array([[],[],[],[],[]]), (1,0))
   for i in range(num_images):
       data = next(data_iter)
-      #print(data)
-      #print(data[0])
+
       im_data.data.resize_(data[0].size()).copy_(data[0])
       im_info.data.resize_(data[1].size()).copy_(data[1])
       gt_boxes.data.resize_(data[2].size()).copy_(data[2])
