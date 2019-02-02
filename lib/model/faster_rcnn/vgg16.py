@@ -23,7 +23,8 @@ class vgg16(_fasterRCNN):
     self.pretrained = pretrained
     self.class_agnostic = class_agnostic
     self.teaching = teaching
-    _fasterRCNN.__init__(self, classes, class_agnostic, teaching)
+    pooling_size = 7
+    _fasterRCNN.__init__(self, classes, class_agnostic, pooling_size, teaching)
 
   def _init_modules(self):
     vgg = models.vgg16()
