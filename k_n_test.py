@@ -356,7 +356,7 @@ if __name__ == '__main__':
       pickle.dump(all_boxes, f, pickle.HIGHEST_PROTOCOL)
 
   print('Evaluating detections')
-  imdb.evaluate_detections(all_boxes, output_dir)
-
+  # imdb.evaluate_detections(all_boxes, output_dir)
+  print(imdb.evaluate_detections_MAP(all_boxes))
   end = time.time()
   print("test time: %0.4fs" % (end - start))

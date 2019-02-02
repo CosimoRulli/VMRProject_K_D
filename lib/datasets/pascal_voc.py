@@ -367,6 +367,62 @@ class pascal_voc(imdb):
             self.config['use_salt'] = True
             self.config['cleanup'] = True
 
+    def evaluate_detections_MAP(self, all_boxes):
+        self._write_voc_results_file(all_boxes)
+        map = self.compute_mean_MAP()
+
+        if self.config['cleanup']:
+            for cls in self._classes:
+                if cls == '__background__':
+                    continue
+                filename = self._get_voc_results_file_template().format(cls)
+                os.remove(filename)
+        return map
+
+    def compute_mean_MAP(self):
+        annopath = os.path.join(
+            self._devkit_path,
+            'VOC' + self._year,
+            'Annotations',
+            '{:s}.xml')
+        imagesetfile = os.path.join(
+            self._devkit_path,
+            'VOC' + self._year,
+            'ImageSets',
+            'Main',
+            self._image_set + '.txt')
+        cachedir = os.path.join(self._devkit_path, 'annotations_cache')
+        aps = []
+        # The PASCAL VOC metric changed in 2010
+        use_07_metric = True if int(self._year) < 2010 else False
+        print('VOC07 metric? ' + ('Yes' if use_07_metric else 'No'))
+
+        for i, cls in enumerate(self._classes):
+            if cls == '__background__':
+                continue
+            filename = self._get_voc_results_file_template().format(cls)
+            rec, prec, ap = voc_eval(
+                filename, annopath, imagesetfile, cls, cachedir, ovthresh=0.5,
+                use_07_metric=use_07_metric)
+            aps += [ap]
+            print('AP for {} = {:.4f}'.format(cls, ap))
+
+        meanAP = np.mean(aps)
+        print('Mean AP = {:.4f}'.format(np.mean(aps)))
+        print('~~~~~~~~')
+        print('Results:')
+        for ap in aps:
+            print('{:.3f}'.format(ap))
+        print('{:.3f}'.format(np.mean(aps)))
+        print('~~~~~~~~')
+        print('')
+        print('--------------------------------------------------------------')
+        print('Results computed with the **unofficial** Python eval code.')
+        print('Results should be very close to the official MATLAB eval code.')
+        print('Recompute with `./tools/reval.py --matlab ...` for your paper.')
+        print('-- Thanks, The Management')
+        print('--------------------------------------------------------------')
+        return meanAP
 
 if __name__ == '__main__':
     d = pascal_voc('trainval', '2007')
