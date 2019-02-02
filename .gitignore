@@ -1,4 +1,7 @@
 data/*
+images/*
 models/*
 output/*
 only_faster_models/*
+only_faster_logs/*
+logs/*
