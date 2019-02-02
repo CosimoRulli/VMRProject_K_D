@@ -404,6 +404,8 @@ if __name__ == '__main__':
     print("ni: " + str(ni))
     print("m:" + str(m))
     maps = []
+    best_epoch = 0
+    best_map = 0
     for epoch in range(args.start_epoch, args.max_epochs + 1):
 
         student_net.train()
@@ -514,6 +516,7 @@ if __name__ == '__main__':
                         'loss_rpn_reg_hard': rpn_loss_box_s,
                         'loss_rpn_reg_soft': loss_rpn_reg_soft,
                         'loss_rpn_reg': loss_rpn_reg,
+                        'loss_rpn_reg_teacher': rpn_loss_box_t,
 
                         'loss_rcn_cls_hard': RCNN_loss_cls_s,
                         'loss_rcn_cls_soft': loss_rcn_cls_soft,
@@ -522,6 +525,8 @@ if __name__ == '__main__':
                         'loss_rcn_reg_hard': RCNN_loss_bbox_s,
                         'loss_rcn_reg_soft': loss_rcn_reg_soft,
                         'loss_rcn_reg': loss_rcn_reg,
+                        'loss_rcn_reg_teacher': RCNN_loss_bbox_t,
+
                         'loss': loss_temp,
 
                     }
@@ -532,22 +537,29 @@ if __name__ == '__main__':
                 start = time.time()
         map = evaluate(student_net, imdb, roidb, ratio_list, ratio_index)
         maps.append(map)
-        if map == max(maps):
-            for file in os.listdir(output_dir):
-                os.remove(os.path.join(output_dir, file))
-            save_name = os.path.join(output_dir,
-                                     '{}_{}_student_net_{}_{}_{}.pth'.format(args.m, args.mu, args.session,
-                                                                             epoch,
-                                                                             step))
-            save_checkpoint({
-                'session': args.session,
-                'epoch': epoch + 1,
-                'model': student_net.module.state_dict() if args.mGPUs else student_net.state_dict(),
-                'optimizer': optimizer.state_dict(),
-                'pooling_mode': cfg.POOLING_MODE,
-                'class_agnostic': args.class_agnostic,
-            }, save_name)
-            print('save model: {}'.format(save_name))
+        if epoch == 0:
+            best_map = 0
+        else:
+            if map > best_map:
+                os.remove(
+                    os.path.join(output_dir, '{}_{}_student_net_{}_{}_{}.pth'.format(args.m, args.mu, args.session,
+                                                                                     best_epoch,
+                                                                                     step)))
+                best_epoch = epoch
+                best_map = map
+                save_name = os.path.join(output_dir,
+                                         '{}_{}_student_net_{}_{}_{}.pth'.format(args.m, args.mu, args.session,
+                                                                                 epoch,
+                                                                                 step))
+                save_checkpoint({
+                    'session': args.session,
+                    'epoch': epoch + 1,
+                    'model': student_net.module.state_dict() if args.mGPUs else student_net.state_dict(),
+                    'optimizer': optimizer.state_dict(),
+                    'pooling_mode': cfg.POOLING_MODE,
+                    'class_agnostic': args.class_agnostic,
+                }, save_name)
+                print('save model: {}'.format(save_name))
         ''' 
         if (epoch != 0 and epoch % 3 == 0):
             save_name = os.path.join(output_dir,
