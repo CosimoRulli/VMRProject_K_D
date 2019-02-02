@@ -1,0 +1,1 @@
+Logs di TensorBoard per training di Faster R CNN
