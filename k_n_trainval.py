@@ -442,6 +442,8 @@ if __name__ == '__main__':
       R_t = R_t.detach()
       rcn_cls_score_t= rcn_cls_score_t.detach()
 
+      rpn_loss_box_t = rpn_loss_box_t.detach()
+      RCNN_loss_bbox_t = RCNN_loss_bbox_t.detach()
 
       rois_s, cls_prob_s, bbox_pred_s, \
       rpn_loss_cls_s, rpn_loss_box_s, \

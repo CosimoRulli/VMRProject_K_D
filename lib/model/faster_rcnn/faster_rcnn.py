@@ -71,7 +71,7 @@ class _fasterRCNN(nn.Module):
             rois_inside_ws = None
             rois_outside_ws = None
             rpn_loss_cls = 0
-            rpn_loss_bbox = 0
+            # rpn_loss_bbox = 0
         '''
         roi_data = self.RCNN_proposal_target(rois, gt_boxes, num_boxes)
         rois, rois_label, rois_target, rois_inside_ws, rois_outside_ws = roi_data
@@ -124,7 +124,7 @@ class _fasterRCNN(nn.Module):
             RCNN_loss_cls = F.cross_entropy(cls_score, rois_label)
 
             # bounding box regression L1 loss
-            RCNN_loss_bbox = _smooth_l1_loss(bbox_pred, rois_target, rois_inside_ws, rois_outside_ws)
+        RCNN_loss_bbox = _smooth_l1_loss(bbox_pred, rois_target, rois_inside_ws, rois_outside_ws)
 
 
         cls_prob = cls_prob.view(batch_size, rois.size(1), -1)
