@@ -1,0 +1,1 @@
+Modello di vgg16 per knowledge distillation

@@ -1,0 +1,1 @@
+Modello di alexnet trained with knowledge distillation

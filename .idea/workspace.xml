@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3957e037-55f6-4fbc-969c-83f11c50c176" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/only_faster_models/alexnet/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/only_faster_models/vgg16/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/alexnet/readme.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/vgg16/readme.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
+            <state relative-caret-position="225">
+              <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -61,49 +61,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output/alexnet/readme.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/output/vgg16/readme.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/only_faster_models/alexnet/pascal_voc/readme.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/only_faster_models/vgg16/pascal_voc/readme.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/alexnet/pascal_voc/readme.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/vgg16/pascal_voc/readme.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/only_faster_models/alexnet/readme.txt">
+        <entry file="file://$PROJECT_DIR$/models/alexnet/readme.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret selection-end-column="27" />
+              <caret column="54" selection-start-column="54" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/only_faster_models/vgg16/readme.txt">
+        <entry file="file://$PROJECT_DIR$/models/vgg16/readme.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            <state>
+              <caret column="43" selection-start-column="43" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -202,14 +172,17 @@
         <option value="$PROJECT_DIR$/output/readme.txt" />
         <option value="$PROJECT_DIR$/only_faster_models/alexnet/readme.txt" />
         <option value="$PROJECT_DIR$/only_faster_models/vgg16/readme.txt" />
+        <option value="$PROJECT_DIR$/logs/readme.txt" />
+        <option value="$PROJECT_DIR$/models/alexnet/readme.txt" />
+        <option value="$PROJECT_DIR$/models/vgg16/readme.txt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="487" />
+    <option name="x" value="67" />
     <option name="y" value="27" />
-    <option name="width" value="994" />
-    <option name="height" value="599" />
+    <option name="width" value="535" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -227,18 +200,18 @@
             <path>
               <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
               <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
-              <item name="only_faster_models" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
               <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
-              <item name="only_faster_models" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
               <item name="alexnet" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VMRProject_K_D" type="b2602c69:ProjectViewProjectNode" />
               <item name="VMRProject_K_D" type="462c0819:PsiDirectoryNode" />
-              <item name="only_faster_models" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
               <item name="vgg16" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -428,7 +401,7 @@
       <workItem from="1548972045861" duration="3514000" />
       <workItem from="1548976484548" duration="910000" />
       <workItem from="1549007608284" duration="5992000" />
-      <workItem from="1549104491010" duration="2135000" />
+      <workItem from="1549104491010" duration="2439000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;impelementate rpn losses, aggiustato dimensionamento alexnet per ottenere 16x riduzione tra immagine input e feature map. &quot;">
       <created>1548086905827</created>
@@ -584,7 +557,21 @@
       <option name="project" value="LOCAL" />
       <updated>1549106380858</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Aggiunti readme.txt per aggiornare struttura folders training di Faster R CNN">
+      <created>1549106673840</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1549106673840</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Aggiunto readme.txt per folder log di tensorboard">
+      <created>1549106818438</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1549106818438</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -593,7 +580,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111693000" />
+    <option name="totallyTimeSpent" value="111997000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -683,7 +670,9 @@
     <MESSAGE value="Codice magi- adattata alexnet caffe" />
     <MESSAGE value="gitignore temporaneo per sistemare folders" />
     <MESSAGE value="Aggiunti readme.txt per aggiornare struttura folders." />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunti readme.txt per aggiornare struttura folders." />
+    <MESSAGE value="Aggiunti readme.txt per aggiornare struttura folders training di Faster R CNN" />
+    <MESSAGE value="Aggiunto readme.txt per folder log di tensorboard" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunto readme.txt per folder log di tensorboard" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -853,33 +842,6 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/datasets/imdb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="188" lean-forward="true" selection-start-line="188" selection-end-line="188" />
-          <folding>
-            <element signature="e#264#302#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/roi_align/functions/roi_align.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="22" column="28" lean-forward="true" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/datasets/pascal_voc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="51" column="26" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/datasets/pascal_voc_rbg.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
@@ -1163,33 +1125,12 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
+    <entry file="file://$PROJECT_DIR$/only_faster_models/vgg16/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="27" column="14" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output/alexnet/readme.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/output/vgg16/readme.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/only_faster_models/alexnet/pascal_voc/readme.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/only_faster_models/vgg16/pascal_voc/readme.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/alexnet/pascal_voc/readme.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/vgg16/pascal_voc/readme.txt">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/only_faster_models/alexnet/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
@@ -1198,10 +1139,52 @@ rpn_cls_score = torch.index_select(rpn_cls_score.view(-1,2), 0, rpn_keep)</expre
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/only_faster_models/vgg16/readme.txt">
+    <entry file="file://$PROJECT_DIR$/models/vgg16/pascal_voc/readme.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/alexnet/pascal_voc/readme.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/only_faster_models/vgg16/pascal_voc/readme.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/only_faster_models/alexnet/pascal_voc/readme.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/vgg16/readme.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/alexnet/readme.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state>
+          <caret column="55" lean-forward="true" selection-start-column="55" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/model/faster_rcnn/faster_rcnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="30" column="7" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/alexnet/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="54" selection-start-column="54" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/vgg16/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="43" selection-start-column="43" selection-end-column="43" />
         </state>
       </provider>
     </entry>
