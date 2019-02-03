@@ -410,30 +410,7 @@ if __name__ == '__main__':
 
         student_net.train()
         teacher_net.eval()
-
         loss_temp = 0
-
-        loss_rpn_cls_hard_temp = 0
-        loss_rpn_cls_soft_temp = 0
-        loss_rpn_cls_temp = 0
-
-        loss_rpn_reg_hard_temp  = 0
-        loss_rpn_reg_soft_temp = 0
-        loss_rpn_reg_temp = 0
-
-        loss_rcn_cls_hard_temp = 0
-        loss_rcn_cls_soft_temp = 0
-        loss_rcn_cls_temp = 0
-
-        loss_rcn_reg_hard_temp = 0
-        loss_rcn_reg_soft_temp = 0
-        loss_rcn_reg_temp = 0
-
-        norm_s_rpn_temp = 0
-        norm_t_rpn_temp = 0
-        norm_s_rcn_temp = 0
-        norm_t_rcn_temp = 0
-
         start = time.time()
 
         if epoch % (args.lr_decay_step + 1) == 0:
@@ -475,7 +452,7 @@ if __name__ == '__main__':
 
             L_hard = rpn_loss_cls_s
             loss_rpn_cls, loss_rpn_cls_soft = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
-            loss_rpn_reg, loss_rpn_reg_soft, norm_s_rpn, norm_t_rpn = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, y_reg_t, m=m,
+            loss_rpn_reg, loss_rpn_reg_soft = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, y_reg_t, m=m,
                                                                       bbox_inside_weights_s=iw_s,
                                                                       bbox_inside_weights_t=iw_t,
                                                                       bbox_outside_weights_s=ow_s,
@@ -484,7 +461,7 @@ if __name__ == '__main__':
 
             loss_rcn_cls, loss_rcn_cls_soft = compute_loss_classification(rcn_cls_score_t, rcn_cls_score_s, mu,
                                                                           RCNN_loss_cls_s, rois_label_t, T=1)
-            loss_rcn_reg, loss_rcn_reg_soft,norm_s_rcn, norm_t_rcn = compute_loss_regression(RCNN_loss_bbox_s, bbox_pred_s, bbox_pred_t,
+            loss_rcn_reg, loss_rcn_reg_soft = compute_loss_regression(RCNN_loss_bbox_s, bbox_pred_s, bbox_pred_t,
                                                                       rois_target_s, rois_target_t, m=m,
                                                                       bbox_inside_weights_s=rois_inside_ws_s,
                                                                       bbox_inside_weights_t=rois_inside_ws_t,
@@ -494,31 +471,7 @@ if __name__ == '__main__':
             loss = loss_rpn_cls + l * loss_rpn_reg + \
                    loss_rcn_cls + l * loss_rcn_reg
 
-            #cumulate losses on the disp_interval, only for tbf and prints
             loss_temp += loss.item()
-            '''
-            loss_rpn_cls_hard_temp += L_hard
-            loss_rpn_cls_soft_temp += loss_rpn_cls_soft
-            loss_rpn_cls_temp += loss_rpn_cls
-
-            loss_rpn_reg_hard_temp += rpn_loss_box_s
-            loss_rpn_reg_soft_temp += loss_rpn_reg_soft_temp
-            loss_rpn_reg_temp += loss_rpn_reg
-
-            loss_rcn_cls_hard_temp += RCNN_loss_cls_s
-            loss_rcn_cls_soft_temp += loss_rcn_cls_soft
-            loss_rcn_cls_temp += loss_rcn_cls
-
-            loss_rcn_reg_hard_temp += RCNN_loss_bbox_s
-            loss_rcn_reg_soft += loss_rcn_reg_soft
-            loss_rcn_reg += loss_rcn_reg
-            '''
-            norm_s_rpn_temp+= norm_s_rpn
-            norm_t_rpn_temp+= norm_t_rpn
-
-            norm_s_rcn_temp += norm_s_rcn
-            norm_t_rcn_temp += norm_t_rcn
-
 
             # backward
             optimizer.zero_grad()
@@ -531,29 +484,6 @@ if __name__ == '__main__':
                 end = time.time()
                 if step > 0:
                     loss_temp /= (args.disp_interval + 1)
-                    '''
-                    loss_rpn_cls_hard_temp /= (args.disp_interval + 1)
-                    loss_rpn_cls_soft_temp /= ( args.disp_interval + 1)
-                    loss_rpn_cls_temp /= (args.disp_interval + 1)
-
-                    loss_rpn_reg_hard_temp /= (args.disp_interval + 1)
-                    loss_rpn_reg_soft_temp /= (args.disp_interval + 1)
-                    loss_rpn_reg_temp /= (args.disp_interval + 1)
-
-                    loss_rcn_cls_hard_temp /= (args.disp_interval + 1)
-                    loss_rcn_cls_soft_temp /= (args.disp_interval + 1)
-                    loss_rcn_cls_temp /= (args.disp_interval + 1)
-
-                    loss_rcn_reg_hard_temp /= (args.disp_interval + 1)
-                    loss_rcn_reg_soft /= (args.disp_interval + 1)
-                    loss_rcn_reg /= (args.disp_interval + 1)
-                    '''
-                    norm_s_rpn_temp/= (args.disp_interval + 1)
-                    norm_t_rpn_temp/= (args.disp_interval + 1)
-
-                    norm_s_rcn_temp /= (args.disp_interval + 1)
-                    norm_t_rcn_temp /= (args.disp_interval + 1)
-
                 '''
                 if args.mGPUs:
                     loss_rpn_cls = rpn_loss_cls.mean().item()
@@ -579,39 +509,6 @@ if __name__ == '__main__':
                       % (loss_rpn_cls, loss_rpn_reg, loss_rcn_cls, loss_rcn_reg))
                 if (len(maps) != 0):
                     print("Best map : %.4f at epoch %s" %(max(maps),np.argmax(maps) + 1))
-                '''
-                if args.use_tfboard:
-                    info = {
-                        'loss_rpn_cls_hard': loss_rpn_cls_hard_temp,
-                        'loss_rpn_cls_soft': loss_rpn_cls_soft_temp,
-                        'loss_rpn_cls': loss_rpn_cls_temp,
-
-                        'loss_rpn_reg_hard': loss_rpn_reg_hard_temp,
-                        'loss_rpn_reg_soft': loss_rpn_reg_soft_temp,
-                        'loss_rpn_reg': loss_rpn_reg_temp,
-
-
-                        'loss_rcn_cls_hard': loss_rcn_cls_hard_temp,
-                        'loss_rcn_cls_soft': loss_rcn_cls_soft_temp,
-                        'loss_rcn_cls': loss_rcn_cls_temp,
-
-                        'loss_rcn_reg_hard': loss_rcn_reg_hard_temp,
-                        'loss_rcn_reg_soft': loss_rcn_reg_soft,
-                        'loss_rcn_reg': loss_rcn_reg,
-
-
-                        'loss': loss_temp,
-
-
-                        'norm_s_rpn': norm_s_rpn_temp,
-                        'norm_t_rpn': norm_t_rpn_temp,
-
-                        'norm_s_rcn': norm_s_rcn_temp,
-                        'norm_t_rcn': norm_t_rcn_temp,
-                    }
-                    logger.add_scalars("logs_s_{}/losses".format(args.session), info,
-                                       (epoch - 1) * iters_per_epoch + step)
-                    '''
                 if args.use_tfboard:
                     info = {
                         'loss_rpn_cls_hard': L_hard,
@@ -632,12 +529,6 @@ if __name__ == '__main__':
                         'loss_rcn_reg': loss_rcn_reg,
                         'loss_rcn_reg_teacher': RCNN_loss_bbox_t,
 
-                        'norm_s_rpn': norm_s_rpn_temp,
-                        'norm_t_rpn': norm_t_rpn_temp,
-
-                        'norm_s_rcn': norm_s_rcn_temp,
-                        'norm_t_rcn': norm_t_rcn_temp,
-
                         'loss': loss_temp,
 
                     }
@@ -645,26 +536,7 @@ if __name__ == '__main__':
                                        (epoch - 1) * iters_per_epoch + step)
 
                 loss_temp = 0
-                loss_rpn_cls_hard_temp = 0
-                loss_rpn_cls_soft_temp = 0
-                loss_rpn_cls_temp = 0
-
-                loss_rpn_reg_hard_temp = 0
-                loss_rpn_reg_soft_temp = 0
-                loss_rpn_reg_temp = 0
-
-                loss_rcn_cls_hard_temp = 0
-                loss_rcn_cls_soft_temp = 0
-                loss_rcn_cls_temp = 0
-
-                loss_rcn_reg_hard_temp = 0
-                loss_rcn_reg_soft = 0
-                loss_rcn_reg = 0
-
-
-
                 start = time.time()
-
         map = evaluate(student_net, args.imdbval_name)
         #map = np.random.randint(100)
         maps.append(map)

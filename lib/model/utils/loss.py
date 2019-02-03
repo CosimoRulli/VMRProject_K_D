@@ -85,7 +85,7 @@ def compute_loss_regression(smooth_l1_loss, Rs, Rt, y_reg_s, y_reg_t , m, bbox_i
   zeros = torch.zeros(norm_s.shape).cuda()
   l_b = torch.where((norm_s + m <= norm_t), zeros, norm_s)
   l_reg =  smooth_l1_loss + ni * l_b.mean()
-  return l_reg, l_b.mean(), norm_s.mean(), norm_t.mean()
+  return l_reg, l_b.mean()
 
 '''
 

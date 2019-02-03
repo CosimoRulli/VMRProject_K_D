@@ -1,4 +1,4 @@
-cython
+cyt!Rull1M4g1stri_VMR!hon
 cffi
 opencv-python
 scipy
