@@ -451,8 +451,10 @@ if __name__ == '__main__':
             rois_outside_ws_s, rcn_cls_score_s = student_net(im_data, im_info, gt_boxes, num_boxes)
 
             L_hard = rpn_loss_cls_s
+
             loss_rpn_cls, loss_rpn_cls_soft = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
-            loss_rpn_reg, loss_rpn_reg_soft = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, y_reg_t, m=m,
+
+            loss_rpn_reg, loss_rpn_reg_soft, rpn_norm_s, rpn_norm_t = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, y_reg_t, m=m,
                                                                       bbox_inside_weights_s=iw_s,
                                                                       bbox_inside_weights_t=iw_t,
                                                                       bbox_outside_weights_s=ow_s,
@@ -461,7 +463,7 @@ if __name__ == '__main__':
 
             loss_rcn_cls, loss_rcn_cls_soft = compute_loss_classification(rcn_cls_score_t, rcn_cls_score_s, mu,
                                                                           RCNN_loss_cls_s, rois_label_t, T=1)
-            loss_rcn_reg, loss_rcn_reg_soft = compute_loss_regression(RCNN_loss_bbox_s, bbox_pred_s, bbox_pred_t,
+            loss_rcn_reg, loss_rcn_reg_soft, rcn_norm_s, rcn_norm_t = compute_loss_regression(RCNN_loss_bbox_s, bbox_pred_s, bbox_pred_t,
                                                                       rois_target_s, rois_target_t, m=m,
                                                                       bbox_inside_weights_s=rois_inside_ws_s,
                                                                       bbox_inside_weights_t=rois_inside_ws_t,
@@ -528,6 +530,14 @@ if __name__ == '__main__':
                         'loss_rcn_reg_soft': loss_rcn_reg_soft,
                         'loss_rcn_reg': loss_rcn_reg,
                         'loss_rcn_reg_teacher': RCNN_loss_bbox_t,
+
+                         'rpn_norm_s':rpn_norm_s,
+                         'rpn_norm_t':rpn_norm_t,
+
+                         'rcn_norm_s':rcn_norm_s,
+                         'rcn_norm_t':rcn_norm_t,
+
+
 
                         'loss': loss_temp,
 
