@@ -57,6 +57,7 @@ class _fasterRCNN(nn.Module):
 
         # if it is training phrase, then use ground trubut bboxes for refining
 
+
         if self.training or self.teaching:
             roi_data = self.RCNN_proposal_target(rois, gt_boxes, num_boxes)
             rois, rois_label, rois_target, rois_inside_ws, rois_outside_ws = roi_data
@@ -66,6 +67,7 @@ class _fasterRCNN(nn.Module):
             rois_inside_ws = Variable(rois_inside_ws.view(-1, rois_inside_ws.size(2)))
             rois_outside_ws = Variable(rois_outside_ws.view(-1, rois_outside_ws.size(2)))
         else:
+            
             rois_label = None
             rois_target = None
             rois_inside_ws = None
@@ -124,7 +126,7 @@ class _fasterRCNN(nn.Module):
             RCNN_loss_cls = F.cross_entropy(cls_score, rois_label)
 
             # bounding box regression L1 loss
-        RCNN_loss_bbox = _smooth_l1_loss(bbox_pred, rois_target, rois_inside_ws, rois_outside_ws)
+            RCNN_loss_bbox = _smooth_l1_loss(bbox_pred, rois_target, rois_inside_ws, rois_outside_ws)
 
 
         cls_prob = cls_prob.view(batch_size, rois.size(1), -1)

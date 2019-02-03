@@ -37,7 +37,7 @@ except NameError:
 
 
 def evaluate(student_net, dataset):
-    imdb, roidb, ratio_list, ratio_index = load_data(dataset)
+    imdb, roidb, ratio_list, ratio_index = combined_roidb(dataset, False)
 
     im_data = torch.FloatTensor(1)
     im_info = torch.FloatTensor(1)

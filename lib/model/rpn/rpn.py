@@ -119,8 +119,8 @@ class _RPN(nn.Module):
             #TODO rpn_bbox_pred è quello da restituire
             if self.training:
                 self.rpn_loss_cls = F.cross_entropy(rpn_cls_score, rpn_label)
-            # todo modificato, ci interessa valutare come varia la loss del teacher rispetto a quella dello studente per il calcolo di m
-            self.rpn_loss_box = _smooth_l1_loss(rpn_bbox_pred, rpn_bbox_targets, rpn_bbox_inside_weights,
-                                                            rpn_bbox_outside_weights, sigma=3, dim=[1,2,3])
+
+                self.rpn_loss_box = _smooth_l1_loss(rpn_bbox_pred, rpn_bbox_targets, rpn_bbox_inside_weights,
+                                                                rpn_bbox_outside_weights, sigma=3, dim=[1,2,3])
 
         return rois, self.rpn_loss_cls, self.rpn_loss_box, rpn_cls_score, rpn_bbox_pred, rpn_label, rpn_bbox_targets, rpn_bbox_inside_weights, rpn_bbox_outside_weights
