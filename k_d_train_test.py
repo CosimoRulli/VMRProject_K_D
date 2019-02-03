@@ -509,7 +509,7 @@ if __name__ == '__main__':
                 print("\t\t\trpn_cls: %.4f, rpn_reg: %.4f, rcn_cls: %.4f, rcn_reg %.4f" \
                       % (loss_rpn_cls, loss_rpn_reg, loss_rcn_cls, loss_rcn_reg))
                 if (len(maps) != 0):
-                    print("Best map " + str(max(maps)) + " at epoch " + str(np.argmax(maps) + 1))
+                    print("Best map : %.4f at epoch %s" %(max(maps),np.argmax(maps) + 1))
                 if args.use_tfboard:
                     info = {
                         'loss_rpn_cls_hard': L_hard,
@@ -538,16 +538,17 @@ if __name__ == '__main__':
 
                 loss_temp = 0
                 start = time.time()
-        map = evaluate(student_net, imdb, roidb, ratio_list, ratio_index)
+        map = evaluate(student_net, args.imdbval_name)
         maps.append(map)
         if epoch == 0:
             best_map = 0
         else:
             if map > best_map:
-                os.remove(
-                    os.path.join(output_dir, '{}_{}_student_net_{}_{}_{}.pth'.format(args.m, args.mu, args.session,
-                                                                                     best_epoch,
-                                                                                     step)))
+                if epoch !=0:
+                    os.remove(
+                        os.path.join(output_dir, '{}_{}_student_net_{}_{}_{}.pth'.format(args.m, args.mu, args.session,
+                                                                                         best_epoch,
+                                                                                         step)))
                 best_epoch = epoch
                 best_map = map
                 save_name = os.path.join(output_dir,
@@ -578,7 +579,8 @@ if __name__ == '__main__':
             }, save_name)
             print('save model: {}'.format(save_name))
         '''
-    with open('maps.txt', 'w') as f:
+    filename = 'maps_'+str(args.m)+'_'+str(args.mu)+'.txt'
+    with open(filename, 'w') as f:
         for item in maps:
             f.write("%s\n" % item)
     if args.use_tfboard:

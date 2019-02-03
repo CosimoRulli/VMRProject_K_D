@@ -36,7 +36,9 @@ except NameError:
     xrange = range  # Python 3
 
 
-def evaluate(student_net, imdb, roidb, ratio_list, ratio_index):
+def evaluate(student_net, dataset):
+    imdb, roidb, ratio_list, ratio_index = load_data(dataset)
+
     im_data = torch.FloatTensor(1)
     im_info = torch.FloatTensor(1)
     num_boxes = torch.LongTensor(1)
@@ -171,7 +173,7 @@ def evaluate(student_net, imdb, roidb, ratio_list, ratio_index):
     return map
 
 
-'''
+
 def load_data(dataset):
     if dataset == "pascal_voc":
         imdb_name = "voc_2007_trainval"
@@ -198,4 +200,4 @@ def load_data(dataset):
     imdb.competition_mode(on=True)
     print('{:d} roidb entries'.format(len(roidb)))
     return imdb, roidb, ratio_list, ratio_index
-'''
+
