@@ -496,7 +496,7 @@ if __name__ == '__main__':
 
             #cumulate losses on the disp_interval, only for tbf and prints
             loss_temp += loss.item()
-
+            '''
             loss_rpn_cls_hard_temp += L_hard
             loss_rpn_cls_soft_temp += loss_rpn_cls_soft
             loss_rpn_cls_temp += loss_rpn_cls
@@ -512,7 +512,7 @@ if __name__ == '__main__':
             loss_rcn_reg_hard_temp += RCNN_loss_bbox_s
             loss_rcn_reg_soft += loss_rcn_reg_soft
             loss_rcn_reg += loss_rcn_reg
-
+            '''
             norm_s_rpn_temp+= norm_s_rpn
             norm_t_rpn_temp+= norm_t_rpn
 
@@ -531,6 +531,7 @@ if __name__ == '__main__':
                 end = time.time()
                 if step > 0:
                     loss_temp /= (args.disp_interval + 1)
+                    '''
                     loss_rpn_cls_hard_temp /= (args.disp_interval + 1)
                     loss_rpn_cls_soft_temp /= ( args.disp_interval + 1)
                     loss_rpn_cls_temp /= (args.disp_interval + 1)
@@ -546,12 +547,13 @@ if __name__ == '__main__':
                     loss_rcn_reg_hard_temp /= (args.disp_interval + 1)
                     loss_rcn_reg_soft /= (args.disp_interval + 1)
                     loss_rcn_reg /= (args.disp_interval + 1)
-
+                    '''
                     norm_s_rpn_temp/= (args.disp_interval + 1)
                     norm_t_rpn_temp/= (args.disp_interval + 1)
 
                     norm_s_rcn_temp /= (args.disp_interval + 1)
                     norm_t_rcn_temp /= (args.disp_interval + 1)
+
                 '''
                 if args.mGPUs:
                     loss_rpn_cls = rpn_loss_cls.mean().item()
@@ -577,6 +579,7 @@ if __name__ == '__main__':
                       % (loss_rpn_cls, loss_rpn_reg, loss_rcn_cls, loss_rcn_reg))
                 if (len(maps) != 0):
                     print("Best map : %.4f at epoch %s" %(max(maps),np.argmax(maps) + 1))
+                '''
                 if args.use_tfboard:
                     info = {
                         'loss_rpn_cls_hard': loss_rpn_cls_hard_temp,
@@ -605,6 +608,38 @@ if __name__ == '__main__':
 
                         'norm_s_rcn': norm_s_rcn_temp,
                         'norm_t_rcn': norm_t_rcn_temp,
+                    }
+                    logger.add_scalars("logs_s_{}/losses".format(args.session), info,
+                                       (epoch - 1) * iters_per_epoch + step)
+                    '''
+                if args.use_tfboard:
+                    info = {
+                        'loss_rpn_cls_hard': L_hard,
+                        'loss_rpn_cls_soft': loss_rpn_cls_soft,
+                        'loss_rpn_cls': loss_rpn_cls,
+
+                        'loss_rpn_reg_hard': rpn_loss_box_s,
+                        'loss_rpn_reg_soft': loss_rpn_reg_soft,
+                        'loss_rpn_reg': loss_rpn_reg,
+                        'loss_rpn_reg_teacher': rpn_loss_box_t,
+
+                        'loss_rcn_cls_hard': RCNN_loss_cls_s,
+                        'loss_rcn_cls_soft': loss_rcn_cls_soft,
+                        'loss_rcn_cls': loss_rcn_cls,
+
+                        'loss_rcn_reg_hard': RCNN_loss_bbox_s,
+                        'loss_rcn_reg_soft': loss_rcn_reg_soft,
+                        'loss_rcn_reg': loss_rcn_reg,
+                        'loss_rcn_reg_teacher': RCNN_loss_bbox_t,
+
+                        'norm_s_rpn': norm_s_rpn_temp,
+                        'norm_t_rpn': norm_t_rpn_temp,
+
+                        'norm_s_rcn': norm_s_rcn_temp,
+                        'norm_t_rcn': norm_t_rcn_temp,
+
+                        'loss': loss_temp,
+
                     }
                     logger.add_scalars("logs_s_{}/losses".format(args.session), info,
                                        (epoch - 1) * iters_per_epoch + step)
