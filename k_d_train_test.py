@@ -1,4 +1,4 @@
-    # --------------------------------------------------------
+# --------------------------------------------------------
 # Pytorch multi-GPU Faster R-CNN
 # Licensed under The MIT License [see LICENSE for details]
 # Written by Jiasen Lu, Jianwei Yang, based on code from Ross Girshick
@@ -452,7 +452,7 @@ if __name__ == '__main__':
 
             L_hard = rpn_loss_cls_s
 
-            loss_rpn_cls, loss_rpn_cls_soft = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1)
+            loss_rpn_cls, loss_rpn_cls_soft = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1, weighted=True)
 
             loss_rpn_reg, loss_rpn_reg_soft, rpn_norm_s, rpn_norm_t = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, y_reg_t, m=m,
                                                                       bbox_inside_weights_s=iw_s,
@@ -462,7 +462,7 @@ if __name__ == '__main__':
             torch.set_printoptions(threshold=10000)
 
             loss_rcn_cls, loss_rcn_cls_soft = compute_loss_classification(rcn_cls_score_t, rcn_cls_score_s, mu,
-                                                                          RCNN_loss_cls_s, rois_label_t, T=1)
+                                                                          RCNN_loss_cls_s, rois_label_t, T=1, weighted=True)
             loss_rcn_reg, loss_rcn_reg_soft, rcn_norm_s, rcn_norm_t = compute_loss_regression(RCNN_loss_bbox_s, bbox_pred_s, bbox_pred_t,
                                                                       rois_target_s, rois_target_t, m=m,
                                                                       bbox_inside_weights_s=rois_inside_ws_s,
@@ -470,8 +470,8 @@ if __name__ == '__main__':
                                                                       bbox_outside_weights_s=rois_outside_ws_s,
                                                                       bbox_outside_weights_t=rois_outside_ws_t, ni=ni)
 
-            loss = loss_rpn_cls + l * loss_rpn_reg + \
-                   loss_rcn_cls + l * loss_rcn_reg
+            loss = loss_rpn_cls + l * loss_rpn_reg.double() + \
+                   loss_rcn_cls + l * loss_rcn_reg.double()
 
             loss_temp += loss.item()
 

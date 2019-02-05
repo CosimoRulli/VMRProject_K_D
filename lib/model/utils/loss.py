@@ -2,10 +2,12 @@ import torch.nn.functional as F
 import torch
 
 
-def compute_loss_classification(Z_t, Z_s, mu, L_hard, y, T=1):
+def compute_loss_classification(Z_t, Z_s, mu, L_hard, y, T=1, weighted = True):
     #vettori di pesi
-    wc = torch.where((y==0), 1.5*torch.ones(Z_t.shape[0]).cuda(), torch.ones(Z_s.shape[0]).cuda())
-
+    if weighted:
+        wc = torch.where((y==0), 1.5*torch.ones(Z_t.shape[0]).cuda(), torch.ones(Z_s.shape[0]).cuda()).double()
+    else:
+        wc = torch.ones(Z_s.shape[0]).cuda().double()
     Z_s = Z_s.double()
     Z_t = Z_t.double()
 
@@ -17,7 +19,7 @@ def compute_loss_classification(Z_t, Z_s, mu, L_hard, y, T=1):
 
     L_soft = -torch.mean(P*wc)
 
-    L_cls = mu * L_hard + (1 - mu) * L_soft
+    L_cls = mu * L_hard.double() + (1 - mu) * L_soft
 
     return L_cls, L_soft
 
