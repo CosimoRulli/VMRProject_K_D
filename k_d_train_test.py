@@ -414,8 +414,9 @@ if __name__ == '__main__':
         start = time.time()
 
         if epoch % (args.lr_decay_step + 1) == 0:
-            adjust_learning_rate(optimizer, args.lr_decay_gamma)
-            lr *= args.lr_decay_gamma
+            if(lr > 1e-4):
+                adjust_learning_rate(optimizer, args.lr_decay_gamma)
+                lr *= args.lr_decay_gamma
 
         data_iter = iter(dataloader)
 
@@ -454,7 +455,7 @@ if __name__ == '__main__':
 
             loss_rpn_cls, loss_rpn_cls_soft = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1, weighted=True)
 
-            loss_rpn_reg, loss_rpn_reg_soft, rpn_norm_s, rpn_norm_t = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, y_reg_t, m=m,
+            loss_rpn_reg, loss_rpn_reg_soft, rpn_norm_s, rpn_norm_t = compute_loss_regression(rpn_loss_box_s, R_s, R_t, y_reg_s, y_reg_t, m=1e-4,
                                                                       bbox_inside_weights_s=iw_s,
                                                                       bbox_inside_weights_t=iw_t,
                                                                       bbox_outside_weights_s=ow_s,
@@ -464,7 +465,7 @@ if __name__ == '__main__':
             loss_rcn_cls, loss_rcn_cls_soft = compute_loss_classification(rcn_cls_score_t, rcn_cls_score_s, mu,
                                                                           RCNN_loss_cls_s, rois_label_t, T=1, weighted=True)
             loss_rcn_reg, loss_rcn_reg_soft, rcn_norm_s, rcn_norm_t = compute_loss_regression(RCNN_loss_bbox_s, bbox_pred_s, bbox_pred_t,
-                                                                      rois_target_s, rois_target_t, m=m,
+                                                                      rois_target_s, rois_target_t, m=0.1,
                                                                       bbox_inside_weights_s=rois_inside_ws_s,
                                                                       bbox_inside_weights_t=rois_inside_ws_t,
                                                                       bbox_outside_weights_s=rois_outside_ws_s,
