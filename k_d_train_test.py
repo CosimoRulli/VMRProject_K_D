@@ -36,6 +36,7 @@ from model.utils.net_utils import weights_normal_init, save_net, load_net, \
     adjust_learning_rate, save_checkpoint, clip_gradient
 
 from model.faster_rcnn.vgg16 import vgg16
+from model.faster_rcnn.resnet import resnet
 from model.faster_rcnn.alexnet import alexnet
 from model.utils.loss import compute_loss_regression, compute_loss_classification
 from model.utils.evaluate_test import evaluate
@@ -72,7 +73,7 @@ def parse_args():
                         help='training dataset',
                         default='pascal_voc', type=str)
     parser.add_argument('--t_net', dest='t_net',
-                        help='vgg16',
+                        help='vgg16, res101',
                         default='vgg16', type=str)
     parser.add_argument('--s_net', dest='s_net',
                         help='alexnet',
@@ -307,6 +308,8 @@ if __name__ == '__main__':
 
     if args.t_net == 'vgg16':
         teacher_net = vgg16(imdb.classes, pretrained=False, class_agnostic=args.class_agnostic, teaching=True)
+    elif args.t_net == 'res101':
+        teacher_net = resnet(imdb.classes, 101, pretrained=False, class_agnostic=args.class_agnostic, teaching=True)
     else:
         print("teacher network is not defined")
         pdb.set_trace()
@@ -341,6 +344,7 @@ if __name__ == '__main__':
 
     lr = cfg.TRAIN.LEARNING_RATE
     lr = args.lr
+
     # tr_momentum = cfg.TRAIN.MOMENTUM
     # tr_momentum = args.momentum
 

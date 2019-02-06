@@ -103,7 +103,7 @@ class Bottleneck(nn.Module):
 
 
 class ResNet(nn.Module):
-  def __init__(self, block, layers, num_classes=1000):
+    def __init__(self, block, layers, num_classes=1000, teaching=False):
     self.inplanes = 64
     super(ResNet, self).__init__()
     self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3,
@@ -218,12 +218,16 @@ def resnet152(pretrained=False):
   return model
 
 class resnet(_fasterRCNN):
-  def __init__(self, classes, num_layers=101, pretrained=False, class_agnostic=False):
+    def __init__(self, classes, num_layers=101, pretrained=False, class_agnostic=False, teaching=False):
     self.model_path = 'data/pretrained_model/resnet101_caffe.pth'
     self.dout_base_model = 1024
     self.pretrained = pretrained
     self.class_agnostic = class_agnostic
-    _fasterRCNN.__init__(self, classes, class_agnostic)
+
+    # TODO ADDED
+    self.teaching = teaching
+    pooling_size = 6
+    _fasterRCNN.__init__(self, classes, class_agnostic, pooling_size, teaching)
 
   def _init_modules(self):
     resnet = resnet101()
