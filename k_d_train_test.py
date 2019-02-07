@@ -43,25 +43,7 @@ from model.utils.evaluate_test import evaluate
 
 from torchvision.transforms import ToTensor, ToPILImage, Resize
 
-'''
-def resize_images(im_batch, size):
-    new_im_batch = torch.zeros([im_batch.shape[0], im_batch.shape[1], size[0], size[1]])
-    for i in range(im_batch.shape[0]):
-        im_pil = ToPILImage()(im_batch[0].cpu())
-        im_pil = Resize(size)(im_pil)
-        new_im_batch[0, :, :, :] = ToTensor()(im_pil)
-    return new_im_batch.cuda()
 
-
-from model.faster_rcnn.resnet import resnet
-
-def print_tensor(tensor_2d):
-    for i in range(tensor_2d.shape[0]):
-        for j in range(tensor_2d.shape[1]):
-            sys.stdout.write(str(round(tensor_2d[i][j].item() ,2))+ " ")
-            sys.stdout.flush()
-        print()
-'''
 
 
 def parse_args():
@@ -214,27 +196,7 @@ if __name__ == '__main__':
         args.imdb_name = "voc_2007_trainval"
         args.imdbval_name = "voc_2007_test"
         args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
-    '''
-    elif args.dataset == "pascal_voc_0712":
-        args.imdb_name = "voc_2007_trainval+voc_2012_trainval"
-        args.imdbval_name = "voc_2007_test"
-        args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '20']
-    elif args.dataset == "coco":
-        args.imdb_name = "coco_2014_train+coco_2014_valminusminival"
-        args.imdbval_name = "coco_2014_minival"
-        args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '50']
-    elif args.dataset == "imagenet":
-        args.imdb_name = "imagenet_train"
-        args.imdbval_name = "imagenet_val"
-        args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
-    elif args.dataset == "vg":
-        # train sizes: train, smalltrain, minitrain
-        # train scale: ['150-50-20', '150-50-50', '500-150-80', '750-250-150', '1750-700-450', '1600-400-20']
-        args.imdb_name = "vg_150-50-50_minitrain"
-        args.imdbval_name = "vg_150-50-50_minival"
-        args.set_cfgs = ['ANCHOR_SCALES', '[4, 8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '50']
-    '''
-    #  args.cfg_file = "student_cfgs/{}_ls.yml".format(args.net) if args.large_scale else "student_cfgs/{}.yml".format(args.net)
+
 
     args.cfg_file = "student_cfgs/{}.yml".format(args.s_net)
     print("File di configurazione della student")
@@ -432,30 +394,64 @@ if __name__ == '__main__':
             num_boxes.data.resize_(data[3].size()).copy_(data[3])
 
             student_net.zero_grad()
+            # Teacher Net
+            t_RPN_mask, t_RPN_reg, t_RPN_cls, t_RCN_mask, t_RCN_reg, t_RCN_cls = teacher_net(im_data, im_info, gt_boxes,
+                                                                                             num_boxes)
 
-            rois_t, cls_prob_t, bbox_pred_t, \
-            rpn_loss_cls_t, rpn_loss_box_t, \
-            RCNN_loss_cls_t, RCNN_loss_bbox_t, \
-            rois_label_t, Z_t, R_t, fg_bg_label, \
-            y_reg_t, iw_t, ow_t, rois_target_t, rois_inside_ws_t, \
-            rois_outside_ws_t, rcn_cls_score_t = teacher_net(im_data, im_info, gt_boxes, num_boxes)
+            # Region Proposal Network Classification
+            # Z_t = Z_t.detach()
+            Z_t = t_RPN_cls[0].detach()
+            fg_bg_label = t_RPN_cls[1]
+            # Region Proposal Network Regression
+            y_reg_t = t_RPN_reg[0]
+            # R_t = R_t.detach()
+            R_t = t_RPN_reg[1].detach()
+            # Region  Classification Network Classification
+            # rcn_cls_score_t = rcn_cls_score_t.detach()
+            rcn_cls_score_t = t_RCN_cls[0].detach()
+            # cls_prob_t = cls_prob_t.detach()
+            cls_prob_t = t_RCN_cls[1].detach()
+            # Region Classification Network Regression
+            rois_label_t = t_RCN_reg[1]
+            rois_target_t = t_RCN_reg[2]
+            # bbox_pred_t = bbox_pred_t.detach()
+            bbox_pred_t = t_RCN_reg[3].detach()
+            # Region Proposal Network mask
+            iw_t = t_RPN_mask[0]
+            ow_t = t_RPN_mask[1]
+            # Region Classification Network mask
+            rois_inside_ws_t = t_RCN_mask[0]
+            rois_outside_ws_t = t_RCN_mask[1]
 
-            cls_prob_t = cls_prob_t.detach()
+            # Student Net
+            s_RPN_mask, s_RPN_reg, s_RPN_cls, s_RCN_mask, s_RCN_reg, s_RCN_cls = student_net(im_data, im_info, gt_boxes,
+                                                                                             num_boxes)
 
-            bbox_pred_t = bbox_pred_t.detach()
-            Z_t = Z_t.detach()
-            R_t = R_t.detach()
-            rcn_cls_score_t = rcn_cls_score_t.detach()
+            # Region Proposal Network Classification
+            Z_s = s_RPN_cls[0]
+            # L_hard = rpn_loss_cls_s
+            L_hard = s_RPN_cls[2]
+            # Region Proposal Network Regression
+            y_reg_s = s_RPN_reg[0]
+            R_s = s_RPN_reg[1]
+            rpn_loss_box_s = s_RPN_reg[2]
+            # Region Proposal Network Mask
+            iw_s = s_RPN_mask[0]
+            ow_s = s_RPN_mask[1]
+
+            # Region Classification Network Classification
+            rcn_cls_score_s = s_RCN_cls[0]
+            RCNN_loss_cls_s = s_RCN_cls[2]
+            # Region Classification Network Regression
+            rois_label_s = s_RCN_reg[1]
+            rois_target_s = s_RCN_reg[2]
+            bbox_pred_s = s_RCN_reg[3]
+            RCNN_loss_bbox_s = s_RCN_reg[4]
+            # Region Classification Network Mask
+            rois_inside_ws_s = s_RCN_mask[0]
+            rois_outside_ws_s = s_RCN_mask[1]
 
 
-
-            rois_s, cls_prob_s, bbox_pred_s, \
-            rpn_loss_cls_s, rpn_loss_box_s, \
-            RCNN_loss_cls_s, RCNN_loss_bbox_s, \
-            rois_label_s, Z_s, R_s, _, y_reg_s, iw_s, ow_s, rois_target_s, rois_inside_ws_s, \
-            rois_outside_ws_s, rcn_cls_score_s = student_net(im_data, im_info, gt_boxes, num_boxes)
-
-            L_hard = rpn_loss_cls_s
 
             loss_rpn_cls, loss_rpn_cls_soft = compute_loss_classification(Z_t, Z_s, mu, L_hard, fg_bg_label, T=1, weighted=True)
 
@@ -491,20 +487,6 @@ if __name__ == '__main__':
                 end = time.time()
                 if step > 0:
                     loss_temp /= (args.disp_interval + 1)
-                '''
-                if args.mGPUs:
-                    loss_rpn_cls = rpn_loss_cls.mean().item()
-                    loss_rpn_box = rpn_loss_box.mean().item()
-                    loss_rcnn_cls = RCNN_loss_cls.mean().item()
-                    loss_rcnn_box = RCNN_loss_bbox.mean().item()
-                    fg_cnt = torch.sum(rois_label.data.ne(0))
-                    bg_cnt = rois_label.data.numel() - fg_cnt
-                else:
-                loss_rpn_reg = loss_rpn_reg.item()
-                loss_rpn_cls = loss_rpn_cls.item()
-                loss_rcn_cls = loss_rcn_cls.item()
-                loss_rpn_reg = loss_rpn_reg.item()
-                '''
 
                 fg_cnt = torch.sum(rois_label_s.data.ne(0))
                 bg_cnt = rois_label_s.data.numel() - fg_cnt
@@ -525,7 +507,6 @@ if __name__ == '__main__':
                         'loss_rpn_reg_hard': rpn_loss_box_s,
                         'loss_rpn_reg_soft': loss_rpn_reg_soft,
                         'loss_rpn_reg': loss_rpn_reg,
-                        'loss_rpn_reg_teacher': rpn_loss_box_t,
 
                         'loss_rcn_cls_hard': RCNN_loss_cls_s,
                         'loss_rcn_cls_soft': loss_rcn_cls_soft,
@@ -534,16 +515,12 @@ if __name__ == '__main__':
                         'loss_rcn_reg_hard': RCNN_loss_bbox_s,
                         'loss_rcn_reg_soft': loss_rcn_reg_soft,
                         'loss_rcn_reg': loss_rcn_reg,
-                        'loss_rcn_reg_teacher': RCNN_loss_bbox_t,
 
                          'rpn_norm_s':rpn_norm_s,
                          'rpn_norm_t':rpn_norm_t,
 
                          'rcn_norm_s':rcn_norm_s,
-                         'rcn_norm_t':rcn_norm_t,
-
-
-
+                         'rcn_norm_t': rcn_norm_t,
                         'loss': loss_temp,
 
                     }

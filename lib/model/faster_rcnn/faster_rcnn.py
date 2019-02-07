@@ -132,9 +132,47 @@ class _fasterRCNN(nn.Module):
         cls_prob = cls_prob.view(batch_size, rois.size(1), -1)
         if not (self.training or self.teaching):
             bbox_pred = bbox_pred.view(batch_size, rois.size(1), -1) #reshape commentato per il calcolo della loss esterno
-        #todo modificato, restisce i Ps e gli Rs calcolati da rpn
-        return rois, cls_prob, bbox_pred, rpn_loss_cls, rpn_loss_bbox, RCNN_loss_cls, RCNN_loss_bbox, rois_label,rpn_cls_score, rpn_bbox_pred, fg_bg_label, rpn_bbox_targets, \
-               rpn_bbox_inside_weights, rpn_bbox_outside_weights, rois_target, rois_inside_ws, rois_outside_ws, cls_score
+
+        # rpn_bbox_inside_weights(1,36,37,56)=outside
+        RPN_mask = rpn_bbox_inside_weights, rpn_bbox_outside_weights
+
+        # rpn_bbox_targets (1,36,37,56): 4 coordinate * 9 anchor per ciascun elemento della feature map
+        # rpn_bbox_pred (1,36,37,56)
+        # rpn_loss_box (int):
+        RPN_reg = rpn_bbox_targets, rpn_bbox_pred, rpn_loss_bbox
+
+        # rpn_cls_score (256,2): logits in uscita dalla strato convoluzionale senza calcolare softmax in RPN. Le probabilità le calcoliamo con softmax in loss.py
+        # fg_back_ground_label (256 di 0,1): ground thruth-> back ground foreground
+        # rpn_loss_cls (int)
+        RPN_cls = rpn_cls_score, fg_bg_label, rpn_loss_cls
+
+        # rois_inside_weights(256,4)=outside
+        RCN_mask = rois_inside_ws, rois_outside_ws
+
+        # roi (1,256,5): region of interest generate dal proposal layer (256)
+        # rois_label (256):
+        # bbox_pred (256,4)
+        # rois_target (256,4)
+        # RCNN_loss_bbox (int)
+        RCN_reg = rois, rois_label, rois_target, bbox_pred, RCNN_loss_bbox
+
+        # cls_score (256,21)
+        # cls_prob (1,256,21)
+        # RCNN_loss_cls(int)
+        RCN_cls = cls_score, cls_prob, RCNN_loss_cls
+
+        ###Losses:
+
+        # Loss classification RPN: rpn_loss_cls
+        # Loss regression_RCN : rpn_loss_bbox
+
+        # Loss classification RCN: RCNN_loss_cls
+        # Loss_regression RCN: RCNN_loss_bbox
+
+        return RPN_mask, RPN_reg, RPN_cls, RCN_mask, RCN_reg, RCN_cls
+
+        # return rois, cls_prob, bbox_pred, rpn_loss_cls, rpn_loss_bbox, RCNN_loss_cls, RCNN_loss_bbox, rois_label,rpn_cls_score, rpn_bbox_pred, fg_bg_label, rpn_bbox_targets, \
+        #       rpn_bbox_inside_weights, rpn_bbox_outside_weights, rois_target, rois_inside_ws, rois_outside_ws, cls_score
 
     def _init_weights(self):
         def normal_init(m, mean, stddev, truncated=False):

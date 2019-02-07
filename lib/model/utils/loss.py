@@ -5,7 +5,10 @@ import torch
 def compute_loss_classification(Z_t, Z_s, mu, L_hard, y, T=1, weighted = True):
     #vettori di pesi
     if weighted:
-        wc = torch.where((y==0), 1.5*torch.ones(Z_t.shape[0]).cuda(), torch.ones(Z_s.shape[0]).cuda()).double()
+        if torch.cuda.is_available():
+            wc = torch.where((y == 0), 1.5 * torch.ones(Z_t.shape[0]).cuda(), torch.ones(Z_s.shape[0]).cuda()).double()
+        else:
+            wc = torch.where((y == 0), 1.5 * torch.ones(Z_t.shape[0]), torch.ones(Z_s.shape[0])).double()
     else:
         wc = torch.ones(Z_s.shape[0]).cuda().double()
     Z_s = Z_s.double()
@@ -39,7 +42,10 @@ def compute_loss_regression(smooth_l1_loss, Rs, Rt, y_reg_s, y_reg_t , m, bbox_i
   for i in sorted(dim, reverse=True):
       norm_s = norm_s.sum(i)
       norm_t = norm_t.sum(i)
-  zeros = torch.zeros(norm_s.shape).cuda()
+  if torch.cuda.is_available():
+      zeros = torch.zeros(norm_s.shape).cuda()
+  else:
+      zeros = torch.zeros(norm_s.shape)
   l_b = torch.where((norm_s + m <= norm_t), zeros, norm_s)
   l_reg =  smooth_l1_loss + ni * l_b.mean()
   return l_reg, l_b.mean(), norm_s.mean(), norm_t.mean()
