@@ -380,7 +380,7 @@ if __name__ == '__main__':
         start = time.time()
 
         if epoch % (args.lr_decay_step + 1) == 0:
-            if(lr > 1e-4):
+            if (lr >= 1e-4):
                 adjust_learning_rate(optimizer, args.lr_decay_gamma)
                 lr *= args.lr_decay_gamma
 
