@@ -90,13 +90,35 @@ def evaluate(student_net, dataset):
         num_boxes.data.resize_(data[3].size()).copy_(data[3])
 
         det_tic = time.time()
+        s_RPN_mask, s_RPN_reg, s_RPN_cls, s_RCN_mask, s_RCN_reg, s_RCN_cls = student_net(im_data, im_info, gt_boxes,
+                                                                                         num_boxes)
 
-        rois, cls_prob, bbox_pred, \
-        rpn_loss_cls, rpn_loss_box, \
-        RCNN_loss_cls, RCNN_loss_bbox, \
-        rois_label, Z_t, R_t, fg_bg_label, \
-        y_reg, iw, ow, rois_target, rois_inside_ws, \
-        rois_outside_ws, rcn_cls_score = student_net(im_data, im_info, gt_boxes, num_boxes)
+        # Region Proposal Network Classification
+        Z_s = s_RPN_cls[0]
+        fg_bg_label = s_RPN_cls[1]
+        rpn_loss_cls = s_RPN_cls[2]
+        # Region Proposal Network Regression
+        y_reg = s_RPN_reg[0]
+        R_s = s_RPN_reg[1]
+        rpn_loss_box = s_RPN_reg[2]
+        # Region Proposal Network Mask
+        iw = s_RPN_mask[0]
+        ow = s_RPN_mask[1]
+
+        # Region Classification Network Classification
+        rcn_cls_score = s_RCN_cls[0]
+        cls_prob = s_RCN_cls[1]
+        RCNN_loss_cls = s_RCN_cls[2]
+        # Region Classification Network Regression
+        rois = s_RCN_reg[0]
+        rois_label = s_RCN_reg[1]
+        rois_target = s_RCN_reg[2]
+        bbox_pred = s_RCN_reg[3]
+        RCNN_loss_bbox = s_RCN_reg[4]
+        # Region Classification Network Mask
+        rois_inside_ws = s_RCN_mask[0]
+        rois_outside_ws = s_RCN_mask[1]
+
 
         scores = cls_prob.data
         boxes = rois.data[:, :, 1:5]
